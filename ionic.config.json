@@ -1,0 +1,7 @@
+{
+  "name": "mi-buseta-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
