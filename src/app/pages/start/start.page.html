@@ -1,20 +1,22 @@
 @let infoLocal = infoStart();
-<ion-content [fullscreen]="true" class="bg-start">
+<ion-content [fullscreen]="true" class="bg-start ion-padding">
   <ion-grid>
     <ion-row>
       <ion-col size="12" class="d-flex justify-content-center">
         <ion-thumbnail
-          class="logo bg-quinary d-flex align-items-center justify-content-center rounded-3 ion-padding-top ion-padding-bottom"
+          class="logo bg-quinary d-flex align-items-center justify-content-center border-radius-secondary"
         >
           <ion-icon name="logo" size="large" color="primary" />
         </ion-thumbnail>
       </ion-col>
       <ion-col size="12">
         <ion-title>
-          <h1 class="text-center color-primary">{{ infoLocal.title }}</h1>
+          <h1 class="text-center color-primary fw-bold fs-5">
+            {{ infoLocal.title }}
+          </h1>
         </ion-title>
         <ion-text>
-          <p class="mb-0 text-center color-secondary">
+          <p class="mb-0 text-center color-secondary fs-7">
             {{ infoLocal.description }}
           </p>
         </ion-text>
@@ -25,28 +27,13 @@
       <ion-col size="12">
         <ion-list class="bg-trasparent">
           @for (feature of infoLocal.features; track feature.id) {
-          <ion-item class="bg-quinary rounded-3 mb-2" lines="none">
-            <ion-thumbnail
-              class="item-style-1 rounded-circle me-3"
-              style="height: 35px; width: 35px"
-            >
-              <ion-icon
-                class="icon"
-                size="small"
-                [name]="feature.icon"
-              ></ion-icon>
-            </ion-thumbnail>
-            <ion-label>
-              <h2 class="color-primary fw-bold">{{ feature.title }}</h2>
-              <p class="color-secondary">{{ feature.description }}</p>
-            </ion-label>
-          </ion-item>
+          <app-feature-card [feature]="feature"></app-feature-card>
           }
         </ion-list>
 
         <ion-button
           color="primary"
-          class="w-100 ion-padding-top ion-padding-bottom"
+          class="button-style-1 w-100 ion-padding-top ion-padding-bottom"
         >
           Continuar
         </ion-button>
@@ -56,7 +43,7 @@
     <ion-row>
       <ion-col size="12">
         <ion-text>
-          <p class="text-center color-tertiary">
+          <p class="text-center color-tertiary fs-8">
             Al continuar, acepta nuestras
             <a href="" class="color-tertiary">Condiciones de servicio</a> y
             <a href="" class="color-tertiary">Política de privacidad</a>

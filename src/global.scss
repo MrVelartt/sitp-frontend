@@ -26,6 +26,8 @@
 @import "@ionic/angular/css/flex-utils.css";
 
 @import "variables";
+@import "buttons";
+@import "sizes";
 
 /**
  * Ionic Dark Mode
@@ -39,7 +41,7 @@
 
 .bg-start {
   background: $color-secondary;
-  --background: $color-secondary;
+  --background: #{$color-secondary};
 }
 
 .bg-trasparent {
@@ -49,7 +51,7 @@
 
 .bg-quinary {
   background: $color-quinary;
-  --background: $color-quinary;
+  --background: #{$color-quinary};
 }
 
 .color-logo {
@@ -71,9 +73,40 @@
 .item-style-1 {
   display: grid;
   place-content: center;
-  --background: $color-secondary;
+  --background: #{$color-secondary};
   background: $color-secondary;
   .icon {
     color: $color-primary;
   }
 }
+
+.border-radius-primary {
+  border-radius: $border-radius-primary;
+  --border-radius: #{$border-radius-primary};
+}
+
+.border-radius-secondary {
+  border-radius: $border-radius-secondary;
+  --border-radius: #{$border-radius-secondary};
+}
+
+.text-lines-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.text-lines-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+// .button-style-1 {
+//   --border-radius: $border-radius-tertiary;
+//   border-radius: $border-radius-secondary;
+// }

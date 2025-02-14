@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { startMock } from '@app/mocks';
 import { Start } from '@app/models';
 import {
@@ -11,12 +11,10 @@ import {
   IonText,
   IonIcon,
   IonList,
-  IonItem,
-  IonLabel,
   IonButton,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { location, map } from 'ionicons/icons';
+import { FeatureCardComponent } from './components';
 
 @Component({
   selector: 'app-start',
@@ -25,8 +23,6 @@ import { location, map } from 'ionicons/icons';
   standalone: true,
   imports: [
     IonButton,
-    IonLabel,
-    IonItem,
     IonList,
     IonIcon,
     IonText,
@@ -36,18 +32,15 @@ import { location, map } from 'ionicons/icons';
     IonGrid,
     IonContent,
     IonThumbnail,
+    FeatureCardComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class StartPage implements OnInit {
+export class StartPage {
   protected readonly infoStart = signal<Start>(startMock);
   constructor() {
     addIcons({
       logo: this.infoStart().logo,
-      location,
-      map,
-      routes: 'assets/icons/routes.svg',
     });
   }
-
-  ngOnInit() {}
 }
