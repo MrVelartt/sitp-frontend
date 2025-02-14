@@ -2,17 +2,65 @@
 <ion-content [fullscreen]="true" class="bg-start">
   <ion-grid>
     <ion-row>
-      <ion-col size="12">
-        <ion-thumbnail>
-          <ion-icon name="logo" color="primary" />
+      <ion-col size="12" class="d-flex justify-content-center">
+        <ion-thumbnail
+          class="logo bg-quinary d-flex align-items-center justify-content-center rounded-3 ion-padding-top ion-padding-bottom"
+        >
+          <ion-icon name="logo" size="large" color="primary" />
         </ion-thumbnail>
       </ion-col>
       <ion-col size="12">
         <ion-title>
-          <h1>{{ infoLocal.title }}</h1>
+          <h1 class="text-center color-primary">{{ infoLocal.title }}</h1>
         </ion-title>
         <ion-text>
-          <p class="mb-0">{{ infoLocal.description }}</p>
+          <p class="mb-0 text-center color-secondary">
+            {{ infoLocal.description }}
+          </p>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-list class="bg-trasparent">
+          @for (feature of infoLocal.features; track feature.id) {
+          <ion-item class="bg-quinary rounded-3 mb-2" lines="none">
+            <ion-thumbnail
+              class="item-style-1 rounded-circle me-3"
+              style="height: 35px; width: 35px"
+            >
+              <ion-icon
+                class="icon"
+                size="small"
+                [name]="feature.icon"
+              ></ion-icon>
+            </ion-thumbnail>
+            <ion-label>
+              <h2 class="color-primary fw-bold">{{ feature.title }}</h2>
+              <p class="color-secondary">{{ feature.description }}</p>
+            </ion-label>
+          </ion-item>
+          }
+        </ion-list>
+
+        <ion-button
+          color="primary"
+          class="w-100 ion-padding-top ion-padding-bottom"
+        >
+          Continuar
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-text>
+          <p class="text-center color-tertiary">
+            Al continuar, acepta nuestras
+            <a href="" class="color-tertiary">Condiciones de servicio</a> y
+            <a href="" class="color-tertiary">Política de privacidad</a>
+          </p>
         </ion-text>
       </ion-col>
     </ion-row>

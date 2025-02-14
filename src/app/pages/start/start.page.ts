@@ -10,8 +10,13 @@ import {
   IonTitle,
   IonText,
   IonIcon,
+  IonList,
+  IonItem,
+  IonLabel,
+  IonButton,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
+import { location, map } from 'ionicons/icons';
 
 @Component({
   selector: 'app-start',
@@ -19,6 +24,10 @@ import { addIcons } from 'ionicons';
   styleUrls: ['./start.page.scss'],
   standalone: true,
   imports: [
+    IonButton,
+    IonLabel,
+    IonItem,
+    IonList,
     IonIcon,
     IonText,
     IonTitle,
@@ -32,7 +41,12 @@ import { addIcons } from 'ionicons';
 export class StartPage implements OnInit {
   protected readonly infoStart = signal<Start>(startMock);
   constructor() {
-    addIcons({ logo: this.infoStart().logo });
+    addIcons({
+      logo: this.infoStart().logo,
+      location,
+      map,
+      routes: 'assets/icons/routes.svg',
+    });
   }
 
   ngOnInit() {}

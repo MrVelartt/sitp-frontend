@@ -42,6 +42,38 @@
   --background: $color-secondary;
 }
 
+.bg-trasparent {
+  background: transparent;
+  --background: transparent;
+}
+
+.bg-quinary {
+  background: $color-quinary;
+  --background: $color-quinary;
+}
+
 .color-logo {
   color: $color-primary;
+}
+
+.color-primary {
+  color: $color-text-primary;
+}
+
+.color-secondary {
+  color: $color-text-secondary;
+}
+
+.color-tertiary {
+  color: $color-text-tertiary;
+}
+
+.item-style-1 {
+  display: grid;
+  place-content: center;
+  --background: $color-secondary;
+  background: $color-secondary;
+  .icon {
+    color: $color-primary;
+  }
 }
