@@ -6,7 +6,7 @@ import {
   IonIcon,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { map, settings, star } from 'ionicons/icons';
+import { map, settings } from 'ionicons/icons';
 
 @Component({
   selector: 'app-main',
@@ -19,9 +19,9 @@ export class MainPage implements OnInit {
   constructor() {
     addIcons({
       map,
-      star,
       settings,
       routes: 'assets/icons/routes.svg',
+      starRound: 'assets/icons/star.svg',
     });
   }
 

@@ -1,0 +1,48 @@
+.bg-start {
+  background: $color-secondary;
+  --background: #{$color-secondary};
+}
+
+.bg-trasparent {
+  background: transparent;
+  --background: transparent;
+}
+
+.bg-quinary {
+  background: $color-quinary;
+  --background: #{$color-quinary};
+}
+
+.bg-octonary {
+  background: $color-octonary;
+  --background: #{$color-octonary};
+}
+
+.bg-header {
+  background: $color-header;
+  --background: #{$color-header};
+}
+
+.color-logo {
+  color: $color-primary;
+}
+
+.color-primary {
+  color: $color-text-primary;
+}
+
+.color-secondary {
+  color: $color-text-secondary;
+}
+
+.color-tertiary {
+  color: $color-text-tertiary;
+}
+
+.color-favorite {
+  color: $color-denary;
+}
+
+.color-favorite-active {
+  color: $color-nonary;
+}

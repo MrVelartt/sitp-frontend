@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  signal,
+} from '@angular/core';
 import { startMock } from '@app/mocks';
 import { Start } from '@app/models';
 import {
@@ -15,6 +20,7 @@ import {
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { FeatureCardComponent } from './components';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-start',
@@ -38,9 +44,15 @@ import { FeatureCardComponent } from './components';
 })
 export class StartPage {
   protected readonly infoStart = signal<Start>(startMock);
+  protected readonly router = inject(Router);
+
   constructor() {
     addIcons({
       logo: this.infoStart().logo,
     });
+  }
+
+  navigateToMap() {
+    this.router.navigate(['/map']);
   }
 }

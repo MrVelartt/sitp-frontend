@@ -2,3 +2,9 @@
   --border-radius: #{$border-radius-primary};
   border-radius: $border-radius-primary;
 }
+
+.button-style-2 {
+  --background: transparent;
+  --box-shadow: none;
+  margin: 0;
+}

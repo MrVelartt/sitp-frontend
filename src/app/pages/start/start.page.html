@@ -1,7 +1,7 @@
 @let infoLocal = infoStart();
 <ion-content [fullscreen]="true" class="bg-start ion-padding">
   <ion-grid>
-    <ion-row>
+    <ion-row class="section-logo">
       <ion-col size="12" class="d-flex justify-content-center">
         <ion-thumbnail
           class="logo bg-quinary d-flex align-items-center justify-content-center border-radius-secondary"
@@ -11,7 +11,7 @@
       </ion-col>
       <ion-col size="12">
         <ion-title>
-          <h1 class="text-center color-primary fw-bold fs-5">
+          <h1 class="text-center color-primary fw-bold fs-5 mt-1 mt-sm-2">
             {{ infoLocal.title }}
           </h1>
         </ion-title>
@@ -25,22 +25,25 @@
 
     <ion-row>
       <ion-col size="12">
-        <ion-list class="bg-trasparent">
+        <ion-list class="list bg-trasparent my-2">
           @for (feature of infoLocal.features; track feature.id) {
-          <app-feature-card [feature]="feature"></app-feature-card>
+          <div class="content-card mb-2">
+            <app-feature-card [feature]="feature"></app-feature-card>
+          </div>
           }
         </ion-list>
 
         <ion-button
           color="primary"
-          class="button-style-1 w-100 ion-padding-top ion-padding-bottom"
+          class="button-style-1 w-100 ion-padding-top ion-padding-bottom text-none fs-6"
+          (click)="navigateToMap()"
         >
           Continuar
         </ion-button>
       </ion-col>
     </ion-row>
 
-    <ion-row>
+    <ion-row class="mt-sm-3">
       <ion-col size="12">
         <ion-text>
           <p class="text-center color-tertiary fs-8">

@@ -3,3 +3,12 @@
   width: 70px;
   height: 70px;
 }
+
+@media screen and (min-height: 700px) {
+  .section-logo {
+    margin-top: 5%;
+  }
+  .list {
+    margin: 15% 0 !important;
+  }
+}

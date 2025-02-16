@@ -3,6 +3,11 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
+    redirectTo: 'map',
+    pathMatch: 'full',
+  },
+  {
+    path: '',
     loadComponent: () =>
       import('./pages/main/main.page').then((m) => m.MainPage),
     children: [
@@ -13,8 +18,10 @@ export const routes: Routes = [
       },
       {
         path: 'routes',
-        loadComponent: () =>
-          import('./pages/routes/routes.page').then((m) => m.RoutesPage),
+        // loadComponent: () =>
+        //   import('./pages/routes/routes.page').then((m) => m.RoutesPage),
+        loadChildren: () =>
+          import('./pages/routes/routes.routes').then((m) => m.routesRoutes),
       },
       {
         path: 'favorites',
@@ -39,5 +46,19 @@ export const routes: Routes = [
     path: '**',
     redirectTo: 'map',
     pathMatch: 'full',
+  },
+  {
+    path: 'route-detail',
+    loadComponent: () =>
+      import('./pages/routes/route-detail/route-detail.page').then(
+        (m) => m.RouteDetailPage
+      ),
+  },
+  {
+    path: 'route-list',
+    loadComponent: () =>
+      import('./pages/routes/route-list/route-list.page').then(
+        (m) => m.RouteListPage
+      ),
   },
 ];

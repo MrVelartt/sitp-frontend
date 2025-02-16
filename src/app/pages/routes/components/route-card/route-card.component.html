@@ -1,0 +1,55 @@
+@let routeLocal = route();
+<ion-card class="m-0 border-radius-secondary">
+  <ion-card-header class="flex-row column-gap-2 align-items-center">
+    <span
+      class="icon-route d-flex justify-content-center align-items-center border-radius-secondary fw-semibold"
+      [ngStyle]="{
+        color: routeLocal.color,
+        background: convertHexToRgba(routeLocal.color, 0.2),
+      }"
+    >
+      {{ routeLocal.shortName }}
+    </span>
+    <div class="title-route">
+      <ion-card-title class="name fw-semibold fs-7">{{
+        routeLocal.name
+      }}</ion-card-title>
+      <ion-card-subtitle class="freq fs-8">
+        Cada {{ routeLocal.frequency }} minutos
+      </ion-card-subtitle>
+    </div>
+    <ion-button class="btn-favorite button-style-2 ms-auto align-self-start">
+      <ion-icon
+        slot="icon-only"
+        [name]="routeLocal.isFavorite ? 'star-round' : 'star-round-outline'"
+        size="small"
+        aria-hidden="true"
+        [class]="
+          routeLocal.isFavorite ? 'color-favorite-active' : 'color-favorite'
+        "
+      ></ion-icon>
+    </ion-button>
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-text>
+      <p class="mb-0 color-secondary fs-7">{{ routeLocal.description }}</p>
+    </ion-text>
+
+    <ion-button
+      class="fs-7 w-100 m-0 mt-3 fw-semibold border-radius-secondary text-none"
+      [ngStyle]="{
+        color: routeLocal.color,
+        '--background': convertHexToRgba(routeLocal.color, 0.2),
+      }"
+      (click)="seeRoute(routeLocal.id)"
+    >
+      Ver ruta
+      <ion-icon
+        slot="end"
+        name="arrow-forward-outline"
+        aria-hidden="true"
+      ></ion-icon>
+    </ion-button>
+  </ion-card-content>
+</ion-card>

@@ -28,6 +28,8 @@
 @import "variables";
 @import "buttons";
 @import "sizes";
+@import "inputs";
+@import "colors";
 
 /**
  * Ionic Dark Mode
@@ -38,37 +40,6 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
-
-.bg-start {
-  background: $color-secondary;
-  --background: #{$color-secondary};
-}
-
-.bg-trasparent {
-  background: transparent;
-  --background: transparent;
-}
-
-.bg-quinary {
-  background: $color-quinary;
-  --background: #{$color-quinary};
-}
-
-.color-logo {
-  color: $color-primary;
-}
-
-.color-primary {
-  color: $color-text-primary;
-}
-
-.color-secondary {
-  color: $color-text-secondary;
-}
-
-.color-tertiary {
-  color: $color-text-tertiary;
-}
 
 .item-style-1 {
   display: grid;
@@ -106,7 +77,23 @@
   -webkit-box-orient: vertical;
 }
 
-// .button-style-1 {
-//   --border-radius: $border-radius-tertiary;
-//   border-radius: $border-radius-secondary;
-// }
+.text-none {
+  text-transform: none;
+}
+
+.title-center {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.tabs-style-1 {
+  ion-tab-button {
+    --background: #{$color-quinary};
+    --color: #{$color-text-quaternary};
+    --color-selected: #{$color-primary};
+  }
+}

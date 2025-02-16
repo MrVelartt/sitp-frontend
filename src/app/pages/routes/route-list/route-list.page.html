@@ -1,0 +1,58 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="bg-header">
+    <ion-title>
+      <h1 class="color-primary text-center fs-2 fw-semibold my-3">
+        Lista de rutas
+      </h1>
+    </ion-title>
+    <div class="search px-3 pb-3">
+      <app-item-search></app-item-search>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="position-relative">
+  <ion-header collapse="condense">
+    <ion-toolbar class="bg-header">
+      <ion-title>
+        <h1 class="color-primary text-center fs-2 fw-bold">Lista de rutas</h1>
+      </ion-title>
+      <div class="search">
+        <app-item-search></app-item-search>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid class="bg-octonary" style="padding-bottom: 65px">
+    <ion-row>
+      <ion-col size="12">
+        <ion-list class="p-0 bg-octonary">
+          @for (route of routes(); track route.id) { @defer(on viewport) {
+          <div class="content-card mb-3">
+            <app-route-card
+              [route]="route"
+              (seeRouteChange)="navigateToRouteDetail($event)"
+            ></app-route-card>
+          </div>
+          } @placeholder {
+          <p>...Cargando</p>
+          } }
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+    <ion-row
+      class="position-fixed start-0 bottom-0 w-100 px-1 py-2 bg-octonary"
+    >
+      <ion-col>
+        <ion-button
+          color="primary"
+          class="button-style-1 w-100 ion-padding-top ion-padding-bottom text-none fs-7 p-0 m-0"
+        >
+          <ion-icon slot="start" name="map"></ion-icon>
+          Ver toda las rutas del mapa
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

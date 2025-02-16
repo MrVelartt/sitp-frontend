@@ -1,0 +1,10 @@
+.input-style-1 {
+  --background: #{$color-octonary};
+  --border-width: 0 !important;
+  --border-radius: #{$border-radius-secondary} !important;
+  min-height: 38px !important;
+  font-size: 0.9rem;
+  .icon {
+    color: $color-text-quaternary;
+  }
+}
