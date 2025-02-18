@@ -1,0 +1,19 @@
+@let featureLocal = feature();
+<ion-item
+  class="feature d-flex bg-quinary border-radius-primary ion-no-padding"
+  lines="none"
+>
+  <ion-icon
+    class="icon me-2 fs-5"
+    color="primary"
+    [name]="featureLocal.icon"
+  ></ion-icon>
+  <ion-label class="overflow-hidden">
+    <h2 class="color-primary fw-bold fs-7 text-lines-1">
+      {{ featureLocal.title }}
+    </h2>
+    <p class="color-secondary fs-8 text-lines-2 mb-0">
+      {{ featureLocal.description }}
+    </p>
+  </ion-label>
+</ion-item>

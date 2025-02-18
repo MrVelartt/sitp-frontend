@@ -13,7 +13,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="bg-octonary">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">
@@ -23,4 +23,57 @@
       </ion-title>
     </ion-toolbar>
   </ion-header>
+
+  @let routeLocal = route();
+
+  <ion-grid class="p-0">
+    <ion-row class="bg-quinary p-2">
+      <ion-col size="12">
+        <ion-img [src]="routeLocal.image"></ion-img>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="p-2 bg-quinary mb-2">
+      <ion-col size="12">
+        <ion-title class="p-0">
+          <h1 class="color-primary text-center fw-semibold fs-5 m-0">
+            {{ routeLocal.shortName }} - {{ routeLocal.name }}
+          </h1>
+        </ion-title>
+      </ion-col>
+      @for (feature of routeFeatures(); track feature.id) {
+      <ion-col size="6">
+        <app-route-feature [feature]="feature"></app-route-feature>
+      </ion-col>
+      }
+    </ion-row>
+
+    <ion-row class="p-2 bg-quinary">
+      <ion-col size="12">
+        <ion-text>
+          <h2 class="color-primary fs-4 m-0 mb-2 fw-semibold">
+            Descripción de la ruta
+          </h2>
+        </ion-text>
+
+        <ion-text>
+          <p class="color-primary fs-8">{{ routeLocal.description }}</p>
+        </ion-text>
+
+        <ion-text class="fs-7">
+          <strong class="color-primary">Barrios clave cubiertos: </strong>
+          <span class="color-primary">{{ keyNeighborhoods() }}</span>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="p-2 bg-quinary">
+      <ion-col size="12">
+        <app-main-button
+          [label]="'Ver los buses de esta ruta'"
+          iconName="map"
+        ></app-main-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

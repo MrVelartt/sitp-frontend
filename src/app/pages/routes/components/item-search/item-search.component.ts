@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  input,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { IonInput, IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { search } from 'ionicons/icons';
@@ -16,12 +11,10 @@ import { search } from 'ionicons/icons';
   imports: [IonIcon, IonInput],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ItemSearchComponent implements OnInit {
+export class ItemSearchComponent {
   placeholder = input<string>('Buscar');
 
   constructor() {
     addIcons({ search });
   }
-
-  ngOnInit() {}
 }

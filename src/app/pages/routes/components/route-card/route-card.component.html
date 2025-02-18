@@ -1,5 +1,5 @@
 @let routeLocal = route();
-<ion-card class="m-0 border-radius-secondary">
+<ion-card class="m-0 border-radius-secondary bg-quinary">
   <ion-card-header class="flex-row column-gap-2 align-items-center">
     <span
       class="icon-route d-flex justify-content-center align-items-center border-radius-secondary fw-semibold"
@@ -11,10 +11,10 @@
       {{ routeLocal.shortName }}
     </span>
     <div class="title-route">
-      <ion-card-title class="name fw-semibold fs-7">{{
+      <ion-card-title class="name fw-semibold fs-7 color-primary">{{
         routeLocal.name
       }}</ion-card-title>
-      <ion-card-subtitle class="freq fs-8">
+      <ion-card-subtitle class="freq fs-8 color-tertiary">
         Cada {{ routeLocal.frequency }} minutos
       </ion-card-subtitle>
     </div>

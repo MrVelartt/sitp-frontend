@@ -227,3 +227,15 @@ export const RouteMock: Route[] = [
     frequency: '10',
   },
 ];
+
+export const detailRouteMock = (id: number): Route => {
+  const route = RouteMock.find((route) => route.id === +id) || RouteMock[0];
+  route.image = 'assets/images/map.png';
+  route.travelTime = '1h 30m';
+  route.startTime = '5:00 AM';
+  route.endTime = '8:00 PM';
+  route.distance = '10 km';
+  route.countBuses = 12;
+  route.keyNeighborhoods = ['San Antonio', 'Hospital', 'Centro', 'Zona Norte'];
+  return route;
+};

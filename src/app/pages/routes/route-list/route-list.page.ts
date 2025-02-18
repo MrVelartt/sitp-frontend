@@ -22,6 +22,7 @@ import { addIcons } from 'ionicons';
 import { map } from 'ionicons/icons';
 import { ItemSearchComponent, RouteCardComponent } from '../components';
 import { Router } from '@angular/router';
+import { MainButtonComponent } from '@app/components';
 
 @Component({
   selector: 'app-route-list',
@@ -41,6 +42,7 @@ import { Router } from '@angular/router';
     IonToolbar,
     ItemSearchComponent,
     RouteCardComponent,
+    MainButtonComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
