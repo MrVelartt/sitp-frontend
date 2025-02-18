@@ -239,3 +239,7 @@ export const detailRouteMock = (id: number): Route => {
   route.keyNeighborhoods = ['San Antonio', 'Hospital', 'Centro', 'Zona Norte'];
   return route;
 };
+
+export const routesFavoritesMock = RouteMock.filter(
+  (route) => route.isFavorite
+);

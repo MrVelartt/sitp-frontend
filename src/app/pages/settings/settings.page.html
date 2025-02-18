@@ -1,13 +1,41 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>settings</ion-title>
+  <ion-toolbar class="bg-header d-flex align-items-center">
+    <ion-title class="title-center">
+      <h1 class="text-primary fs-2 fw-semibold m-0">Configuración</h1>
+    </ion-title>
+
+    <ion-buttons slot="start">
+      <ion-back-button
+        class="text-primary"
+        defaultHref="/routes"
+      ></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="bg-octonary ion-padding">
   <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">settings</ion-title>
+    <ion-toolbar class="bg-header d-flex align-items-center">
+      <ion-title size="large">
+        <h1 class="text-primary text-center fs-2 fw-bold">Configuración</h1>
+      </ion-title>
+
+      <ion-buttons slot="start">
+        <ion-back-button
+          class="text-primary"
+          defaultHref="/routes"
+        ></ion-back-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-list class="bg-octonary">
+          <app-language-setting></app-language-setting>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

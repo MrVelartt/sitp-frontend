@@ -19,7 +19,7 @@ import {
   IonButton,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { FeatureCardComponent } from './components';
+import { FeatureCardComponent, FooterStartComponent } from './components';
 import { Router } from '@angular/router';
 
 @Component({
@@ -39,6 +39,7 @@ import { Router } from '@angular/router';
     IonContent,
     IonThumbnail,
     FeatureCardComponent,
+    FooterStartComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

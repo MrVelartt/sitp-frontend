@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   IonTabs,
   IonTabBar,
@@ -15,7 +15,7 @@ import { map, settings } from 'ionicons/icons';
   standalone: true,
   imports: [IonIcon, IonTabButton, IonTabBar, IonTabs],
 })
-export class MainPage implements OnInit {
+export class MainPage {
   constructor() {
     addIcons({
       map,
@@ -24,6 +24,4 @@ export class MainPage implements OnInit {
       starRound: 'assets/icons/star.svg',
     });
   }
-
-  ngOnInit() {}
 }

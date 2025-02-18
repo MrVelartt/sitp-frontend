@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar class="bg-header">
     <ion-title>
-      <h1 class="color-primary text-center fs-2 fw-semibold my-3">
+      <h1 class="text-primary text-center fs-2 fw-semibold my-3">
         Lista de rutas
       </h1>
     </ion-title>
@@ -15,7 +15,7 @@
   <ion-header collapse="condense">
     <ion-toolbar class="bg-header">
       <ion-title>
-        <h1 class="color-primary text-center fs-2 fw-bold">Lista de rutas</h1>
+        <h1 class="text-primary text-center fs-2 fw-bold">Lista de rutas</h1>
       </ion-title>
       <div class="search">
         <app-item-search></app-item-search>
@@ -31,7 +31,8 @@
           <div class="content-card mb-3">
             <app-route-card
               [route]="route"
-              (seeRouteChange)="navigateToRouteDetail($event)"
+              (seeRouteChange)="navigateToMap($event)"
+              (seeDetailRouteChange)="navigateToRouteDetail($event)"
             ></app-route-card>
           </div>
           } @placeholder {
@@ -45,15 +46,8 @@
       class="position-fixed start-0 bottom-0 w-100 px-1 py-2 bg-octonary"
     >
       <ion-col>
-        <!-- <ion-button
-          color="primary"
-          class="button-style-1 w-100 ion-padding-top ion-padding-bottom text-none fs-7 p-0 m-0"
-        >
-          <ion-icon slot="start" name="map"></ion-icon>
-        </ion-button> -->
-
         <app-main-button
-          label="Ver toda las rutas del mapa"
+          label="Ver todas las rutas en el mapa"
           iconName="map"
         ></app-main-button>
       </ion-col>

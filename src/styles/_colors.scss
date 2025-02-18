@@ -27,16 +27,20 @@
   color: $color-primary;
 }
 
-.color-primary {
-  color: $color-text-primary;
+.text-primary {
+  color: $color-text-primary !important;
 }
 
-.color-secondary {
+.text-secondary {
   color: $color-text-secondary;
 }
 
-.color-tertiary {
+.text-tertiary {
   color: $color-text-tertiary;
+}
+
+.color-octonary {
+  color: $color-octonary;
 }
 
 .color-favorite {

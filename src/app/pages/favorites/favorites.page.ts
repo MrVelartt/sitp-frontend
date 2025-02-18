@@ -1,20 +1,61 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  signal,
+} from '@angular/core';
+import { Router } from '@angular/router';
+import {
+  ItemSearchComponent,
+  MainButtonComponent,
+  RouteCardComponent,
+} from '@app/components';
+import { routesFavoritesMock } from '@app/mocks';
+import { Route } from '@app/models';
+import {
+  IonContent,
+  IonHeader,
+  IonTitle,
+  IonToolbar,
+  IonGrid,
+  IonList,
+  IonRow,
+  IonCol,
+} from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-favorites',
   templateUrl: './favorites.page.html',
   styleUrls: ['./favorites.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [
+    IonCol,
+    IonRow,
+    IonList,
+    IonGrid,
+    IonContent,
+    IonHeader,
+    IonTitle,
+    IonToolbar,
+    ItemSearchComponent,
+    RouteCardComponent,
+    MainButtonComponent,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FavoritesPage implements OnInit {
+export class FavoritesPage {
+  protected readonly router = inject(Router);
+  protected readonly routes = signal<Route[]>(routesFavoritesMock);
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
+  navigateToRouteDetail(routedId: string) {
+    console.log('navigateToRouteDetail', routedId);
+    this.router.navigate(['routes', routedId]);
   }
 
+  navigateToMap(routedId: string): void {
+    console.log('navigateToMap', routedId);
+    this.router.navigate(['map'], { queryParams: { routeId: routedId } });
+  }
 }

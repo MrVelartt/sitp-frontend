@@ -15,14 +15,13 @@ import {
   IonRow,
   IonCol,
   IonList,
-  IonButton,
-  IonIcon,
 } from '@ionic/angular/standalone';
-import { addIcons } from 'ionicons';
-import { map } from 'ionicons/icons';
-import { ItemSearchComponent, RouteCardComponent } from '../components';
 import { Router } from '@angular/router';
-import { MainButtonComponent } from '@app/components';
+import {
+  MainButtonComponent,
+  RouteCardComponent,
+  ItemSearchComponent,
+} from '@app/components';
 
 @Component({
   selector: 'app-route-list',
@@ -30,8 +29,6 @@ import { MainButtonComponent } from '@app/components';
   styleUrls: ['./route-list.page.scss'],
   standalone: true,
   imports: [
-    IonIcon,
-    IonButton,
     IonList,
     IonCol,
     IonRow,
@@ -50,12 +47,15 @@ export class RouteListPage {
   protected readonly router = inject(Router);
   protected readonly routes = signal<Route[]>(RouteMock);
 
-  constructor() {
-    addIcons({ map });
+  constructor() {}
+
+  navigateToRouteDetail(routedId: string): void {
+    console.log('navigateToRouteDetail', routedId);
+    this.router.navigate(['routes', routedId]);
   }
 
-  navigateToRouteDetail(routedId: string) {
-    console.log('Navigating to route detail with id:', routedId);
-    this.router.navigate(['routes', routedId]);
+  navigateToMap(routedId: string): void {
+    console.log('navigateToMap', routedId);
+    this.router.navigate(['map'], { queryParams: { routeId: routedId } });
   }
 }

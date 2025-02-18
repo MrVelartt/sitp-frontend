@@ -1,5 +1,8 @@
 @let routeLocal = route();
-<ion-card class="m-0 border-radius-secondary bg-quinary">
+<ion-card
+  class="m-0 border-radius-secondary bg-quinary"
+  (click)="seeDetailRoute($event, routeLocal.id)"
+>
   <ion-card-header class="flex-row column-gap-2 align-items-center">
     <span
       class="icon-route d-flex justify-content-center align-items-center border-radius-secondary fw-semibold"
@@ -11,10 +14,10 @@
       {{ routeLocal.shortName }}
     </span>
     <div class="title-route">
-      <ion-card-title class="name fw-semibold fs-7 color-primary">{{
+      <ion-card-title class="name fw-semibold fs-7 text-primary">{{
         routeLocal.name
       }}</ion-card-title>
-      <ion-card-subtitle class="freq fs-8 color-tertiary">
+      <ion-card-subtitle class="freq fs-8 text-tertiary">
         Cada {{ routeLocal.frequency }} minutos
       </ion-card-subtitle>
     </div>
@@ -33,7 +36,7 @@
 
   <ion-card-content>
     <ion-text>
-      <p class="mb-0 color-secondary fs-7">{{ routeLocal.description }}</p>
+      <p class="mb-0 text-secondary fs-7">{{ routeLocal.description }}</p>
     </ion-text>
 
     <ion-button
@@ -42,7 +45,7 @@
         color: routeLocal.color,
         '--background': convertHexToRgba(routeLocal.color, 0.2),
       }"
-      (click)="seeRoute(routeLocal.id)"
+      (click)="seeRoute($event, routeLocal.id)"
     >
       Ver ruta
       <ion-icon

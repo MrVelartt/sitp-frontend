@@ -40,6 +40,7 @@ import { arrowForwardOutline } from 'ionicons/icons';
 export class RouteCardComponent {
   route = input.required<Route>();
   seeRouteChange = output<string>();
+  seeDetailRouteChange = output<string>();
 
   constructor() {
     addIcons({
@@ -49,8 +50,14 @@ export class RouteCardComponent {
     });
   }
 
-  seeRoute(routeId: number) {
+  seeRoute(event: Event, routeId: number): void {
+    event.stopPropagation();
     this.seeRouteChange.emit(String(routeId));
+  }
+
+  seeDetailRoute(event: Event, routeId: number): void {
+    event.stopPropagation();
+    this.seeDetailRouteChange.emit(String(routeId));
   }
 
   convertHexToRgba(hex: string, alpha: number): string {
