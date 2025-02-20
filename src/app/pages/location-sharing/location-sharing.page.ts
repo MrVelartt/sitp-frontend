@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import {
   IonContent,
   IonHeader,
@@ -6,8 +6,18 @@ import {
   IonToolbar,
   IonBackButton,
   IonButtons,
-  IonButton,
+  IonGrid,
+  IonRow,
+  IonItem,
+  IonIcon,
+  IonLabel,
+  IonImg,
+  IonCol,
+  IonText,
 } from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import { location, informationCircle } from 'ionicons/icons';
+import { ToggleLocationSharingComponent } from './components';
 
 @Component({
   selector: 'app-location-sharing',
@@ -15,16 +25,29 @@ import {
   styleUrls: ['./location-sharing.page.scss'],
   standalone: true,
   imports: [
-    IonButton,
+    IonText,
+    IonCol,
+    IonImg,
+    IonLabel,
+    IonIcon,
+    IonItem,
+    IonRow,
+    IonGrid,
     IonButtons,
     IonBackButton,
     IonContent,
     IonHeader,
     IonTitle,
     IonToolbar,
+    ToggleLocationSharingComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LocationSharingPage {
-  constructor() {}
+  imageSharing = signal<string>('assets/images/sharing.png');
+  isSharingLocation = signal<boolean>(false);
+
+  constructor() {
+    addIcons({ location, informationCircle });
+  }
 }

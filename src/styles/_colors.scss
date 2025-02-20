@@ -39,6 +39,14 @@
   color: $color-text-tertiary;
 }
 
+.text-septenary {
+  color: $color-septenary;
+}
+
+.text-nonary {
+  color: $color-text-nonary;
+}
+
 .color-octonary {
   color: $color-octonary;
 }
@@ -49,4 +57,22 @@
 
 .color-favorite-active {
   color: $color-nonary;
+}
+
+.ion-color-septenary {
+  --ion-color-base: var(--ion-color-septenary);
+  --ion-color-base-rgb: var(--ion-color-septenary-rgb);
+  --ion-color-contrast: var(--ion-color-septenary-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-septenary-contrast-rgb);
+  --ion-color-shade: var(--ion-color-septenary-shade);
+  --ion-color-tint: var(--ion-color-septenary-tint);
+}
+
+.ion-color-nonary {
+  --ion-color-base: var(--ion-color-nonary);
+  --ion-color-base-rgb: var(--ion-color-nonary-rgb);
+  --ion-color-contrast: var(--ion-color-nonary-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-nonary-contrast-rgb);
+  --ion-color-shade: var(--ion-color-nonary-shade);
+  --ion-color-tint: var(--ion-color-nonary-tint);
 }

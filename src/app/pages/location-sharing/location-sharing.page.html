@@ -1,9 +1,5 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" class="shadow-none">
   <ion-toolbar class="bg-header d-flex align-items-center">
-    <ion-title class="title-center">
-      <h1 class="text-primary fs-2 fw-semibold m-0">Comparte tu ubicación</h1>
-    </ion-title>
-
     <ion-buttons slot="start">
       <ion-back-button
         class="text-primary"
@@ -13,10 +9,68 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">location-sharing</ion-title>
+<ion-content [fullscreen]="true" class="bg-quinary ion-padding">
+  <ion-header collapse="condense" class="shadow-none">
+    <ion-toolbar class="bg-header d-flex align-items-center">
+      <ion-buttons slot="start">
+        <ion-back-button
+          class="text-primary"
+          defaultHref="/settings"
+        ></ion-back-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-title class="p-0">
+          <h1 class="text-primary fs-2 fw-semibold m-0">
+            Comparte tu ubicación
+          </h1>
+        </ion-title>
+        <ion-item class="bg-quinary ion-no-padding" lines="none">
+          <ion-icon color="primary" name="location" class="me-1"></ion-icon>
+          <ion-label color="primary" class="fs-7">
+            Seguimiento en tiempo real
+          </ion-label>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="12" class="my-3">
+        <div class="content-image">
+          <ion-img [src]="imageSharing()" alt=""></ion-img>
+        </div>
+      </ion-col>
+
+      <ion-col size="12">
+        <ion-text>
+          <p class="text-secondary fs-7">
+            Activa esta función para compartir la ubicación en tiempo real de tu
+            autobús con los pasajeros. Podrán seguir su autobús en el mapa y
+            planificar mejor su viaje.
+          </p>
+        </ion-text>
+
+        <ion-item color="secondary border-radius-secondary">
+          <ion-icon
+            name="information-circle"
+            color="primary"
+            class="me-2"
+          ></ion-icon>
+          <ion-label color="primary">
+            <p class="mb-0 fs-7">
+              Tu ubicación sólo se comparte cuando esta función está activada.
+            </p>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="12">
+        <app-toggle-location-sharing
+          [isSharingLocation]="isSharingLocation()"
+        ></app-toggle-location-sharing>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

@@ -16,7 +16,7 @@
 <ion-content [fullscreen]="true" class="bg-octonary ion-padding">
   <ion-header collapse="condense">
     <ion-toolbar class="bg-header d-flex align-items-center">
-      <ion-title size="large">
+      <ion-title size="large" class="title-center">
         <h1 class="text-primary text-center fs-2 fw-bold">Configuración</h1>
       </ion-title>
 
@@ -42,7 +42,9 @@
           </div>
 
           <div class="option-setting">
-            <app-location-sharing-setting></app-location-sharing-setting>
+            <app-location-sharing-setting
+              (clickChange)="navitagateToLocationSharing()"
+            ></app-location-sharing-setting>
           </div>
         </ion-list>
       </ion-col>

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import {
   IonContent,
   IonHeader,
@@ -16,6 +16,7 @@ import {
   LanguageSettingComponent,
   LocationSharingSettingComponent,
 } from './components';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-settings',
@@ -39,4 +40,10 @@ import {
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SettingsPage {}
+export class SettingsPage {
+  private readonly router = inject(Router);
+
+  navitagateToLocationSharing() {
+    this.router.navigate(['/location-sharing']);
+  }
+}

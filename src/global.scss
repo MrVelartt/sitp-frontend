@@ -104,3 +104,8 @@
     background: $color-octonary;
   }
 }
+
+.header-style-1 {
+  box-shadow: none;
+  border-bottom: 2px solid #{$color-octonary};
+}

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, output } from '@angular/core';
 import {
   IonItem,
   IonLabel,
@@ -17,7 +17,13 @@ import { location, chevronForwardOutline } from 'ionicons/icons';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LocationSharingSettingComponent {
+  clickChange = output<void>();
+
   constructor() {
     addIcons({ location, chevronForwardOutline });
+  }
+
+  onClick() {
+    this.clickChange.emit();
   }
 }
