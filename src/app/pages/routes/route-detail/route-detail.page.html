@@ -79,6 +79,7 @@
         <app-main-button
           [label]="'Ver los buses de esta ruta'"
           iconName="map"
+          (clickChange)="navigateToMapWithRoute(routeLocal.id)"
         ></app-main-button>
       </ion-col>
     </ion-row>

@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  output,
+} from '@angular/core';
 import { IonButton, IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { map } from 'ionicons/icons';
@@ -14,8 +19,13 @@ import { map } from 'ionicons/icons';
 export class MainButtonComponent {
   label = input.required<string>();
   iconName = input<string>();
+  clickChange = output<void>();
 
   constructor() {
     addIcons({ map });
+  }
+
+  onClick(): void {
+    this.clickChange.emit();
   }
 }

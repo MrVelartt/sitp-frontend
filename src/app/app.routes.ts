@@ -18,10 +18,12 @@ export const routes: Routes = [
       },
       {
         path: 'routes',
-        // loadComponent: () =>
-        //   import('./pages/routes/routes.page').then((m) => m.RoutesPage),
-        loadChildren: () =>
-          import('./pages/routes/routes.routes').then((m) => m.routesRoutes),
+        loadComponent: () =>
+          import('./pages/routes/route-list/route-list.page').then(
+            (m) => m.RouteListPage
+          ),
+        // loadChildren: () =>
+        //   import('./pages/routes/routes.routes').then((m) => m.routesRoutes),
       },
       {
         path: 'favorites',
@@ -43,22 +45,22 @@ export const routes: Routes = [
       import('./pages/start/start.page').then((m) => m.StartPage),
   },
   {
-    path: '**',
-    redirectTo: 'map',
-    pathMatch: 'full',
-  },
-  {
-    path: 'route-detail',
+    path: 'route-detail/:id',
     loadComponent: () =>
       import('./pages/routes/route-detail/route-detail.page').then(
         (m) => m.RouteDetailPage
       ),
   },
   {
-    path: 'route-list',
+    path: 'location-sharing',
     loadComponent: () =>
-      import('./pages/routes/route-list/route-list.page').then(
-        (m) => m.RouteListPage
+      import('./pages/location-sharing/location-sharing.page').then(
+        (m) => m.LocationSharingPage
       ),
+  },
+  {
+    path: '**',
+    redirectTo: 'map',
+    pathMatch: 'full',
   },
 ];

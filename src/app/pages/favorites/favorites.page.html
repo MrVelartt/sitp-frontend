@@ -31,7 +31,7 @@
           <div class="content-card mb-3">
             <app-route-card
               [route]="route"
-              (seeRouteChange)="navigateToMap($event)"
+              (seeRouteChange)="navigateToMapWithRoute($event)"
               (seeDetailRouteChange)="navigateToRouteDetail($event)"
             ></app-route-card>
           </div>
@@ -47,8 +47,9 @@
     >
       <ion-col>
         <app-main-button
-          label="Ver toda las rutas en el mapa"
+          label="Ver todas las rutas en el mapa"
           iconName="map"
+          (clickChange)="navigateToMapWithRoutes()"
         ></app-main-button>
       </ion-col>
     </ion-row>

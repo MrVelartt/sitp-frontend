@@ -51,11 +51,16 @@ export class FavoritesPage {
 
   navigateToRouteDetail(routedId: string) {
     console.log('navigateToRouteDetail', routedId);
-    this.router.navigate(['routes', routedId]);
+    this.router.navigate(['route-detail', routedId]);
   }
 
-  navigateToMap(routedId: string): void {
+  navigateToMapWithRoute(routedId: string): void {
     console.log('navigateToMap', routedId);
     this.router.navigate(['map'], { queryParams: { routeId: routedId } });
+  }
+
+  navigateToMapWithRoutes(): void {
+    const ids = this.routes().map((route) => route.id);
+    this.router.navigate(['map'], { queryParams: { routeId: ids.join(',') } });
   }
 }

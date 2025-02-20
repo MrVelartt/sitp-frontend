@@ -98,3 +98,9 @@
     --color-selected: #{$color-primary};
   }
 }
+
+.toggle-style-1 {
+  &:not(.toggle-checked)::part(track) {
+    background: $color-octonary;
+  }
+}

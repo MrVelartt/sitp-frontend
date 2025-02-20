@@ -2,6 +2,8 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  effect,
+  inject,
   input,
   signal,
 } from '@angular/core';
@@ -22,6 +24,7 @@ import {
 } from '@ionic/angular/standalone';
 import { RouteFeatureComponent } from '../components';
 import { MainButtonComponent } from '@app/components';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-route-detail',
@@ -46,11 +49,13 @@ import { MainButtonComponent } from '@app/components';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RouteDetailPage {
+  private readonly router = inject(Router);
+
   id = input<string>();
 
-  route = signal<Route>(detailRouteMock(Number(this.id())));
+  protected route = computed<Route>(() => detailRouteMock(Number(this.id())));
 
-  routeFeatures = computed<RouteFeature[]>(() => {
+  protected routeFeatures = computed<RouteFeature[]>(() => {
     return [
       {
         id: 1,
@@ -91,9 +96,14 @@ export class RouteDetailPage {
     ];
   });
 
-  keyNeighborhoods = computed<string>(() => {
+  protected keyNeighborhoods = computed<string>(() => {
     return this.route()?.keyNeighborhoods?.join(', ') || '';
   });
 
   constructor() {}
+
+  navigateToMapWithRoute(routedId: number): void {
+    console.log('navigateToMap', routedId, this.route());
+    this.router.navigate(['map'], { queryParams: { routeId: routedId } });
+  }
 }

@@ -1,3 +1,21 @@
 .select-style-1 {
   min-height: 38px;
+  --placeholder-color: #{$color-text-secondary};
+  --border-color: #{$color-text-tertiary};
+  color: #{$color-text-secondary};
+}
+
+.select-wrapper-inner {
+  width: 100%;
+}
+
+.action-sheet-group {
+  background: $color-quinary !important;
+  .action-sheet-button {
+    color: $color-text-secondary;
+    &:hover {
+      color: $color-text-secondary !important;
+      font-weight: bold;
+    }
+  }
 }

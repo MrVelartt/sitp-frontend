@@ -51,11 +51,16 @@ export class RouteListPage {
 
   navigateToRouteDetail(routedId: string): void {
     console.log('navigateToRouteDetail', routedId);
-    this.router.navigate(['routes', routedId]);
+    this.router.navigate(['route-detail', routedId]);
   }
 
-  navigateToMap(routedId: string): void {
+  navigateToMapWithRoute(routedId: string): void {
     console.log('navigateToMap', routedId);
     this.router.navigate(['map'], { queryParams: { routeId: routedId } });
+  }
+
+  navigateToMap(): void {
+    console.log('navigateToMapWithRoute');
+    this.router.navigate(['map']);
   }
 }

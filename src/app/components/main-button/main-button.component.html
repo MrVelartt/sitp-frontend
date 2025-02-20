@@ -1,6 +1,7 @@
 <ion-button
   color="primary"
   class="button-style-1 w-100 ion-padding-top ion-padding-bottom text-none fs-7 p-0 m-0"
+  (click)="onClick()"
 >
   @if (iconName()) {
   <ion-icon slot="start" [name]="iconName()"></ion-icon>

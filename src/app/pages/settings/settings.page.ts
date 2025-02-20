@@ -11,9 +11,11 @@ import {
   IonCol,
   IonList,
 } from '@ionic/angular/standalone';
-import { addIcons } from 'ionicons';
-import { language } from 'ionicons/icons';
-import { LanguageSettingComponent } from './components';
+import {
+  DarkModeSettingComponent,
+  LanguageSettingComponent,
+  LocationSharingSettingComponent,
+} from './components';
 
 @Component({
   selector: 'app-settings',
@@ -32,11 +34,9 @@ import { LanguageSettingComponent } from './components';
     IonTitle,
     IonToolbar,
     LanguageSettingComponent,
+    DarkModeSettingComponent,
+    LocationSharingSettingComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SettingsPage {
-  constructor() {
-    addIcons({ language });
-  }
-}
+export class SettingsPage {}

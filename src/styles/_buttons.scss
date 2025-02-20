@@ -8,3 +8,11 @@
   --box-shadow: none;
   margin: 0;
 }
+
+.button-style-3 {
+  --background: transparent;
+  --box-shadow: none;
+  margin: 0;
+  --border-radius: #{$border-radius-primary};
+  color: $color-text-secondary;
+}

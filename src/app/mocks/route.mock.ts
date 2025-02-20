@@ -229,7 +229,8 @@ export const RouteMock: Route[] = [
 ];
 
 export const detailRouteMock = (id: number): Route => {
-  const route = RouteMock.find((route) => route.id === +id) || RouteMock[0];
+  console.log('id', id);
+  const route = RouteMock.find((route) => route.id === id) || RouteMock[0];
   route.image = 'assets/images/map.png';
   route.travelTime = '1h 30m';
   route.startTime = '5:00 AM';
@@ -237,6 +238,8 @@ export const detailRouteMock = (id: number): Route => {
   route.distance = '10 km';
   route.countBuses = 12;
   route.keyNeighborhoods = ['San Antonio', 'Hospital', 'Centro', 'Zona Norte'];
+
+  console.log('detailRouteMock', route);
   return route;
 };
 
