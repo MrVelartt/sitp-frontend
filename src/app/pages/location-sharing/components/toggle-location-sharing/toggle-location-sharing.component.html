@@ -1,10 +1,14 @@
 @let isSharing = isSharingLocation(); @let color = locationSharingColor();
-<ion-item lines="none" class="bg-quinary ion-no-padding">
+<ion-item
+  lines="none"
+  class="border-radius-secondary mb-4"
+  [class]="isSharing ? 'bg-light-octonary' : 'bg-light-septenary'"
+>
   <ion-icon name="sharing" size="small" [color]="color" class="me-2"></ion-icon>
   <ion-toggle
-    [checked]="false"
+    [checked]="checked()"
     [color]="color"
-    class="toggle-style-1"
+    class="toggle-style-2 fw-bold"
     [class]="'text-' + color"
     (ionChange)="toggleLocationSharing($event)"
   >
@@ -15,3 +19,9 @@
     }}
   </ion-toggle>
 </ion-item>
+
+<app-main-button
+  [label]="isSharing ? 'Dejar de compartir' : 'Empezar a compartir'"
+  iconName="navigate"
+  (clickChange)="sharingLocation()"
+></app-main-button>

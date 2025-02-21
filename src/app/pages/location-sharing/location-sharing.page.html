@@ -43,16 +43,16 @@
         </div>
       </ion-col>
 
-      <ion-col size="12">
+      <ion-col size="12" class="mb-4">
         <ion-text>
-          <p class="text-secondary fs-7">
+          <p class="text-secondary fs-7 mb-4">
             Activa esta función para compartir la ubicación en tiempo real de tu
             autobús con los pasajeros. Podrán seguir su autobús en el mapa y
             planificar mejor su viaje.
           </p>
         </ion-text>
 
-        <ion-item color="secondary border-radius-secondary">
+        <ion-item color="secondary border-radius-secondary" lines="none">
           <ion-icon
             name="information-circle"
             color="primary"
@@ -66,10 +66,26 @@
         </ion-item>
       </ion-col>
 
-      <ion-col size="12">
+      <ion-col size="12" class="mb-3">
         <app-toggle-location-sharing
           [isSharingLocation]="isSharingLocation()"
+          (sharingLocationChange)="onSharingLocationChange()"
         ></app-toggle-location-sharing>
+      </ion-col>
+
+      <ion-col size="12" class="mb-3">
+        <ion-item class="bg-quinary ion-no-padding" lines="none">
+          <ion-icon
+            name="privacity"
+            size="small"
+            color="primary"
+            class="me-2"
+          ></ion-icon>
+          <ion-label color="primary" class="fs-8">
+            Más información sobre la privacidad y el uso de la localización
+            compartida
+          </ion-label>
+        </ion-item>
       </ion-col>
     </ion-row>
   </ion-grid>

@@ -45,9 +45,17 @@ import { ToggleLocationSharingComponent } from './components';
 })
 export class LocationSharingPage {
   imageSharing = signal<string>('assets/images/sharing.png');
-  isSharingLocation = signal<boolean>(false);
+  isSharingLocation = signal<boolean>(true);
 
   constructor() {
-    addIcons({ location, informationCircle });
+    addIcons({
+      location,
+      informationCircle,
+      privacity: 'assets/icons/privacity.svg',
+    });
+  }
+
+  onSharingLocationChange(): void {
+    this.isSharingLocation.update((isSharing) => !isSharing);
   }
 }

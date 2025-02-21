@@ -18,6 +18,16 @@
   --background: #{$color-octonary};
 }
 
+.bg-light-septenary {
+  background: rgba(var(--ion-color-septenary-rgb), 0.1);
+  --background: rgba(var(--ion-color-septenary-rgb), 0.1);
+}
+
+.bg-light-octonary {
+  background: rgba(var(--ion-color-octonary-rgb), 0.1);
+  --background: transparentize(var(--ion-color-octonary-rgb), 0.1);
+}
+
 .bg-header {
   background: $color-header;
   --background: #{$color-header};
@@ -43,8 +53,8 @@
   color: $color-septenary;
 }
 
-.text-nonary {
-  color: $color-text-nonary;
+.text-octonary {
+  color: $color-text-octonary;
 }
 
 .color-octonary {
@@ -68,11 +78,11 @@
   --ion-color-tint: var(--ion-color-septenary-tint);
 }
 
-.ion-color-nonary {
-  --ion-color-base: var(--ion-color-nonary);
-  --ion-color-base-rgb: var(--ion-color-nonary-rgb);
-  --ion-color-contrast: var(--ion-color-nonary-contrast);
-  --ion-color-contrast-rgb: var(--ion-color-nonary-contrast-rgb);
-  --ion-color-shade: var(--ion-color-nonary-shade);
-  --ion-color-tint: var(--ion-color-nonary-tint);
+.ion-color-octonary {
+  --ion-color-base: var(--ion-color-octonary);
+  --ion-color-base-rgb: var(--ion-color-octonary-rgb);
+  --ion-color-contrast: var(--ion-color-octonary-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-octonary-contrast-rgb);
+  --ion-color-shade: var(--ion-color-octonary-shade);
+  --ion-color-tint: var(--ion-color-octonary-tint);
 }

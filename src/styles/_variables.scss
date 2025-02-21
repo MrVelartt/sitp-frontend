@@ -50,19 +50,12 @@
   --ion-color-septenary-shade: #c22121;
   --ion-color-septenary-tint: #e03c3c;
 
-  --ion-color-octonary: #dc2626;
-  --ion-color-octonary-rgb: 220, 38, 38;
-  --ion-color-octonary-contrast: #ffffff;
-  --ion-color-octonary-contrast-rgb: 255, 255, 255;
-  --ion-color-octonary-shade: #c22121;
-  --ion-color-octonary-tint: #e03c3c;
-
-  --ion-color-nonary: #16a34a;
-  --ion-color-nonary-rgb: 22, 163, 74;
-  --ion-color-nonary-contrast: #000000;
-  --ion-color-nonary-contrast-rgb: 0, 0, 0;
-  --ion-color-nonary-shade: #138f41;
-  --ion-color-nonary-tint: #2dac5c;
+  --ion-color-octonary: #16a34a;
+  --ion-color-octonary-rgb: 22, 163, 74;
+  --ion-color-octonary-contrast: #000000;
+  --ion-color-octonary-contrast-rgb: 0, 0, 0;
+  --ion-color-octonary-shade: #138f41;
+  --ion-color-octonary-tint: #2dac5c;
 }
 
 $color-primary: var(--ion-color-primary);
@@ -80,7 +73,11 @@ $color-text-primary: #1f2937;
 $color-text-secondary: #4b5563;
 $color-text-tertiary: #6b7280;
 $color-text-quaternary: #9ca3af;
-$color-text-nonary: var(--ion-color-nonary);
+$color-text-octonary: var(--ion-color-octonary);
+$color-header: #ffffff;
+
+$color-danger: #dc2626;
+$color-success: #16a34a;
 
 $border-radius-primary: 0.5rem;
 $border-radius-secondary: 0.75rem;
@@ -88,5 +85,3 @@ $border-radius-tertiary: 2rem;
 
 $font-size-7: 0.85rem;
 $font-size-8: 0.8rem;
-
-$color-header: #ffffff;

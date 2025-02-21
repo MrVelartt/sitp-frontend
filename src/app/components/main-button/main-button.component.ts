@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { IonButton, IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { map } from 'ionicons/icons';
+import { map, navigate } from 'ionicons/icons';
 
 @Component({
   selector: 'app-main-button',
@@ -22,7 +22,7 @@ export class MainButtonComponent {
   clickChange = output<void>();
 
   constructor() {
-    addIcons({ map });
+    addIcons({ map, navigate });
   }
 
   onClick(): void {
