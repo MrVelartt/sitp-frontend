@@ -2,10 +2,8 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
-  effect,
   inject,
   input,
-  signal,
 } from '@angular/core';
 import { detailRouteMock } from '@app/mocks';
 import { Route, RouteFeature } from '@app/models';
@@ -22,9 +20,9 @@ import {
   IonImg,
   IonText,
 } from '@ionic/angular/standalone';
-import { RouteFeatureComponent } from '../components';
 import { MainButtonComponent } from '@app/components';
 import { Router } from '@angular/router';
+import { RouteFeatureComponent } from './components';
 
 @Component({
   selector: 'app-route-detail',

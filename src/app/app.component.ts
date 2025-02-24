@@ -11,6 +11,6 @@ export class AppComponent {
   private readonly router = inject(Router);
 
   constructor() {
-    // this.router.navigateByUrl('/start');
+    this.router.navigateByUrl('/start');
   }
 }

@@ -19,7 +19,7 @@ export const routes: Routes = [
       {
         path: 'routes',
         loadComponent: () =>
-          import('./pages/routes/route-list/route-list.page').then(
+          import('./pages/route-list/route-list.page').then(
             (m) => m.RouteListPage
           ),
         // loadChildren: () =>
@@ -47,7 +47,7 @@ export const routes: Routes = [
   {
     path: 'route-detail/:id',
     loadComponent: () =>
-      import('./pages/routes/route-detail/route-detail.page').then(
+      import('./pages/route-detail/route-detail.page').then(
         (m) => m.RouteDetailPage
       ),
   },

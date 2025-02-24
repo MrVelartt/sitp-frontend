@@ -8,12 +8,12 @@ export const routesRoutes: Routes = [
       {
         path: '',
         loadComponent: () =>
-          import('./route-list/route-list.page').then((m) => m.RouteListPage),
+          import('../route-list/route-list.page').then((m) => m.RouteListPage),
       },
       {
         path: ':id',
         loadComponent: () =>
-          import('./route-detail/route-detail.page').then(
+          import('../route-detail/route-detail.page').then(
             (m) => m.RouteDetailPage
           ),
       },
