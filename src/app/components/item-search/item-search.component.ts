@@ -1,20 +1,49 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  output,
+} from '@angular/core';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { IonInput, IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { search } from 'ionicons/icons';
+import { debounceTime, map, distinctUntilChanged } from 'rxjs';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-item-search',
   templateUrl: './item-search.component.html',
   styleUrls: ['./item-search.component.scss'],
   standalone: true,
-  imports: [IonIcon, IonInput],
+  imports: [IonIcon, IonInput, ReactiveFormsModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ItemSearchComponent {
   placeholder = input<string>('Buscar');
+  clickChange = output<void>();
+  searchChange = output<string>();
+
+  protected searchControl = new FormControl<string>('');
 
   constructor() {
     addIcons({ search });
+
+    this.searchControl.valueChanges
+      .pipe(
+        debounceTime(500),
+        map((search) => (search ?? '').trim()),
+        distinctUntilChanged(),
+        takeUntilDestroyed()
+      )
+      .subscribe((search) => this.searchRoute(search));
+  }
+
+  onClick(): void {
+    this.clickChange.emit();
+  }
+
+  searchRoute(search: string): void {
+    this.searchChange.emit(search);
   }
 }

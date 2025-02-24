@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  computed,
   inject,
   signal,
 } from '@angular/core';
@@ -46,16 +47,30 @@ import {
 export class FavoritesPage {
   protected readonly router = inject(Router);
   protected readonly routes = signal<Route[]>(routesFavoritesMock);
+  protected readonly search = signal<string>('');
+
+  protected readonly filteredRoutes = computed<Route[]>(() => {
+    const search = this.search().toLowerCase();
+    if (!search.trim()) {
+      return this.routes();
+    }
+    return this.routes().filter((route) =>
+      route.name.toLowerCase().includes(search)
+    );
+  });
 
   constructor() {}
 
+  searchRoute(search: string): void {
+    console.log('searchRoute', search);
+    this.search.set(search);
+  }
+
   navigateToRouteDetail(routedId: string) {
-    console.log('navigateToRouteDetail', routedId);
     this.router.navigate(['route-detail', routedId]);
   }
 
   navigateToMapWithRoute(routedId: string): void {
-    console.log('navigateToMap', routedId);
     this.router.navigate(['map'], { queryParams: { routeId: routedId } });
   }
 

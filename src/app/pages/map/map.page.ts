@@ -1,20 +1,67 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ItemSearchComponent } from '@app/components';
+import {
+  IonContent,
+  IonHeader,
+  IonToolbar,
+  IonGrid,
+  IonRow,
+  IonCol,
+  IonButton,
+  IonButtons,
+  IonIcon,
+} from '@ionic/angular/standalone';
+import { GoogleMap } from '@angular/google-maps';
+import { Router } from '@angular/router';
+import { addIcons } from 'ionicons';
+import { locate, filter } from 'ionicons/icons';
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.page.html',
   styleUrls: ['./map.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [
+    IonIcon,
+    IonButtons,
+    IonButton,
+    IonCol,
+    IonRow,
+    IonGrid,
+    IonContent,
+    IonHeader,
+    IonToolbar,
+    ItemSearchComponent,
+    GoogleMap,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MapPage implements OnInit {
+export class MapPage {
+  private readonly router = inject(Router);
 
-  constructor() { }
+  center: google.maps.LatLngLiteral = { lat: 4.142, lng: -73.62664 };
+  zoom = 13;
+  display!: google.maps.LatLngLiteral;
 
-  ngOnInit() {
+  constructor() {
+    addIcons({ locate, filter });
   }
 
+  moveMap(event: google.maps.MapMouseEvent) {
+    if (event.latLng) {
+      this.center = event.latLng.toJSON();
+    }
+  }
+
+  move(event: google.maps.MapMouseEvent) {
+    if (event.latLng) {
+      this.display = event.latLng.toJSON();
+    }
+  }
+
+  navigateToListRoutes(): void {
+    this.router.navigate(['/routes']);
+  }
 }
+
+// AIzaSyCb7TG2DKpvRjGVu8drGm5JILskaFelB3Y

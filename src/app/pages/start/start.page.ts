@@ -21,6 +21,7 @@ import {
 import { addIcons } from 'ionicons';
 import { FeatureCardComponent, FooterStartComponent } from './components';
 import { Router } from '@angular/router';
+import { StorageService, STORAGE_KEYS } from '@app/core';
 
 @Component({
   selector: 'app-start',
@@ -45,7 +46,8 @@ import { Router } from '@angular/router';
 })
 export class StartPage {
   protected readonly infoStart = signal<Start>(startMock);
-  protected readonly router = inject(Router);
+  private readonly router = inject(Router);
+  private readonly storageService = inject(StorageService);
 
   constructor() {
     addIcons({
@@ -53,7 +55,12 @@ export class StartPage {
     });
   }
 
-  navigateToMap() {
-    this.router.navigate(['/map']);
+  async navigateToMap(): Promise<void> {
+    try {
+      await this.storageService.setPreferences(STORAGE_KEYS.isVisited, true);
+      await this.router.navigate(['/map']);
+    } catch (error) {
+      console.error('Failed to navigate to map:', error);
+    }
   }
 }

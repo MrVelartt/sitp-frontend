@@ -4,6 +4,8 @@
   inputmode="search"
   type="search"
   class="input-style-1"
+  (click)="onClick()"
+  [formControl]="searchControl"
 >
   <ion-icon
     slot="start"
