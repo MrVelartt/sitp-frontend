@@ -4,7 +4,7 @@ import {
   inject,
   signal,
 } from '@angular/core';
-import { AppConfigService } from '@app/core';
+import { AppConfigService } from '@core/services';
 import {
   IonItem,
   IonLabel,

@@ -21,7 +21,7 @@ import {
 import { addIcons } from 'ionicons';
 import { FeatureCardComponent, FooterStartComponent } from './components';
 import { Router } from '@angular/router';
-import { AppConfigService } from '@app/core';
+import { AppConfigService } from '@core/services';
 
 @Component({
   selector: 'app-start',

@@ -9,7 +9,7 @@ import {
   signal,
 } from '@angular/core';
 import { MainButtonComponent } from '@app/components';
-import { ToastService } from '@app/core';
+import { ToastService } from '@core/services';
 import { IonItem, IonToggle, IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 

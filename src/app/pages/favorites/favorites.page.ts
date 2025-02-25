@@ -51,11 +51,11 @@ export class FavoritesPage {
 
   protected readonly filteredRoutes = computed<Route[]>(() => {
     const search = this.search().toLowerCase();
-    if (!search.trim()) {
-      return this.routes();
-    }
-    return this.routes().filter((route) =>
-      route.name.toLowerCase().includes(search)
+
+    return this.routes().filter(
+      (route) =>
+        route.name.toLowerCase().includes(search) ||
+        route.keyNeighborhoods?.some((key) => key.toLowerCase() === search)
     );
   });
 

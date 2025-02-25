@@ -14,7 +14,7 @@ import {
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 import { inject, provideAppInitializer } from '@angular/core';
-import { AppConfigService } from '@app/core';
+import { AppConfigService } from '@core/services';
 
 bootstrapApplication(AppComponent, {
   providers: [

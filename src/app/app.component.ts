@@ -1,8 +1,7 @@
-import { AppConfigService } from '@app/core';
+import { AppConfigService } from '@core/services';
 import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonApp, IonRouterOutlet, IonSpinner } from '@ionic/angular/standalone';
-import { STORAGE_KEYS } from './core';
 
 @Component({
   selector: 'app-root',
