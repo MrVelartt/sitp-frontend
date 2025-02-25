@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar class="bg-header d-flex align-items-center">
+  <ion-toolbar class="bg-header pt-5">
     <ion-title class="title-center">
       <h1 class="text-primary fs-2 fw-semibold m-0">Configuración</h1>
     </ion-title>
@@ -13,9 +13,9 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="bg-octonary ion-padding">
+<ion-content [fullscreen]="true" class="bg-octonary position-relative">
   <ion-header collapse="condense">
-    <ion-toolbar class="bg-header d-flex align-items-center">
+    <ion-toolbar class="bg-header">
       <ion-title size="large" class="title-center">
         <h1 class="text-primary text-center fs-2 fw-bold">Configuración</h1>
       </ion-title>
@@ -29,24 +29,30 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-grid>
+  <ion-grid class="settings">
     <ion-row>
       <ion-col size="12">
         <ion-list class="bg-octonary">
           <div class="option-setting mb-3">
-            <app-language-setting></app-language-setting>
+            <app-language-setting />
           </div>
 
           <div class="option-setting mb-3">
-            <app-dark-mode-setting></app-dark-mode-setting>
+            <app-dark-mode-setting />
           </div>
 
           <div class="option-setting">
             <app-location-sharing-setting
               (clickChange)="navitagateToLocationSharing()"
-            ></app-location-sharing-setting>
+            />
           </div>
         </ion-list>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="footer position-fixed start-0 bottom-0 w-100">
+      <ion-col size="12" class="p-0">
+        <app-footer-settings />
       </ion-col>
     </ion-row>
   </ion-grid>

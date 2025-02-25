@@ -1,5 +1,5 @@
 <ion-header [translucent]="true" class="header-style-1">
-  <ion-toolbar class="bg-header d-flex align-items-center">
+  <ion-toolbar class="bg-header pt-5">
     <ion-title class="title-center">
       <h1 class="text-primary fs-2 fw-semibold m-0">Detalle de la ruta</h1>
     </ion-title>
@@ -15,7 +15,7 @@
 
 <ion-content [fullscreen]="true" class="bg-octonary">
   <ion-header collapse="condense" class="header-style-1">
-    <ion-toolbar class="bg-header d-flex align-items-center">
+    <ion-toolbar class="bg-header">
       <ion-title size="large">
         <h1 class="text-primary text-center fs-2 fw-bold">
           Detalle de la ruta
@@ -50,7 +50,7 @@
       </ion-col>
       @for (feature of routeFeatures(); track feature.id) {
       <ion-col size="6">
-        <app-route-feature [feature]="feature"></app-route-feature>
+        <app-route-feature [feature]="feature" />
       </ion-col>
       }
     </ion-row>
@@ -80,7 +80,7 @@
           label="Ver los buses de esta ruta"
           iconName="map"
           (clickChange)="navigateToMapWithRoute(routeLocal.id)"
-        ></app-main-button>
+        />
       </ion-col>
     </ion-row>
   </ion-grid>

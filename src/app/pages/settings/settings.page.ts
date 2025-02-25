@@ -10,9 +10,12 @@ import {
   IonRow,
   IonCol,
   IonList,
+  IonButton,
+  IonIcon,
 } from '@ionic/angular/standalone';
 import {
   DarkModeSettingComponent,
+  FooterSettingsComponent,
   LanguageSettingComponent,
   LocationSharingSettingComponent,
 } from './components';
@@ -24,6 +27,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./settings.page.scss'],
   standalone: true,
   imports: [
+    IonIcon,
+    IonButton,
     IonList,
     IonCol,
     IonRow,
@@ -37,11 +42,14 @@ import { Router } from '@angular/router';
     LanguageSettingComponent,
     DarkModeSettingComponent,
     LocationSharingSettingComponent,
+    FooterSettingsComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SettingsPage {
   private readonly router = inject(Router);
+
+  constructor() {}
 
   navitagateToLocationSharing() {
     this.router.navigate(['/location-sharing']);

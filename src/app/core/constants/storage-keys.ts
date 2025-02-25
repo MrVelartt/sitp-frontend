@@ -1,5 +1,6 @@
 export const STORAGE_KEYS = {
-  isVisited: 'isVisited',
-  routesFavorites: 'routesFavorites',
-  darkMode: 'darkMode',
+  IS_VISITED: 'isVisited',
+  ROUTES_FAVORITES: 'routesFavorites',
+  DARK_MODE: 'darkMode',
+  LANGUAGE: 'language',
 };

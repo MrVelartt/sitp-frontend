@@ -16,3 +16,27 @@
   --border-radius: #{$border-radius-primary};
   color: $color-text-secondary;
 }
+
+.button-style-4 {
+  --background: #{$color-quinary};
+  width: 50px;
+  height: 50px;
+  margin: 0;
+  --border-radius: 50%;
+  color: $color-primary;
+  .icon {
+    font-size: 1.5rem;
+  }
+}
+
+.button-style-5 {
+  --background: #{$color-primary};
+  width: 50px;
+  height: 50px;
+  margin: 0;
+  --border-radius: 50%;
+  color: $color-quinary;
+  .icon {
+    font-size: 1.2rem;
+  }
+}

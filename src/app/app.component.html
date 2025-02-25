@@ -2,6 +2,10 @@
   <ion-router-outlet></ion-router-outlet>
 
   @if (loading) {
-  <ion-spinner></ion-spinner>
+  <div
+    class="content-spinner w-100 h-100 d-flex justify-content-center align-items-center"
+  >
+    <ion-spinner name="lines" color="primary"></ion-spinner>
+  </div>
   }
 </ion-app>

@@ -32,11 +32,6 @@ export const routes: Routes = [
             (m) => m.FavoritesPage
           ),
       },
-      {
-        path: 'settings',
-        loadComponent: () =>
-          import('./pages/settings/settings.page').then((m) => m.SettingsPage),
-      },
     ],
   },
   {
@@ -50,6 +45,11 @@ export const routes: Routes = [
       import('./pages/route-detail/route-detail.page').then(
         (m) => m.RouteDetailPage
       ),
+  },
+  {
+    path: 'settings',
+    loadComponent: () =>
+      import('./pages/settings/settings.page').then((m) => m.SettingsPage),
   },
   {
     path: 'location-sharing',

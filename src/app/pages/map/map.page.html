@@ -1,10 +1,10 @@
 <ion-header [translucent]="true">
   <ion-toolbar class="bg-header">
-    <div class="search px-3 py-2">
+    <div class="search px-3 pt-5 pb-2">
       <app-item-search
         placeholder="Buscar ruta"
         (clickChange)="navigateToListRoutes()"
-      ></app-item-search>
+      />
     </div>
   </ion-toolbar>
 </ion-header>
@@ -13,7 +13,10 @@
   <ion-header collapse="condense">
     <ion-toolbar class="bg-header">
       <div class="search px-3 pb-3">
-        <app-item-search></app-item-search>
+        <app-item-search
+          placeholder="Buscar ruta"
+          (clickChange)="navigateToListRoutes()"
+        />
       </div>
     </ion-toolbar>
   </ion-header>
@@ -26,26 +29,25 @@
           height="100%"
           [center]="center"
           [zoom]="zoom"
+          [options]="options"
           (mapClick)="moveMap($event)"
           (mapMousemove)="move($event)"
         />
       </ion-col>
     </ion-row>
 
-    <ion-row class="filters position-absolute start-0 w-100 bottom-0">
+    <ion-row class="filters">
       <ion-col size="12" class="p-0">
-        <ion-toolbar class="bg-transparent">
-          <ion-buttons slot="start">
-            <ion-button class="button-style-2">
-              <ion-icon name="locate" color="primary"></ion-icon>
-            </ion-button>
-          </ion-buttons>
-          <ion-buttons slot="end">
-            <ion-button class="button-style-2">
-              <ion-icon name="filter" color="primary"></ion-icon>
-            </ion-button>
-          </ion-buttons>
-        </ion-toolbar>
+        <ion-button
+          class="btn-locate button-style-4 position-absolute ion-no-padding"
+        >
+          <ion-icon name="locate" class="icon"></ion-icon>
+        </ion-button>
+        <ion-button
+          class="btn-filter button-style-5 position-absolute ion-no-padding"
+        >
+          <ion-icon name="filter" class="icon"></ion-icon>
+        </ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

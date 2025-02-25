@@ -28,7 +28,7 @@
         <ion-list class="list bg-transparent my-2">
           @for (feature of infoLocal.features; track feature.id) {
           <div class="content-card mb-2">
-            <app-feature-card [feature]="feature"></app-feature-card>
+            <app-feature-card [feature]="feature" />
           </div>
           }
         </ion-list>
@@ -45,7 +45,7 @@
 
     <ion-row class="mt-sm-3">
       <ion-col size="12">
-        <app-footer-start></app-footer-start>
+        <app-footer-start />
       </ion-col>
     </ion-row>
   </ion-grid>

@@ -8,7 +8,6 @@ import {
   IonRow,
   IonCol,
   IonButton,
-  IonButtons,
   IonIcon,
 } from '@ionic/angular/standalone';
 import { GoogleMap } from '@angular/google-maps';
@@ -23,7 +22,6 @@ import { locate, filter } from 'ionicons/icons';
   standalone: true,
   imports: [
     IonIcon,
-    IonButtons,
     IonButton,
     IonCol,
     IonRow,
@@ -42,9 +40,12 @@ export class MapPage {
   center: google.maps.LatLngLiteral = { lat: 4.142, lng: -73.62664 };
   zoom = 13;
   display!: google.maps.LatLngLiteral;
+  options: google.maps.MapOptions = {
+    disableDefaultUI: true,
+  };
 
   constructor() {
-    addIcons({ locate, filter });
+    addIcons({ locate, filter: 'assets/icons/filter.svg' });
   }
 
   moveMap(event: google.maps.MapMouseEvent) {

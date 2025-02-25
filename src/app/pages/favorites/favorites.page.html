@@ -1,12 +1,12 @@
 <ion-header [translucent]="true">
-  <ion-toolbar class="bg-header">
+  <ion-toolbar class="bg-header pt-5">
     <ion-title>
-      <h1 class="text-primary text-center fs-2 fw-semibold my-3">
+      <h1 class="text-primary text-center fs-2 fw-semibold mt-0 mb-3">
         Lista de rutas favoritas
       </h1>
     </ion-title>
     <div class="search px-3 pb-3">
-      <app-item-search (searchChange)="searchRoute($event)"></app-item-search>
+      <app-item-search (searchChange)="searchRoute($event)" />
     </div>
   </ion-toolbar>
 </ion-header>
@@ -18,7 +18,7 @@
         <h1 class="text-primary text-center fs-2 fw-bold">Lista de rutas</h1>
       </ion-title>
       <div class="search">
-        <app-item-search (searchChange)="searchRoute($event)"></app-item-search>
+        <app-item-search (searchChange)="searchRoute($event)" />
       </div>
     </ion-toolbar>
   </ion-header>
@@ -34,7 +34,7 @@
               [route]="route"
               (seeRouteChange)="navigateToMapWithRoute($event)"
               (seeDetailRouteChange)="navigateToRouteDetail($event)"
-            ></app-route-card>
+            />
           </div>
           } @placeholder {
           <p>...Cargando</p>
@@ -51,7 +51,7 @@
           label="Ver todas las rutas en el mapa"
           iconName="map"
           (clickChange)="navigateToMapWithRoutes()"
-        ></app-main-button>
+        />
       </ion-col>
     </ion-row>
   </ion-grid>

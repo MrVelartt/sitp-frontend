@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  signal,
+} from '@angular/core';
+import { AppConfigService } from '@app/core';
 import {
   IonItem,
   IonLabel,
@@ -18,7 +24,20 @@ import { language } from 'ionicons/icons';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LanguageSettingComponent {
+  private readonly appConfigService = inject(AppConfigService);
+  protected language = signal<string>('');
+
   constructor() {
     addIcons({ language });
+  }
+
+  ngOnInit() {
+    this.getLanguage();
+  }
+
+  async getLanguage(): Promise<void> {
+    const lang = await this.appConfigService.getLanguage();
+    this.language.set(lang);
+    console.log('Language:', this.language());
   }
 }

@@ -66,6 +66,10 @@ body {
   --border-radius: #{$border-radius-secondary};
 }
 
+.border-top-quaternary {
+  border-top: 1px solid rgba($color-text-quaternary, 0.5);
+}
+
 .text-lines-1 {
   overflow: hidden;
   display: -webkit-box;

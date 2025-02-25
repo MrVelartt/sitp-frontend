@@ -13,6 +13,8 @@ import {
 
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
+import { inject, provideAppInitializer } from '@angular/core';
+import { AppConfigService } from '@app/core';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -23,5 +25,9 @@ bootstrapApplication(AppComponent, {
       withPreloading(PreloadAllModules),
       withComponentInputBinding()
     ),
+    provideAppInitializer(() => {
+      const appConfig = inject(AppConfigService);
+      return appConfig.initialize();
+    }),
   ],
 });
