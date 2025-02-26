@@ -1,4 +1,4 @@
-import { BusStop, Route } from '@app/models';
+import { BusMarker, Route } from '@app/models';
 
 export const routeMock: Route[] = [
   {
@@ -278,10 +278,28 @@ export const routesFavoritesMock = routeMock.filter(
   (route) => route.isFavorite
 );
 
-export const busStops: BusStop[] = [
+export const busStops: BusMarker[] = [
   {
     id: 1,
     position: { lat: 4.13573199329271, lng: -73.63882023004868 },
     name: 'Parada 1',
+  },
+  {
+    id: 2,
+    position: { lat: 4.117559553235963, lng: -73.62418867863967 },
+    name: 'Parada 2',
+  },
+  {
+    id: 3,
+    position: { lat: 4.139262789380968, lng: -73.63519022584572 },
+    name: 'Parada 3',
+  },
+];
+
+export const buses: BusMarker[] = [
+  {
+    id: 100,
+    position: { lat: 4.121367603506176, lng: -73.64261360741561 },
+    name: 'Bus 1',
   },
 ];

@@ -22,7 +22,7 @@ export interface RouteFeature {
   description: string;
 }
 
-export interface BusStop {
+export interface BusMarker {
   id: number;
   position: Position;
   name: string;

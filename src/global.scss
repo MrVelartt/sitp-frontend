@@ -136,7 +136,31 @@ ion-toast.toast-success::part(container) {
   color: white;
 }
 
-.custom-marker {
+.bus-stop-marker {
   border-radius: 50%;
   padding: 8px;
+  background: $color-primary;
+  position: relative;
+  cursor: pointer;
+
+  div {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    color: black;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.bus-marker {
+  border-radius: 50%;
+  padding: 8px;
+  background: $color-septenary;
+  position: relative;
+  cursor: pointer;
 }

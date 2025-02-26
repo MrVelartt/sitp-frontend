@@ -31,14 +31,27 @@
           [center]="center"
           [zoom]="zoom()"
           [options]="options"
-          (mapClick)="moveMap($event); addMarker($event)"
+          (mapClick)="moveMap($event)"
         >
-          @for (marker of markers(); track marker.position) {
+          @for (marker of busStopsMarkers(); track marker.position) {
+          <map-advanced-marker
+            [position]="marker.position || { lat: 0, lng: 0 }"
+            [content]="marker.content || null"
+            [options]="advancedMarkerOptions"
+            (mapClick)="openInfoWindow($event, marker)"
+          />
+          } @for (marker of busesMarkers(); track marker.position) {
           <map-advanced-marker
             [position]="marker.position || { lat: 0, lng: 0 }"
             [content]="marker.content || null"
             [options]="advancedMarkerOptions"
           />
+          }
+
+          <!-- <map-polyline [path]="vertices()" /> -->
+
+          @if (directionsResults$ | async; as directionsResults) {
+          <map-directions-renderer [directions]="directionsResults" />
           }
         </google-map>
       </ion-col>
