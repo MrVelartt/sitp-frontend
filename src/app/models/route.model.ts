@@ -6,13 +6,13 @@ export interface Route {
   color: string;
   frequency: string;
   isFavorite?: boolean;
+  keyNeighborhoods: string[];
   image?: string;
   travelTime?: string;
   startTime?: string;
   endTime?: string;
   distance?: string;
   countBuses?: number;
-  keyNeighborhoods?: string[];
 }
 
 export interface RouteFeature {
@@ -20,4 +20,15 @@ export interface RouteFeature {
   icon: string;
   title: string;
   description: string;
+}
+
+export interface BusStop {
+  id: number;
+  position: Position;
+  name: string;
+}
+
+export interface Position {
+  lat: number;
+  lng: number;
 }

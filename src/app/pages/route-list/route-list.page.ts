@@ -5,7 +5,7 @@ import {
   inject,
   signal,
 } from '@angular/core';
-import { RouteMock } from '@app/mocks';
+import { routeMock } from '@app/mocks';
 import { Route } from '@app/models';
 import {
   IonContent,
@@ -46,7 +46,7 @@ import {
 })
 export class RouteListPage {
   protected readonly router = inject(Router);
-  protected readonly routes = signal<Route[]>(RouteMock);
+  protected readonly routes = signal<Route[]>(routeMock);
   protected readonly search = signal<string>('');
 
   protected readonly filteredRoutes = computed<Route[]>(() => {

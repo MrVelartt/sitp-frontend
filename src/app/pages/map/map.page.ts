@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  effect,
+  inject,
+  signal,
+  viewChild,
+} from '@angular/core';
 import { ItemSearchComponent } from '@app/components';
 import {
   IonContent,
@@ -19,6 +26,8 @@ import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
 import { locate } from 'ionicons/icons';
 import { environment } from '@env/environment';
+import { BusStop } from '@app/models';
+import { busStops } from '@app/mocks';
 
 @Component({
   selector: 'app-map',
@@ -44,21 +53,30 @@ import { environment } from '@env/environment';
 export class MapPage {
   private readonly router = inject(Router);
 
-  center: google.maps.LatLngLiteral = { lat: 4.142, lng: -73.62664 };
-  zoom = 13;
-  options: google.maps.MapOptions = {
+  private readonly googleMap = viewChild<GoogleMap>('map');
+
+  protected center: google.maps.LatLngLiteral = { lat: 4.142, lng: -73.62664 };
+  protected zoom = signal<number>(13);
+  protected options: google.maps.MapOptions = {
     disableDefaultUI: true,
     mapId: environment.mapId,
   };
 
-  advancedMarkerOptions: google.maps.marker.AdvancedMarkerElementOptions = {
-    gmpDraggable: false,
-  };
-  // markerPositions: google.maps.LatLngLiteral[] = [];
-  markers: google.maps.marker.AdvancedMarkerElement[] = [];
+  protected advancedMarkerOptions: google.maps.marker.AdvancedMarkerElementOptions =
+    {
+      gmpDraggable: false,
+    };
+
+  protected markers = signal<google.maps.marker.AdvancedMarkerElement[]>([]);
+
+  private readonly busStops = signal<BusStop[]>(busStops);
 
   constructor() {
     addIcons({ locate, filterCustom: 'assets/icons/filter.svg' });
+
+    effect(() => {
+      console.log(this.googleMap());
+    });
   }
 
   moveMap(event: google.maps.MapMouseEvent) {
@@ -76,12 +94,13 @@ export class MapPage {
       // Crear el elemento del marcador dinámicamente
       const markerElement = document.createElement('div');
       markerElement.className = 'custom-marker';
+      markerElement.style.background = '#ffff00';
 
       // Crear la imagen
       const img = document.createElement('img');
-      img.src = 'assets/icons/logo.svg';
-      img.width = 30;
-      img.height = 30;
+      img.src = 'assets/icons/bus-stop-marker.svg';
+      img.width = 20;
+      img.height = 20;
       img.alt = 'Marcador personalizado';
 
       // Añadir la imagen al contenedor
@@ -90,17 +109,18 @@ export class MapPage {
       // Añadir estilos adicionales si es necesario
       markerElement.style.cursor = 'pointer';
 
-      // this.markerPositions.push(event.latLng.toJSON());
-
       // Añadir el marcador a la lista
       const advancedMarker: google.maps.marker.AdvancedMarkerElement = {
         position: event.latLng.toJSON(),
         content: markerElement,
       } as any;
 
-      this.markers.push(advancedMarker);
+      this.markers.update((currentMarkers) => [
+        ...currentMarkers,
+        advancedMarker,
+      ]);
 
-      console.log(this.markers);
+      console.log(this.markers());
     }
   }
 }

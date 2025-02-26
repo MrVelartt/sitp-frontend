@@ -1,6 +1,6 @@
-import { Route } from '@app/models';
+import { BusStop, Route } from '@app/models';
 
-export const RouteMock: Route[] = [
+export const routeMock: Route[] = [
   {
     id: 1,
     name: 'San Antonio - Hospital',
@@ -255,7 +255,7 @@ export const RouteMock: Route[] = [
 
 export const detailRouteMock = (id: number): Route => {
   console.log('id', id);
-  const route = RouteMock.find((route) => route.id === id) || RouteMock[0];
+  const route = routeMock.find((route) => route.id === id) || routeMock[0];
   route.image = 'assets/images/map.png';
   route.travelTime = '1h 30m';
   route.startTime = '5:00 AM';
@@ -274,6 +274,14 @@ export const detailRouteMock = (id: number): Route => {
   return route;
 };
 
-export const routesFavoritesMock = RouteMock.filter(
+export const routesFavoritesMock = routeMock.filter(
   (route) => route.isFavorite
 );
+
+export const busStops: BusStop[] = [
+  {
+    id: 1,
+    position: { lat: 4.13573199329271, lng: -73.63882023004868 },
+    name: 'Parada 1',
+  },
+];
