@@ -6,7 +6,7 @@ import {
   signal,
 } from '@angular/core';
 import { routeMock } from '@app/mocks';
-import { Route } from '@app/models';
+import { Route } from '@core/models';
 import {
   IonContent,
   IonHeader,
@@ -23,6 +23,8 @@ import {
   RouteCardComponent,
   ItemSearchComponent,
 } from '@app/components';
+import { LoadingService, RouteService, ToastService } from '@core/services';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-route-list',
@@ -45,7 +47,11 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RouteListPage {
-  protected readonly router = inject(Router);
+  private readonly router = inject(Router);
+  private readonly routeService = inject(RouteService);
+  private readonly toastService = inject(ToastService);
+  private readonly loadingService = inject(LoadingService);
+
   protected readonly routes = signal<Route[]>(routeMock);
   protected readonly search = signal<string>('');
 
@@ -59,7 +65,25 @@ export class RouteListPage {
     );
   });
 
-  constructor() {}
+  constructor() {
+    this.getRoutes();
+  }
+
+  async getRoutes(): Promise<void> {
+    await this.loadingService.show('Cargando rutas');
+    try {
+      const routes = await lastValueFrom(this.routeService.getRoutes());
+      console.log('getRoutes', routes);
+    } catch (error) {
+      console.error('getRoutes', error);
+      this.toastService.show({
+        isError: true,
+        message: 'Error obteniendo las rutas',
+      });
+    } finally {
+      this.loadingService.hide();
+    }
+  }
 
   searchRoute(search: string): void {
     console.log('searchRoute', search);

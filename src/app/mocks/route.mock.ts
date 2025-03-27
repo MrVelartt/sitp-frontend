@@ -1,4 +1,4 @@
-import { BusMarker, Route } from '@app/models';
+import { BusMarker, Route } from '@core/models';
 
 export const routeMock: Route[] = [
   {

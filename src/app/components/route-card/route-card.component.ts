@@ -5,7 +5,7 @@ import {
   input,
   output,
 } from '@angular/core';
-import { Route } from '@app/models';
+import { Route } from '@core/models';
 import {
   IonCardHeader,
   IonCard,

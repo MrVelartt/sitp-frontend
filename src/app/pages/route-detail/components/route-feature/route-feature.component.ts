@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { RouteFeature } from '@app/models';
+import { RouteFeature } from '@core/models';
 import { IonItem, IonIcon, IonLabel } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { time, sunny, moon, hourglassOutline, bus } from 'ionicons/icons';

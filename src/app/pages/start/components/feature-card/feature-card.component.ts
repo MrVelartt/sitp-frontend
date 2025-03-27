@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { Feature } from '@app/models';
+import { Feature } from '@core/models';
 import {
   IonItem,
   IonThumbnail,

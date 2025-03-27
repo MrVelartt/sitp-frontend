@@ -6,7 +6,7 @@ import {
   input,
 } from '@angular/core';
 import { detailRouteMock } from '@app/mocks';
-import { Route, RouteFeature } from '@app/models';
+import { Route, RouteFeature } from '@core/models';
 import {
   IonContent,
   IonHeader,
@@ -23,6 +23,9 @@ import {
 import { MainButtonComponent } from '@app/components';
 import { Router } from '@angular/router';
 import { RouteFeatureComponent } from './components';
+import { LoadingService, RouteService } from '@core/services';
+import { ToastService } from '../../core/services/toast.service';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-route-detail',
@@ -48,6 +51,9 @@ import { RouteFeatureComponent } from './components';
 })
 export class RouteDetailPage {
   private readonly router = inject(Router);
+  private readonly routeService = inject(RouteService);
+  private readonly toastService = inject(ToastService);
+  private readonly loadingService = inject(LoadingService);
 
   id = input<string>();
 
@@ -98,10 +104,35 @@ export class RouteDetailPage {
     return this.route()?.keyNeighborhoods?.join(', ') || '';
   });
 
-  constructor() {}
+  constructor() {
+    this.getRouteDetail();
+  }
+
+  async getRouteDetail(): Promise<void> {
+    await this.loadingService.show('Cargando información de la ruta');
+    try {
+      const response = await lastValueFrom(
+        this.routeService.getRouteDetail(Number(this.id()))
+      );
+      console.log('response', response);
+    } catch (error) {
+      console.error('getRouteDetail', error);
+      this.toastService.show({
+        isError: true,
+        message: 'Error al obtener la información de la ruta',
+      });
+      this.backPage();
+    } finally {
+      this.loadingService.hide();
+    }
+  }
 
   navigateToMapWithRoute(routedId: number): void {
     console.log('navigateToMap', routedId, this.route());
     this.router.navigate(['map'], { queryParams: { routeId: routedId } });
+  }
+
+  backPage(): void {
+    this.router.navigate(['routes']);
   }
 }

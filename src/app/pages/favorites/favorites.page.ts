@@ -12,7 +12,7 @@ import {
   RouteCardComponent,
 } from '@app/components';
 import { routesFavoritesMock } from '@app/mocks';
-import { Route } from '@app/models';
+import { Route } from '@core/models';
 import {
   IonContent,
   IonHeader,

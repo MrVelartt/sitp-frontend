@@ -15,6 +15,7 @@ import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 import { inject, provideAppInitializer } from '@angular/core';
 import { AppConfigService } from '@core/services';
+import { provideHttpClient } from '@angular/common/http';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -25,6 +26,7 @@ bootstrapApplication(AppComponent, {
       withPreloading(PreloadAllModules),
       withComponentInputBinding()
     ),
+    provideHttpClient(),
     provideAppInitializer(() => {
       const appConfig = inject(AppConfigService);
       return appConfig.initialize();

@@ -10,8 +10,6 @@ import {
   IonRow,
   IonCol,
   IonList,
-  IonButton,
-  IonIcon,
 } from '@ionic/angular/standalone';
 import {
   DarkModeSettingComponent,
@@ -27,8 +25,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./settings.page.scss'],
   standalone: true,
   imports: [
-    IonIcon,
-    IonButton,
     IonList,
     IonCol,
     IonRow,

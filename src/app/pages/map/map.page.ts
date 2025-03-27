@@ -28,7 +28,7 @@ import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
 import { locate } from 'ionicons/icons';
 import { environment } from '@env/environment';
-import { BusMarker } from '@app/models';
+import { BusMarker } from '@core/models';
 import { buses, busStops } from '@app/mocks';
 import { map, Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
