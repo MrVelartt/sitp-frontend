@@ -8,7 +8,7 @@ import {
   output,
   signal,
 } from '@angular/core';
-import { MainButtonComponent } from '@app/components';
+import { MainButtonComponent } from '@shared/components';
 import { ToastService } from '@core/services';
 import { IonItem, IonToggle, IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';

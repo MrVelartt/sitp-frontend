@@ -38,9 +38,9 @@ import { arrowForwardOutline } from 'ionicons/icons';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RouteCardComponent {
-  route = input.required<Route>();
-  seeRouteChange = output<string>();
-  seeDetailRouteChange = output<string>();
+  readonly route = input.required<Route>();
+  readonly seeRouteChange = output<string>();
+  readonly seeDetailRouteChange = output<string>();
 
   constructor() {
     addIcons({
@@ -50,17 +50,17 @@ export class RouteCardComponent {
     });
   }
 
-  seeRoute(event: Event, routeId: number): void {
+  protected seeRoute(event: Event, routeId: number): void {
     event.stopPropagation();
     this.seeRouteChange.emit(String(routeId));
   }
 
-  seeDetailRoute(event: Event, routeId: number): void {
+  protected seeDetailRoute(event: Event, routeId: number): void {
     event.stopPropagation();
     this.seeDetailRouteChange.emit(String(routeId));
   }
 
-  convertHexToRgba(hex: string, alpha: number): string {
+  protected convertHexToRgba(hex: string, alpha: number): string {
     hex = hex.replace(/^#/, '');
     let r = parseInt(hex.substring(0, 2), 16);
     let g = parseInt(hex.substring(2, 4), 16);

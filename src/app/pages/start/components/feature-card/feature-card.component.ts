@@ -1,11 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { Feature } from '@core/models';
-import {
-  IonItem,
-  IonThumbnail,
-  IonIcon,
-  IonLabel,
-} from '@ionic/angular/standalone';
+import { IonItem, IonThumbnail, IonLabel } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { location, map } from 'ionicons/icons';
 
@@ -13,7 +8,7 @@ import { location, map } from 'ionicons/icons';
   selector: 'app-feature-card',
   templateUrl: './feature-card.component.html',
   styleUrls: ['./feature-card.component.scss'],
-  imports: [IonItem, IonThumbnail, IonIcon, IonLabel],
+  imports: [IonItem, IonThumbnail, IonLabel],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

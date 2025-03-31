@@ -5,10 +5,7 @@
     </ion-title>
 
     <ion-buttons slot="start">
-      <ion-back-button
-        class="text-primary"
-        defaultHref="/routes"
-      ></ion-back-button>
+      <ion-back-button class="text-primary" defaultHref="/routes" />
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -23,10 +20,7 @@
       </ion-title>
 
       <ion-buttons slot="start">
-        <ion-back-button
-          class="text-primary"
-          defaultHref="/routes"
-        ></ion-back-button>
+        <ion-back-button class="text-primary" defaultHref="/routes" />
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
@@ -36,7 +30,7 @@
   <ion-grid class="p-0">
     <ion-row class="bg-quinary p-2">
       <ion-col size="12">
-        <ion-img [src]="routeLocal.image"></ion-img>
+        <ion-img [src]="routeLocal?.image" />
       </ion-col>
     </ion-row>
 
@@ -44,7 +38,7 @@
       <ion-col size="12">
         <ion-title class="p-0">
           <h1 class="text-primary text-center fw-semibold fs-5 m-0">
-            {{ routeLocal.shortName }} - {{ routeLocal.name }}
+            {{ routeLocal?.shortName }} - {{ routeLocal?.name }}
           </h1>
         </ion-title>
       </ion-col>
@@ -64,7 +58,7 @@
         </ion-text>
 
         <ion-text>
-          <p class="text-primary fs-8">{{ routeLocal.description }}</p>
+          <p class="text-primary fs-8">{{ routeLocal?.description }}</p>
         </ion-text>
 
         <ion-text class="fs-7">
@@ -79,7 +73,7 @@
         <app-main-button
           label="Ver los buses de esta ruta"
           iconName="map"
-          (clickChange)="navigateToMapWithRoute(routeLocal.id)"
+          (clickChange)="navigateToMapWithRoute()"
         />
       </ion-col>
     </ion-row>

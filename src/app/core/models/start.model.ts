@@ -1,4 +1,5 @@
 export interface Start {
+  id: number;
   logo: string;
   title: string;
   description: string;

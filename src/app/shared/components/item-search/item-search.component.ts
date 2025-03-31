@@ -20,9 +20,9 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ItemSearchComponent {
-  placeholder = input<string>('Buscar');
-  clickChange = output<void>();
-  searchChange = output<string>();
+  readonly placeholder = input<string>('Buscar');
+  readonly clickChange = output<void>();
+  readonly searchChange = output<string>();
 
   protected searchControl = new FormControl<string>('');
 
@@ -39,11 +39,11 @@ export class ItemSearchComponent {
       .subscribe((search) => this.searchRoute(search));
   }
 
-  onClick(): void {
+  protected onClick(): void {
     this.clickChange.emit();
   }
 
-  searchRoute(search: string): void {
+  protected searchRoute(search: string): void {
     this.searchChange.emit(search);
   }
 }

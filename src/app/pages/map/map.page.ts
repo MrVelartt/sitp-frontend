@@ -5,7 +5,7 @@ import {
   inject,
   signal,
 } from '@angular/core';
-import { ItemSearchComponent } from '@app/components';
+import { ItemSearchComponent } from '@shared/components';
 import {
   IonContent,
   IonHeader,

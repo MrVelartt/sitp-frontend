@@ -1,14 +1,12 @@
 import { inject, Injectable } from '@angular/core';
 import { StorageService } from './storage.service';
 import { STORAGE_KEYS } from '../constants';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AppConfigService {
   private readonly storageService = inject(StorageService);
-  private readonly router = inject(Router);
 
   private defaultLang = 'es';
   constructor() {}

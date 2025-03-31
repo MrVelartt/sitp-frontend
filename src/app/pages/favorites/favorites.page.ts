@@ -10,7 +10,7 @@ import {
   ItemSearchComponent,
   MainButtonComponent,
   RouteCardComponent,
-} from '@app/components';
+} from '@shared/components';
 import { routesFavoritesMock } from '@app/mocks';
 import { Route } from '@core/models';
 import {

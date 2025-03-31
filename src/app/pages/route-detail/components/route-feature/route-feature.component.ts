@@ -13,7 +13,8 @@ import { time, sunny, moon, hourglassOutline, bus } from 'ionicons/icons';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RouteFeatureComponent {
-  feature = input.required<RouteFeature>();
+  readonly feature = input.required<RouteFeature>();
+
   constructor() {
     addIcons({
       routes: 'assets/icons/routes.svg',

@@ -22,7 +22,7 @@ import {
   MainButtonComponent,
   RouteCardComponent,
   ItemSearchComponent,
-} from '@app/components';
+} from '@shared/components';
 import { LoadingService, RouteService, ToastService } from '@core/services';
 import { lastValueFrom } from 'rxjs';
 
@@ -52,7 +52,8 @@ export class RouteListPage {
   private readonly toastService = inject(ToastService);
   private readonly loadingService = inject(LoadingService);
 
-  protected readonly routes = signal<Route[]>(routeMock);
+  // protected readonly routes = signal<Route[]>(routeMock);
+  protected readonly routes = signal<Route[]>([]);
   protected readonly search = signal<string>('');
 
   protected readonly filteredRoutes = computed<Route[]>(() => {
@@ -74,6 +75,7 @@ export class RouteListPage {
     try {
       const routes = await lastValueFrom(this.routeService.getRoutes());
       console.log('getRoutes', routes);
+      this.routes.set(routes);
     } catch (error) {
       console.error('getRoutes', error);
       this.toastService.show({

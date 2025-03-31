@@ -17,15 +17,15 @@ import { map, navigate } from 'ionicons/icons';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainButtonComponent {
-  label = input.required<string>();
-  iconName = input<string>();
-  clickChange = output<void>();
+  readonly label = input.required<string>();
+  readonly iconName = input<string>();
+  readonly clickChange = output<void>();
 
   constructor() {
     addIcons({ map, navigate });
   }
 
-  onClick(): void {
+  protected onClick(): void {
     this.clickChange.emit();
   }
 }

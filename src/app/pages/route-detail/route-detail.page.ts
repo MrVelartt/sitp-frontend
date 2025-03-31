@@ -4,6 +4,7 @@ import {
   computed,
   inject,
   input,
+  signal,
 } from '@angular/core';
 import { detailRouteMock } from '@app/mocks';
 import { Route, RouteFeature } from '@core/models';
@@ -20,7 +21,7 @@ import {
   IonImg,
   IonText,
 } from '@ionic/angular/standalone';
-import { MainButtonComponent } from '@app/components';
+import { MainButtonComponent } from '@shared/components';
 import { Router } from '@angular/router';
 import { RouteFeatureComponent } from './components';
 import { LoadingService, RouteService } from '@core/services';
@@ -55,47 +56,49 @@ export class RouteDetailPage {
   private readonly toastService = inject(ToastService);
   private readonly loadingService = inject(LoadingService);
 
-  id = input<string>();
+  readonly id = input<string>();
 
-  protected route = computed<Route>(() => detailRouteMock(Number(this.id())));
+  // protected route = computed<Route>(() => detailRouteMock(Number(this.id())));
+  protected route = signal<Route | null>(null);
 
   protected routeFeatures = computed<RouteFeature[]>(() => {
+    const route = this.route();
     return [
       {
         id: 1,
         icon: 'routes',
         title: 'Distancia',
-        description: this.route().distance || '',
+        description: route?.distance || '',
       },
       {
         id: 2,
         icon: 'time',
         title: 'Tiempo de viaje',
-        description: this.route().travelTime || '',
+        description: route?.travelTime || '',
       },
       {
         id: 3,
         icon: 'sunny',
         title: 'Primer bus',
-        description: this.route().startTime || '',
+        description: route?.startTime || '',
       },
       {
         id: 4,
         icon: 'moon',
         title: 'Último bus',
-        description: this.route().endTime || '',
+        description: route?.endTime || '',
       },
       {
         id: 5,
         icon: 'hourglass-outline',
         title: 'Frecuencia',
-        description: `Cada ${this.route().frequency} minutos`,
+        description: `Cada ${route?.frequency} minutos`,
       },
       {
         id: 6,
         icon: 'bus',
         title: 'Cantidad',
-        description: `${this.route().countBuses?.toString()} buses`,
+        description: `${route?.countBuses?.toString()} buses`,
       },
     ];
   });
@@ -108,13 +111,14 @@ export class RouteDetailPage {
     this.getRouteDetail();
   }
 
-  async getRouteDetail(): Promise<void> {
+  private async getRouteDetail(): Promise<void> {
     await this.loadingService.show('Cargando información de la ruta');
     try {
       const response = await lastValueFrom(
         this.routeService.getRouteDetail(Number(this.id()))
       );
       console.log('response', response);
+      this.route.set(response);
     } catch (error) {
       console.error('getRouteDetail', error);
       this.toastService.show({
@@ -127,12 +131,13 @@ export class RouteDetailPage {
     }
   }
 
-  navigateToMapWithRoute(routedId: number): void {
-    console.log('navigateToMap', routedId, this.route());
-    this.router.navigate(['map'], { queryParams: { routeId: routedId } });
+  protected navigateToMapWithRoute(): void {
+    this.router.navigate(['map'], {
+      queryParams: { routeId: this.route()?.id },
+    });
   }
 
-  backPage(): void {
+  protected backPage(): void {
     this.router.navigate(['routes']);
   }
 }

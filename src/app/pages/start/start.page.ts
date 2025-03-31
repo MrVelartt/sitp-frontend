@@ -14,7 +14,6 @@ import {
   IonThumbnail,
   IonTitle,
   IonText,
-  IonIcon,
   IonList,
   IonButton,
 } from '@ionic/angular/standalone';
@@ -33,7 +32,6 @@ import { LoadingService } from '../../core/services/loading.service';
   imports: [
     IonButton,
     IonList,
-    IonIcon,
     IonText,
     IonTitle,
     IonRow,
@@ -47,7 +45,8 @@ import { LoadingService } from '../../core/services/loading.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StartPage {
-  protected readonly infoStart = signal<Start>(startMock);
+  // protected readonly infoStart = signal<Start>(startMock);
+  protected readonly infoStart = signal<Start | null>(null);
   private readonly router = inject(Router);
   private readonly appConfigService = inject(AppConfigService);
   private readonly appService = inject(AppService);
@@ -56,20 +55,22 @@ export class StartPage {
 
   constructor() {
     addIcons({
-      logo: this.infoStart().logo,
+      logo: String(this.infoStart()?.logo),
     });
 
     this.getInfoStart();
   }
 
-  async getInfoStart(): Promise<void> {
+  private async getInfoStart(): Promise<void> {
     await this.loadingService.show('Cargando información de inicio');
     try {
-      const response = await Promise.all([
+      const [infoStart, features] = await Promise.all([
         lastValueFrom(this.appService.getInfoStart()),
         lastValueFrom(this.appService.getFeatures()),
       ]);
-      console.log('response', response);
+
+      this.infoStart.set(infoStart);
+      console.log('infoStart', this.infoStart());
     } catch (error) {
       console.error('getInfoStart', error);
       this.toastService.show({
@@ -81,7 +82,7 @@ export class StartPage {
     }
   }
 
-  async navigateToMap(): Promise<void> {
+  protected async navigateToMap(): Promise<void> {
     try {
       await this.appConfigService.setAppAsVisited();
       await this.router.navigate(['/map']);
