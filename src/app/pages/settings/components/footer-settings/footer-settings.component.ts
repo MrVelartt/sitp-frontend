@@ -16,7 +16,7 @@ import { addIcons } from 'ionicons';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FooterSettingsComponent {
-  currentYear = signal<number>(new Date().getFullYear());
+  protected readonly currentYear = signal<number>(new Date().getFullYear());
 
   constructor() {
     addIcons({ support: 'assets/icons/support.svg' });

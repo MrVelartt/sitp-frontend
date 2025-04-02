@@ -93,7 +93,7 @@ export class MapPage {
   >([]);
 
   protected busesMarkers = signal<google.maps.marker.AdvancedMarkerElement[]>(
-    []
+    [],
   );
 
   private readonly busStops = signal<BusMarker[]>(busStops);
@@ -119,7 +119,7 @@ export class MapPage {
     this.setRoute();
   }
 
-  async setRoute(): Promise<void> {
+  private async setRoute(): Promise<void> {
     // @ts-ignore
     const { TravelMode } = await google.maps.importLibrary('routes');
 
@@ -136,23 +136,23 @@ export class MapPage {
       map((response) => {
         console.log('response', response);
         return response.result;
-      })
+      }),
     );
 
     console.log('terminandooooooooooooooooooooo ');
   }
 
-  moveMap(event: google.maps.MapMouseEvent) {
+  protected moveMap(event: google.maps.MapMouseEvent) {
     if (event.latLng) {
       this.center = event.latLng.toJSON();
     }
   }
 
-  navigateToListRoutes(): void {
+  protected navigateToListRoutes(): void {
     this.router.navigate(['/routes']);
   }
 
-  addBusMarker(bus: BusMarker): void {
+  private addBusMarker(bus: BusMarker): void {
     const { id, position } = bus;
 
     // Crear el elemento del marcador dinámicamente
@@ -182,7 +182,7 @@ export class MapPage {
     ]);
   }
 
-  addBusStopMarker(busStop: BusMarker): void {
+  private addBusStopMarker(busStop: BusMarker): void {
     const { id, position, name } = busStop;
 
     // Crear el elemento del marcador dinámicamente
@@ -218,9 +218,9 @@ export class MapPage {
     ]);
   }
 
-  openInfoWindow(
+  protected openInfoWindow(
     event: google.maps.MapMouseEvent,
-    marker: google.maps.marker.AdvancedMarkerElement
+    marker: google.maps.marker.AdvancedMarkerElement,
   ): void {
     console.log('openInfoWindow', event, marker);
     const { content } = marker;

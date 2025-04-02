@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { inject, Injectable, signal } from '@angular/core';
+import { catchError, map, Observable, tap, throwError } from 'rxjs';
 import { AppEndpoint } from '../endpoints';
 import { Feature, Start } from '../models';
 import { featureAdapter, infoStartAdapter } from '../adapters';
@@ -11,12 +11,35 @@ import { featureAdapter, infoStartAdapter } from '../adapters';
 export class AppService {
   private readonly http = inject(HttpClient);
 
-  constructor() {}
+  readonly infoStart = signal<Start | null>(null);
+  readonly isLoading = signal<boolean>(false);
+  readonly isError = signal<string | null>(null);
 
-  getInfoStart(): Observable<Start> {
-    return this.http
+  constructor() {
+    this.getInfoStart();
+  }
+
+  getInfoStart(): void {
+    if (this.isLoading()) return;
+
+    this.isLoading.set(true);
+    this.isError.set(null);
+
+    this.http
       .get<[Start]>(AppEndpoint.info)
-      .pipe(map((response) => infoStartAdapter(response)));
+      .pipe(
+        map((response) => infoStartAdapter(response)),
+        tap((response) => {
+          this.infoStart.set(response);
+          this.isLoading.set(false);
+        }),
+        catchError((error) => {
+          this.isLoading.set(false);
+          this.isError.set('Error al obtener la información de inicio');
+          return throwError(() => error);
+        })
+      )
+      .subscribe();
   }
 
   getFeatures(): Observable<Feature[]> {

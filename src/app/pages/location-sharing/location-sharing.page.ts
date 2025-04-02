@@ -44,8 +44,8 @@ import { ToggleLocationSharingComponent } from './components';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LocationSharingPage {
-  imageSharing = signal<string>('assets/images/sharing.png');
-  isSharingLocation = signal<boolean>(true);
+  readonly imageSharing = signal<string>('assets/images/sharing.png');
+  readonly isSharingLocation = signal<boolean>(true);
 
   constructor() {
     addIcons({
@@ -55,7 +55,7 @@ export class LocationSharingPage {
     });
   }
 
-  onSharingLocationChange(): void {
+  protected onSharingLocationChange(): void {
     this.isSharingLocation.update((isSharing) => !isSharing);
   }
 }

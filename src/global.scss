@@ -164,3 +164,8 @@ ion-toast.toast-success::part(container) {
   position: relative;
   cursor: pointer;
 }
+
+.error {
+  font-size: $font-size-9;
+  color: $color-danger;
+}

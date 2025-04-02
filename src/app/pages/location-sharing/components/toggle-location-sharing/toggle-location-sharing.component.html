@@ -20,8 +20,32 @@
   </ion-toggle>
 </ion-item>
 
-<app-main-button
-  [label]="isSharing ? 'Dejar de compartir' : 'Empezar a compartir'"
-  iconName="navigate"
-  (clickChange)="sharingLocation()"
-/>
+@let formLocal = form();
+<form [formGroup]="formLocal">
+  <div class="form-group">
+    <ion-label class="text-primary">
+      <p class="mb-2 fs-9">
+        Ingrese el código del bus en el campo de texto para compartir su
+        ubicación en tiempo real. Asegúrese de ingresar el código correcto para
+        garantizar una localización precisa.
+      </p>
+    </ion-label>
+    <ion-input
+      fill="outline"
+      class="input-style-1"
+      placeholder="Ingrese el código del bus"
+      formControlName="code"
+    >
+    </ion-input>
+
+    <app-form-error [control]="formLocal.get('code')" />
+  </div>
+
+  <div class="main-button mt-4">
+    <app-main-button
+      [label]="isSharing ? 'Dejar de compartir' : 'Empezar a compartir'"
+      iconName="navigate"
+      (clickChange)="onSubmit()"
+    />
+  </div>
+</form>

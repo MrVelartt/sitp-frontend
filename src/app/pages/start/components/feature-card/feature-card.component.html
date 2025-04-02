@@ -1,13 +1,17 @@
 @let featureLocal = feature();
 <ion-item class="feature d-flex bg-quinary border-radius-primary" lines="none">
   <ion-thumbnail class="content-icon item-style-1 rounded-circle me-3">
-    <img [src]="featureLocal.icon" alt="featureLocal.description" />
+    <img
+      [src]="featureLocal.icon"
+      alt="featureLocal.description"
+      class="w-100 h-100 object-fit-contain p-1"
+    />
   </ion-thumbnail>
   <ion-label class="overflow-hidden">
-    <h2 class="text-primary fw-bold fs-7 text-lines-1">
+    <h2 class="text-primary fw-bold fs-9 text-lines-1">
       {{ featureLocal.title }}
     </h2>
-    <p class="text-secondary fs-8 text-lines-2 mb-0">
+    <p class="text-secondary fs-9 text-lines-2 mb-0">
       {{ featureLocal.description }}
     </p>
   </ion-label>

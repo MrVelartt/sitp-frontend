@@ -47,7 +47,7 @@ export class SettingsPage {
 
   constructor() {}
 
-  navitagateToLocationSharing() {
+  protected navitagateToLocationSharing() {
     this.router.navigate(['/location-sharing']);
   }
 }

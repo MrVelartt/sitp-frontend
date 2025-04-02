@@ -1,0 +1,39 @@
+@let controlLocal = control();
+@if (controlLocal && controlLocal.touched && controlLocal.invalid) {
+  @if (controlLocal.hasError("required")) {
+    <ion-text class="error">Este campo es obligatorio</ion-text>
+  } @else if (controlLocal.hasError("pattern")) {
+    <ion-text class="error">Ingrese un correo válido</ion-text>
+  } @else if (controlLocal.hasError("minlength")) {
+    <ion-text class="error">
+      Ingrese al menos
+      {{ controlLocal.getError("minlength").requiredLength }} caracteres
+    </ion-text>
+  } @else if (controlLocal.hasError("maxlength")) {
+    <ion-text class="error">
+      Ingrese máximo
+      {{ controlLocal.getError("maxlength").requiredLength }} caracteres
+    </ion-text>
+  } @else if (controlLocal.hasError("min")) {
+    <ion-text class="error">
+      Ingrese un valor mayor o igual a {{ controlLocal.getError("min").min }}
+    </ion-text>
+  } @else if (controlLocal.hasError("max")) {
+    <ion-text class="error">
+      Ingrese un valor menor o igual a {{ controlLocal.getError("max").max }}
+    </ion-text>
+  } @else if (controlLocal.hasError("password")) {
+    <ion-text class="error">
+      La contraseña debe tener al menos 8 caracteres, una letra mayúscula, una
+      letra minúscula, un número y un caracter especial
+    </ion-text>
+  } @else if (controlLocal.hasError("passwordsNotMatch")) {
+    <ion-text class="error">Las contraseñas no coinciden</ion-text>
+  } @else if (controlLocal.hasError("invalidEmail")) {
+    <ion-text class="error"> El correo ya se encuentra registrado </ion-text>
+  } @else if (controlLocal.hasError("invalidUsername")) {
+    <ion-text class="error">
+      El nombre de usuario ya se encuentra registrado
+    </ion-text>
+  }
+}

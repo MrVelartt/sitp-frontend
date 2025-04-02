@@ -13,29 +13,41 @@ export class AppConfigService {
 
   async initialize(): Promise<void> {
     try {
-      await Promise.all([this.initializeLanguage(), this.initializeDarkMode()]);
+      await Promise.all([
+        this.initializeFavorites(),
+        this.initializeLanguage(),
+        this.initializeDarkMode(),
+      ]);
     } catch (error) {
       console.error('Error al inicializar la configuración de la app:', error);
     }
   }
 
+  private async initializeFavorites(): Promise<void> {
+    const savedFavorites = await this.storageService.getPreferences(
+      STORAGE_KEYS.FAVORITES,
+    );
+    if (!savedFavorites) {
+      await this.storageService.setPreferences(STORAGE_KEYS.FAVORITES, []);
+    }
+  }
+
   private async initializeLanguage(): Promise<void> {
     const savedLanguage = await this.storageService.getPreferences(
-      STORAGE_KEYS.LANGUAGE
+      STORAGE_KEYS.LANGUAGE,
     );
-    const selectedLang = savedLanguage || this.defaultLang;
 
     if (!savedLanguage) {
       await this.storageService.setPreferences(
         STORAGE_KEYS.LANGUAGE,
-        selectedLang
+        this.defaultLang,
       );
     }
   }
 
   private async initializeDarkMode(): Promise<void> {
     const savedDarkMode = await this.storageService.getPreferences(
-      STORAGE_KEYS.DARK_MODE
+      STORAGE_KEYS.DARK_MODE,
     );
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
     console.log('prefersDark', prefersDark);
@@ -48,7 +60,7 @@ export class AppConfigService {
       isDarkMode = prefersDark.matches;
       await this.storageService.setPreferences(
         STORAGE_KEYS.DARK_MODE,
-        isDarkMode
+        isDarkMode,
       );
     }
 
@@ -100,7 +112,7 @@ export class AppConfigService {
 
   async determineInitialRoute(): Promise<string> {
     const isVisited = await this.storageService.getPreferences(
-      STORAGE_KEYS.IS_VISITED
+      STORAGE_KEYS.IS_VISITED,
     );
     return isVisited ? '/map' : '/start';
   }

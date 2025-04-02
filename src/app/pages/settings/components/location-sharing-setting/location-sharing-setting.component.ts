@@ -17,13 +17,13 @@ import { location, chevronForwardOutline } from 'ionicons/icons';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LocationSharingSettingComponent {
-  clickChange = output<void>();
+  readonly clickChange = output<void>();
 
   constructor() {
     addIcons({ location, chevronForwardOutline });
   }
 
-  onClick() {
+  protected onClick() {
     this.clickChange.emit();
   }
 }

@@ -34,11 +34,14 @@
               [route]="route"
               (seeRouteChange)="navigateToMapWithRoute($event)"
               (seeDetailRouteChange)="navigateToRouteDetail($event)"
+              (favoriteChange)="deleteFavorite($event)"
             />
           </div>
           } @placeholder {
           <p>...Cargando</p>
-          } }
+          } } @empty {
+          <p class="text-primary">No tiene rutas agregadas en favoritos</p>
+          }
         </ion-list>
       </ion-col>
     </ion-row>

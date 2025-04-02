@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  effect,
   inject,
   signal,
 } from '@angular/core';
@@ -23,6 +24,7 @@ import {
   IonRow,
   IonCol,
 } from '@ionic/angular/standalone';
+import { FavoriteService, LoadingService, ToastService } from '@core/services';
 
 @Component({
   selector: 'app-favorites',
@@ -45,8 +47,15 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FavoritesPage {
-  protected readonly router = inject(Router);
-  protected readonly routes = signal<Route[]>(routesFavoritesMock);
+  private readonly router = inject(Router);
+  private readonly favoriteService = inject(FavoriteService);
+  private readonly loadingService = inject(LoadingService);
+  private readonly toastService = inject(ToastService);
+
+  // protected readonly routes = signal<Route[]>(routesFavoritesMock);
+  protected readonly routes = computed<Route[]>(() =>
+    this.favoriteService.getFormattedRoutes(),
+  );
   protected readonly search = signal<string>('');
 
   protected readonly filteredRoutes = computed<Route[]>(() => {
@@ -55,27 +64,47 @@ export class FavoritesPage {
     return this.routes().filter(
       (route) =>
         route.name.toLowerCase().includes(search) ||
-        route.keyNeighborhoods?.some((key) => key.toLowerCase() === search)
+        route.keyNeighborhoods?.some((key) => key.toLowerCase() === search),
     );
   });
 
   constructor() {}
 
-  searchRoute(search: string): void {
+  protected searchRoute(search: string): void {
     console.log('searchRoute', search);
     this.search.set(search);
   }
 
-  navigateToRouteDetail(routedId: string) {
+  protected navigateToRouteDetail(routedId: number) {
     this.router.navigate(['route-detail', routedId]);
   }
 
-  navigateToMapWithRoute(routedId: string): void {
+  protected navigateToMapWithRoute(routedId: number): void {
     this.router.navigate(['map'], { queryParams: { routeId: routedId } });
   }
 
-  navigateToMapWithRoutes(): void {
+  protected navigateToMapWithRoutes(): void {
     const ids = this.routes().map((route) => route.id);
     this.router.navigate(['map'], { queryParams: { routeId: ids.join(',') } });
+  }
+
+  protected async deleteFavorite(route: Route): Promise<void> {
+    const { id } = route;
+    await this.loadingService.show('Eliminando ruta de favoritos');
+    try {
+      await this.favoriteService.deleteRoute(id);
+      this.toastService.show({
+        isError: false,
+        message: 'Ruta eliminada de favoritos',
+      });
+    } catch (error) {
+      console.error('deleteFavorite', error);
+      this.toastService.show({
+        isError: true,
+        message: 'Error eliminando la ruta de favoritos',
+      });
+    } finally {
+      this.loadingService.hide();
+    }
   }
 }

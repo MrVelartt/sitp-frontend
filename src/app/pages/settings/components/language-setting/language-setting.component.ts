@@ -25,7 +25,7 @@ import { language } from 'ionicons/icons';
 })
 export class LanguageSettingComponent {
   private readonly appConfigService = inject(AppConfigService);
-  protected language = signal<string>('');
+  protected readonly language = signal<string>('');
 
   constructor() {
     addIcons({ language });
@@ -35,7 +35,7 @@ export class LanguageSettingComponent {
     this.getLanguage();
   }
 
-  async getLanguage(): Promise<void> {
+  private async getLanguage(): Promise<void> {
     const lang = await this.appConfigService.getLanguage();
     this.language.set(lang);
     console.log('Language:', this.language());

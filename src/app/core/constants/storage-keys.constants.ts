@@ -3,4 +3,5 @@ export const STORAGE_KEYS = {
   ROUTES_FAVORITES: 'routesFavorites',
   DARK_MODE: 'darkMode',
   LANGUAGE: 'language',
+  FAVORITES: 'favorites',
 };

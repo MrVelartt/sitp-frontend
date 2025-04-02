@@ -8,10 +8,24 @@ import {
   output,
   signal,
 } from '@angular/core';
-import { MainButtonComponent } from '@shared/components';
+import { FormErrorComponent, MainButtonComponent } from '@shared/components';
 import { ToastService } from '@core/services';
-import { IonItem, IonToggle, IonIcon } from '@ionic/angular/standalone';
+import {
+  IonItem,
+  IonToggle,
+  IonIcon,
+  IonInput,
+  IonLabel,
+} from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { touchControlsForm } from '@shared/utils';
 
 enum LocationSharingColor {
   SHARING = 'octonary',
@@ -23,21 +37,33 @@ enum LocationSharingColor {
   templateUrl: './toggle-location-sharing.component.html',
   styleUrls: ['./toggle-location-sharing.component.scss'],
   standalone: true,
-  imports: [IonIcon, IonToggle, IonItem, MainButtonComponent],
+  imports: [
+    IonLabel,
+    IonInput,
+    IonIcon,
+    IonToggle,
+    IonItem,
+    MainButtonComponent,
+    FormsModule,
+    ReactiveFormsModule,
+    FormErrorComponent,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToggleLocationSharingComponent implements OnInit {
   private readonly toastService = inject(ToastService);
 
-  isSharingLocation = input.required<boolean>();
-  sharingLocationChange = output<void>();
+  readonly isSharingLocation = input.required<boolean>();
+  readonly sharingLocationChange = output<void>();
 
-  protected locationSharingColor = computed<LocationSharingColor>(
+  protected readonly locationSharingColor = computed<LocationSharingColor>(
     () =>
-      LocationSharingColor[this.isSharingLocation() ? 'SHARING' : 'NOT_SHARING']
+      LocationSharingColor[
+        this.isSharingLocation() ? 'SHARING' : 'NOT_SHARING'
+      ],
   );
-
-  protected checked = signal<boolean>(false);
+  protected readonly checked = signal<boolean>(false);
+  protected readonly form = signal<FormGroup>(this.createForm());
 
   constructor() {
     addIcons({ sharing: 'assets/icons/sharing.svg' });
@@ -47,12 +73,28 @@ export class ToggleLocationSharingComponent implements OnInit {
     this.checked.set(this.isSharingLocation());
   }
 
-  toggleLocationSharing(event: Event): void {
+  private createForm(): FormGroup {
+    return new FormGroup({
+      code: new FormControl('', Validators.required),
+    });
+  }
+
+  protected toggleLocationSharing(event: Event): void {
     const { checked } = event.target as HTMLIonCheckboxElement;
     this.checked.set(checked);
   }
 
-  sharingLocation(): void {
+  protected onSubmit(): void {
+    const form = this.form();
+    if (form.invalid) {
+      touchControlsForm(form);
+      return;
+    }
+
+    this.sharingLocation();
+  }
+
+  private sharingLocation(): void {
     const isChecked = this.checked();
     const isCurrentlySharing = this.isSharingLocation();
 

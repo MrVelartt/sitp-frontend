@@ -1,1 +1,1 @@
-export * from './storage-keys';
+export * from './storage-keys.constants';
