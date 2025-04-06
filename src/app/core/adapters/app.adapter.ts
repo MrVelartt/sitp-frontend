@@ -7,7 +7,7 @@ export const infoStartAdapter = (response: [any]): Start => {
     logo: info.icono_app,
     title: info.nombre_app,
     description: info.descripcion_app,
-    features: featureAdapter(info.caracteristicas_app),
+    features: featureAdapter(info.caracteristicas),
   };
 };
 

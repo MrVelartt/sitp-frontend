@@ -1,0 +1,14 @@
+BACKEND
+https://stp-villavo.site/
+
+RUTAS
+https://stp-villavo.site/bus/api/rutas/
+
+ADMIN
+https://stp-villavo.site/admin
+
+USER: Oscar
+PASSWORD: os123ar
+
+SWAGGER
+https://stp-villavo.site/swagger/

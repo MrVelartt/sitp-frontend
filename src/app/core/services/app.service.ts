@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import { catchError, map, Observable, tap, throwError } from 'rxjs';
+import { catchError, map, tap, throwError } from 'rxjs';
 import { AppEndpoint } from '../endpoints';
-import { Feature, Start } from '../models';
-import { featureAdapter, infoStartAdapter } from '../adapters';
+import { Start } from '../models';
+import { infoStartAdapter } from '../adapters';
 
 @Injectable({
   providedIn: 'root',
@@ -40,11 +40,5 @@ export class AppService {
         })
       )
       .subscribe();
-  }
-
-  getFeatures(): Observable<Feature[]> {
-    return this.http
-      .get<Feature[]>(AppEndpoint.features)
-      .pipe(map((response) => featureAdapter(response)));
   }
 }

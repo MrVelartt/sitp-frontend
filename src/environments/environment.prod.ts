@@ -1,4 +1,5 @@
-export const BASE_URL = 'http://18.117.138.108:8000/';
+// export const BASE_URL = 'http://18.117.138.108:8000/';
+export const BASE_URL = 'https://stp-villavo.site/';
 export const API_URL = `${BASE_URL}bus/api/`;
 
 export const environment = {

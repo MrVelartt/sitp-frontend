@@ -48,11 +48,11 @@
           />
           }
 
-          <!-- <map-polyline [path]="vertices()" /> -->
+          <map-polyline [path]="vertices()" />
 
-          @if (directionsResults$ | async; as directionsResults) {
+          <!-- @if (directionsResults$ | async; as directionsResults) {
           <map-directions-renderer [directions]="directionsResults" />
-          }
+          } -->
         </google-map>
       </ion-col>
     </ion-row>
