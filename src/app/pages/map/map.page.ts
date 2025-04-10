@@ -24,18 +24,25 @@ import {
   MapDirectionsService,
   GoogleMapsModule,
 } from '@angular/google-maps';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { addIcons } from 'ionicons';
 import { locate } from 'ionicons/icons';
 import { environment } from '@env/environment';
-import { BusMarker } from '@core/models';
+import { BusMarker, Route } from '@core/models';
 import { buses, busStops } from '@app/mocks';
-import { map, Observable } from 'rxjs';
+import { lastValueFrom, map, Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
+import { RouteService, LoadingService, ToastService } from '@core/services';
 
 export interface MapDirectionsResponse {
   status: google.maps.DirectionsStatus;
   result?: google.maps.DirectionsResult;
+}
+
+interface RoutePolyline {
+  id: number;
+  vertices: google.maps.LatLngLiteral[];
+  options: google.maps.PolylineOptions;
 }
 
 @Component({
@@ -65,14 +72,18 @@ export interface MapDirectionsResponse {
 export class MapPage {
   private readonly router = inject(Router);
   private readonly mapDirectionsService = inject(MapDirectionsService);
+  private readonly route = inject(ActivatedRoute);
+  private readonly routeService = inject(RouteService);
+  private readonly loadingService = inject(LoadingService);
+  private readonly toastService = inject(ToastService);
 
   protected directionsResults$!: Observable<
     google.maps.DirectionsResult | undefined
   >;
 
   protected center: google.maps.LatLngLiteral = { lat: 4.142, lng: -73.62664 };
-  protected zoom = signal<number>(13);
-  protected options: google.maps.MapOptions = {
+  protected readonly zoom = signal<number>(13);
+  protected readonly options: google.maps.MapOptions = {
     disableDefaultUI: true,
     mapId: environment.mapId,
   };
@@ -130,6 +141,10 @@ export class MapPage {
     { lat: 4.056961, lng: -73.677381 },
   ]);
 
+  protected readonly arrayVertices = signal<google.maps.LatLngLiteral[][]>([]);
+
+  protected readonly routes = signal<RoutePolyline[]>([]);
+
   protected advancedMarkerOptions: google.maps.marker.AdvancedMarkerElementOptions =
     {
       // gmpDraggable: true,
@@ -149,28 +164,85 @@ export class MapPage {
   constructor() {
     addIcons({ locate, filterCustom: 'assets/icons/filter.svg' });
 
-    effect(() => {
-      const busStops = this.busStops();
-      if (busStops?.length) {
-        busStops.forEach((busStop) => this.addBusStopMarker(busStop));
-      }
+    this.route.queryParams.subscribe(({ id }) => {
+      console.log('params', id);
+      this.clearMap();
+      id ? this.getRoutes(id) : this.getStops();
     });
 
-    effect(() => {
-      const buses = this.buses();
-      if (buses?.length) {
-        buses.forEach((bus) => this.addBusMarker(bus));
-      }
-    });
+    // effect(() => {
+    //   const busStops = this.busStops();
+    //   if (busStops?.length) {
+    //     busStops.forEach((busStop) => this.addBusStopMarker(busStop));
+    //   }
+    // });
 
-    this.setRoute();
+    // effect(() => {
+    //   const buses = this.buses();
+    //   if (buses?.length) {
+    //     buses.forEach((bus) => this.addBusMarker(bus));
+    //   }
+    // });
+
+    // this.setRoute();
+  }
+
+  clearMap(): void {
+    this.busStopsMarkers.set([]);
+    this.arrayVertices.set([]);
+    this.routes.set([]);
+    this.busesMarkers.set([]);
+  }
+
+  private async getRoutes(ids: string): Promise<void> {
+    await this.loadingService.show('Cargando rutas...');
+
+    try {
+      const arrayIds = ids.split(',').map(Number);
+      const request = await this.getRequestRoutes(arrayIds);
+      const routes = await Promise.all(request);
+      console.log('routes', routes);
+      routes.forEach(({ id, color, coordinatePoints }) => {
+        this.routes.update((currentRoutes) => [
+          ...currentRoutes,
+          {
+            id,
+            vertices: coordinatePoints || [],
+            options: {
+              strokeColor: color,
+              strokeOpacity: 1.0,
+              strokeWeight: 4,
+            },
+          },
+        ]);
+      });
+    } catch (error) {
+      console.error('Error fetching routes:', error);
+      this.toastService.show({
+        isError: true,
+        message: 'Error al cargar las rutas',
+      });
+    } finally {
+      this.loadingService.hide();
+    }
+  }
+
+  private async getRequestRoutes(ids: number[]): Promise<Promise<Route>[]> {
+    return ids.map(async (id) =>
+      lastValueFrom(this.routeService.getRouteDetail(id)),
+    );
+  }
+
+  private async getStops(): Promise<void> {
+    console.log('ejecutando la funcion getStops');
+    if (busStops?.length) {
+      busStops.forEach((busStop) => this.addBusStopMarker(busStop));
+    }
   }
 
   private async setRoute(): Promise<void> {
     // @ts-ignore
     const { TravelMode } = await google.maps.importLibrary('routes');
-
-    console.log('TravelMode', TravelMode);
     const request: google.maps.DirectionsRequest = {
       destination: { lat: 4.157807460820786, lng: -73.63858055388546 },
       origin: { lat: 4.156849438398552, lng: -73.65544674282299 },
@@ -229,6 +301,7 @@ export class MapPage {
   }
 
   private addBusStopMarker(busStop: BusMarker): void {
+    console.log('addBusStopMarker', busStop);
     const { id, position, name } = busStop;
 
     // Crear el elemento del marcador dinámicamente

@@ -1,0 +1,35 @@
+<swiper-container
+  class="w-100 h-100"
+  [slidesPerView]="1.5"
+  (swiperinit)="onSwiperInit($event)"
+>
+  @for (favorite of favorites(); track favorite.id) {
+    <swiper-slide class="py-1">
+      <ion-item
+        class="no-padding bg-transparent bg-octonary border-radius-primary me-2"
+        lines="none"
+        (click)="onClick(favorite.id)"
+      >
+        <div class="p-2 d-flex align-items-center">
+          <span
+            class="icon-route d-flex justify-content-center align-items-center border-radius-secondary fw-semibold rounded-circle fs-8 me-2"
+            [ngStyle]="{
+              color: favorite.color,
+              background: convertHexToRgba(favorite.color, 0.2),
+            }"
+          >
+            {{ favorite.shortName }}
+          </span>
+          <ion-text class="">
+            <p class="mb-0 text-primary fs-8 fw-bold">
+              {{ favorite.name | capitalize }}
+            </p>
+            <p class="mb-0 text-tertiary fs-9">
+              Cada {{ favorite.frequency }} minutos
+            </p>
+          </ion-text>
+        </div>
+      </ion-item>
+    </swiper-slide>
+  }
+</swiper-container>

@@ -4,4 +4,5 @@ export const STORAGE_KEYS = {
   DARK_MODE: 'darkMode',
   LANGUAGE: 'language',
   FAVORITES: 'favorites',
+  RECENT_ROUTES: 'recentRoutes',
 };

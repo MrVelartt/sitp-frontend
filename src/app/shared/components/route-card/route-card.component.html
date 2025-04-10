@@ -5,7 +5,7 @@
 >
   <ion-card-header class="flex-row column-gap-2 align-items-center">
     <span
-      class="icon-route d-flex justify-content-center align-items-center border-radius-secondary fw-semibold"
+      class="icon-route d-flex justify-content-center align-items-center border-radius-secondary fw-semibold rounded-circle"
       [ngStyle]="{
         color: routeLocal.color,
         background: convertHexToRgba(routeLocal.color, 0.2),
@@ -39,7 +39,9 @@
 
   <ion-card-content>
     <ion-text>
-      <p class="mb-0 text-secondary fs-9">{{ routeLocal.description }}</p>
+      <p class="mb-0 text-secondary fs-9 text-lines-3">
+        {{ routeLocal.description }}
+      </p>
     </ion-text>
 
     <ion-button

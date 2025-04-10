@@ -5,6 +5,7 @@ import {
   input,
   output,
 } from '@angular/core';
+import { convertHexToRgba } from '@shared/utils';
 import { Route } from '@core/models';
 import {
   IonCardHeader,
@@ -43,6 +44,8 @@ export class RouteCardComponent {
   readonly seeDetailRouteChange = output<number>();
   readonly favoriteChange = output<Route>();
 
+  protected convertHexToRgba = convertHexToRgba;
+
   constructor() {
     addIcons({
       arrowForwardOutline,
@@ -64,13 +67,5 @@ export class RouteCardComponent {
   protected favorite(event: Event): void {
     event.stopPropagation();
     this.favoriteChange.emit(this.route());
-  }
-
-  protected convertHexToRgba(hex: string, alpha: number): string {
-    hex = hex.replace(/^#/, '');
-    let r = parseInt(hex.substring(0, 2), 16);
-    let g = parseInt(hex.substring(2, 4), 16);
-    let b = parseInt(hex.substring(4, 6), 16);
-    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
   }
 }

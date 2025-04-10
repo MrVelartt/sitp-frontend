@@ -104,7 +104,11 @@ export class RouteDetailPage {
   });
 
   protected keyNeighborhoods = computed<string>(() => {
-    return this.route()?.keyNeighborhoods?.join(', ') || '';
+    try {
+      return this.route()?.keyNeighborhoods?.join(', ') || '';
+    } catch (error) {
+      return '';
+    }
   });
 
   constructor() {
@@ -115,7 +119,7 @@ export class RouteDetailPage {
     await this.loadingService.show('Cargando información de la ruta');
     try {
       const response = await lastValueFrom(
-        this.routeService.getRouteDetail(Number(this.id()))
+        this.routeService.getRouteDetail(Number(this.id())),
       );
       console.log('response', response);
       this.route.set(response);

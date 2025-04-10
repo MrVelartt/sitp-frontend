@@ -13,9 +13,11 @@ import {
 } from '@ionic/angular/standalone';
 import {
   DarkModeSettingComponent,
+  FavoriteSettingComponent,
   FooterSettingsComponent,
   LanguageSettingComponent,
   LocationSharingSettingComponent,
+  ComingSoonComponent,
 } from './components';
 import { Router } from '@angular/router';
 
@@ -39,6 +41,8 @@ import { Router } from '@angular/router';
     DarkModeSettingComponent,
     LocationSharingSettingComponent,
     FooterSettingsComponent,
+    FavoriteSettingComponent,
+    ComingSoonComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -47,7 +51,7 @@ export class SettingsPage {
 
   constructor() {}
 
-  protected navitagateToLocationSharing() {
-    this.router.navigate(['/location-sharing']);
+  protected navitagateToPage(url: string) {
+    this.router.navigate([url]);
   }
 }

@@ -15,6 +15,7 @@ export class AppConfigService {
     try {
       await Promise.all([
         this.initializeFavorites(),
+        this.initializeRecentRoutes(),
         this.initializeLanguage(),
         this.initializeDarkMode(),
       ]);
@@ -32,6 +33,14 @@ export class AppConfigService {
     }
   }
 
+  private async initializeRecentRoutes(): Promise<void> {
+    const savedRoutes = await this.storageService.getPreferences(
+      STORAGE_KEYS.RECENT_ROUTES,
+    );
+    if (!savedRoutes) {
+      await this.storageService.setPreferences(STORAGE_KEYS.RECENT_ROUTES, []);
+    }
+  }
   private async initializeLanguage(): Promise<void> {
     const savedLanguage = await this.storageService.getPreferences(
       STORAGE_KEYS.LANGUAGE,
@@ -114,6 +123,6 @@ export class AppConfigService {
     const isVisited = await this.storageService.getPreferences(
       STORAGE_KEYS.IS_VISITED,
     );
-    return isVisited ? '/map' : '/start';
+    return isVisited ? '/home' : '/start';
   }
 }

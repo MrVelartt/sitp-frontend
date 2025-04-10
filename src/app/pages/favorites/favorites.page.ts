@@ -23,6 +23,8 @@ import {
   IonList,
   IonRow,
   IonCol,
+  IonButtons,
+  IonBackButton,
 } from '@ionic/angular/standalone';
 import { FavoriteService, LoadingService, ToastService } from '@core/services';
 
@@ -32,6 +34,8 @@ import { FavoriteService, LoadingService, ToastService } from '@core/services';
   styleUrls: ['./favorites.page.scss'],
   standalone: true,
   imports: [
+    IonBackButton,
+    IonButtons,
     IonCol,
     IonRow,
     IonList,
@@ -80,12 +84,12 @@ export class FavoritesPage {
   }
 
   protected navigateToMapWithRoute(routedId: number): void {
-    this.router.navigate(['map'], { queryParams: { routeId: routedId } });
+    this.router.navigate(['map'], { queryParams: { id: routedId } });
   }
 
   protected navigateToMapWithRoutes(): void {
     const ids = this.routes().map((route) => route.id);
-    this.router.navigate(['map'], { queryParams: { routeId: ids.join(',') } });
+    this.router.navigate(['map'], { queryParams: { id: ids.join(',') } });
   }
 
   protected async deleteFavorite(route: Route): Promise<void> {

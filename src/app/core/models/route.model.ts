@@ -13,6 +13,7 @@ export interface Route {
   endTime?: string;
   distance?: string;
   countBuses?: number;
+  coordinatePoints?: Position[];
 }
 
 export interface RouteFeature {

@@ -12,7 +12,7 @@ export class ToastService {
   async show({
     isError,
     message,
-    duration = 3000,
+    duration = 1500,
     position = 'bottom',
   }: {
     isError: boolean;

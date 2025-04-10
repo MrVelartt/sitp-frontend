@@ -1,11 +1,20 @@
 <ion-header [translucent]="true">
   <ion-toolbar class="bg-header pt-4">
-    <ion-title>
-      <h1 class="text-primary text-center fs-2 fw-semibold mt-0 mb-3">
-        Lista de rutas favoritas
-      </h1>
-    </ion-title>
-    <div class="search px-3 pb-3">
+    <div class="d-flex align-items-center position-relative">
+      <ion-buttons slot="start">
+        <ion-back-button
+          class="text-primary"
+          defaultHref="/home"
+        ></ion-back-button>
+      </ion-buttons>
+
+      <ion-title class="title-center">
+        <h1 class="text-primary fs-2 fw-semibold m-0">
+          Lista de rutas favoritas
+        </h1>
+      </ion-title>
+    </div>
+    <div class="search px-3 pb-3 mt-3">
       <app-item-search (searchChange)="searchRoute($event)" />
     </div>
   </ion-toolbar>
@@ -14,10 +23,21 @@
 <ion-content [fullscreen]="true" class="position-relative bg-octonary">
   <ion-header collapse="condense">
     <ion-toolbar class="bg-header">
-      <ion-title>
-        <h1 class="text-primary text-center fs-2 fw-bold">Lista de rutas</h1>
-      </ion-title>
-      <div class="search">
+      <div class="d-flex align-items-center position-relative">
+        <ion-buttons slot="start">
+          <ion-back-button
+            class="text-primary"
+            defaultHref="/home"
+          ></ion-back-button>
+        </ion-buttons>
+
+        <ion-title class="title-center">
+          <h1 class="text-primary title-center fs-2 fw-semibold m-0">
+            Lista de rutas favoritas
+          </h1>
+        </ion-title>
+      </div>
+      <div class="search px-3 pb-3 mt-3">
         <app-item-search (searchChange)="searchRoute($event)" />
       </div>
     </ion-toolbar>
@@ -46,6 +66,7 @@
       </ion-col>
     </ion-row>
 
+    @if (this.routes().length) {
     <ion-row
       class="position-fixed start-0 bottom-0 w-100 px-1 py-2 bg-octonary"
     >
@@ -57,5 +78,6 @@
         />
       </ion-col>
     </ion-row>
+    }
   </ion-grid>
 </ion-content>

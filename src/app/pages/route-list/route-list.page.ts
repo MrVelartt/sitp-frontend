@@ -24,6 +24,7 @@ import {
   ItemSearchComponent,
 } from '@shared/components';
 import {
+  AppService,
   FavoriteService,
   LoadingService,
   RouteService,
@@ -57,6 +58,7 @@ export class RouteListPage {
   private readonly toastService = inject(ToastService);
   private readonly loadingService = inject(LoadingService);
   private readonly favoriteService = inject(FavoriteService);
+  private readonly appService = inject(AppService);
 
   // protected readonly routes = signal<Route[]>(routeMock);
   protected readonly routes = signal<Route[]>([]);
@@ -115,12 +117,24 @@ export class RouteListPage {
     this.search.set(search);
   }
 
-  protected navigateToRouteDetail(routedId: number): void {
+  protected async navigateToRouteDetail(routedId: number): Promise<void> {
+    try {
+      await this.appService.addRecentRoute(
+        this.routesMap.get(routedId) as Route,
+      );
+    } catch (error) {
+      console.error('navigateToRouteDetail', error);
+      this.toastService.show({
+        isError: true,
+        message: 'No se pudo añadir la ruta a recientes',
+      });
+    }
+
     this.router.navigate(['route-detail', routedId]);
   }
 
   protected navigateToMapWithRoute(routedId: number): void {
-    this.router.navigate(['map'], { queryParams: { routeId: routedId } });
+    this.router.navigate(['map'], { queryParams: { id: routedId } });
   }
 
   protected favorite(route: Route): void {
@@ -177,6 +191,7 @@ export class RouteListPage {
   }
 
   protected navigateToMap(): void {
-    this.router.navigate(['map']);
+    const ids = this.routes().map((route) => route.id);
+    this.router.navigate(['map'], { queryParams: { id: ids.join(',') } });
   }
 }

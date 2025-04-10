@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'map',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
   {
@@ -11,6 +11,11 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/main/main.page').then((m) => m.MainPage),
     children: [
+      {
+        path: 'home',
+        loadComponent: () =>
+          import('./pages/home/home.page').then((m) => m.HomePage),
+      },
       {
         path: 'map',
         loadComponent: () =>
@@ -20,17 +25,10 @@ export const routes: Routes = [
         path: 'routes',
         loadComponent: () =>
           import('./pages/route-list/route-list.page').then(
-            (m) => m.RouteListPage
+            (m) => m.RouteListPage,
           ),
         // loadChildren: () =>
         //   import('./pages/routes/routes.routes').then((m) => m.routesRoutes),
-      },
-      {
-        path: 'favorites',
-        loadComponent: () =>
-          import('./pages/favorites/favorites.page').then(
-            (m) => m.FavoritesPage
-          ),
       },
     ],
   },
@@ -43,7 +41,7 @@ export const routes: Routes = [
     path: 'route-detail/:id',
     loadComponent: () =>
       import('./pages/route-detail/route-detail.page').then(
-        (m) => m.RouteDetailPage
+        (m) => m.RouteDetailPage,
       ),
   },
   {
@@ -55,8 +53,13 @@ export const routes: Routes = [
     path: 'location-sharing',
     loadComponent: () =>
       import('./pages/location-sharing/location-sharing.page').then(
-        (m) => m.LocationSharingPage
+        (m) => m.LocationSharingPage,
       ),
+  },
+  {
+    path: 'favorites',
+    loadComponent: () =>
+      import('./pages/favorites/favorites.page').then((m) => m.FavoritesPage),
   },
   {
     path: '**',

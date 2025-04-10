@@ -46,13 +46,13 @@
             [content]="marker.content || null"
             [options]="advancedMarkerOptions"
           />
+          } @for (route of routes(); track route.id) {
+          <map-polyline [path]="route.vertices" [options]="route.options" />
           }
 
-          <map-polyline [path]="vertices()" />
-
           <!-- @if (directionsResults$ | async; as directionsResults) {
-          <map-directions-renderer [directions]="directionsResults" />
-          } -->
+            <map-directions-renderer [directions]="directionsResults" />
+            } -->
         </google-map>
       </ion-col>
     </ion-row>

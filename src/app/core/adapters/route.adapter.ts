@@ -1,5 +1,8 @@
-import { convertNumberMinutesToHMString, convertTimeTo12HourFormat } from '@shared/utils';
-import { Route } from '../models';
+import {
+  convertNumberMinutesToHMString,
+  convertTimeTo12HourFormat,
+} from '@shared/utils';
+import { Position, Route } from '../models';
 
 export const routeAdapter = (routes: any[]): Route[] =>
   routes.map((route) => routeFormat(route)) || [];
@@ -9,7 +12,7 @@ export const routeDetailAdapter = (route: any): Route => routeFormat(route);
 const routeFormat = (route: any): Route => ({
   id: route.id,
   name: route.name_route,
-  shortName: route.short_name_route || 'R',
+  shortName: route.short_name || 'R',
   description: route.description_route || 'Ruta sin descripción',
   color: route.color_route || '#2563EB',
   frequency: route.frequency || 0,
@@ -20,4 +23,11 @@ const routeFormat = (route: any): Route => ({
   endTime: convertTimeTo12HourFormat(route.end_time_route),
   distance: `${route.distance_route || 0} km`,
   countBuses: route.quantity_bus || 0,
+  coordinatePoints: coordenateAdapter(route.coordenadas),
 });
+
+const coordenateAdapter = (coordenates: any[]): Position[] =>
+  coordenates.map((coordenate) => ({
+    lat: coordenate.lat,
+    lng: coordenate.lon,
+  })) || [];

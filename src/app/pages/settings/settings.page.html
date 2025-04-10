@@ -41,10 +41,20 @@
             <app-dark-mode-setting />
           </div>
 
-          <div class="option-setting">
+          <div class="option-setting mb-3">
             <app-location-sharing-setting
-              (clickChange)="navitagateToLocationSharing()"
+              (clickChange)="navitagateToPage('/location-sharing')"
             />
+          </div>
+
+          <!-- <div class="option-setting mb-3">
+            <app-favorite-setting
+              (clickChange)="navitagateToPage('/favorites')"
+            />
+          </div> -->
+
+          <div class="option-setting mb-3">
+            <app-coming-soon (clickChange)="navitagateToPage('/')" />
           </div>
         </ion-list>
       </ion-col>
