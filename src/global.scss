@@ -66,6 +66,10 @@ body {
   --border-radius: #{$border-radius-secondary};
 }
 
+.--border-none {
+  --border-radius: 0;
+}
+
 .border-top-quaternary {
   border-top: 1px solid rgba($color-text-quaternary, 0.5);
 }

@@ -87,13 +87,13 @@ export class StartPage {
     try {
       await Promise.all([
         this.appConfigService.setAppAsVisited(),
-        this.router.navigate(['/map'], { replaceUrl: true }),
+        this.router.navigate(['/home'], { replaceUrl: true }),
       ]);
     } catch (error) {
-      console.error('Failed to navigate to map:', error);
+      console.error('Failed to navigate to home:', error);
       this.toastService.show({
         isError: true,
-        message: 'Error al navegar al mapa',
+        message: 'Error al navegar al home',
       });
     }
   }
