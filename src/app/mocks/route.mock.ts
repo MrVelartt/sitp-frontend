@@ -1,6 +1,6 @@
 import { BusMarker, Route } from '@core/models';
 
-export const routeMock: Route[] = [
+export const routeMock = [
   {
     id: 1,
     name: 'San Antonio - Hospital',
@@ -251,7 +251,7 @@ export const routeMock: Route[] = [
     frequency: '10',
     keyNeighborhoods: ['Alborada'],
   },
-];
+] as Route[];
 
 export const detailRouteMock = (id: number): Route => {
   console.log('id', id);
@@ -275,7 +275,7 @@ export const detailRouteMock = (id: number): Route => {
 };
 
 export const routesFavoritesMock = routeMock.filter(
-  (route) => route.isFavorite
+  (route) => route.isFavorite,
 );
 
 export const busStops: BusMarker[] = [
@@ -294,7 +294,7 @@ export const busStops: BusMarker[] = [
     position: { lat: 4.139262789380968, lng: -73.63519022584572 },
     name: 'Parada 3',
   },
-];
+] as BusMarker[];
 
 export const buses: BusMarker[] = [
   {
@@ -302,4 +302,4 @@ export const buses: BusMarker[] = [
     position: { lat: 4.121367603506176, lng: -73.64261360741561 },
     name: 'Bus 1',
   },
-];
+] as BusMarker[];

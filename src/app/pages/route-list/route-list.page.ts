@@ -118,10 +118,11 @@ export class RouteListPage {
   }
 
   protected async navigateToRouteDetail(routedId: number): Promise<void> {
+    console.log('navigateToRouteDetail', routedId, this.routesMap);
     try {
-      await this.appService.addRecentRoute(
-        this.routesMap.get(routedId) as Route,
-      );
+      const route = this.routes().find((route) => route.id === routedId);
+      if (!route) throw new Error('Route not found');
+      await this.appService.addRecentRoute(route);
     } catch (error) {
       console.error('navigateToRouteDetail', error);
       this.toastService.show({

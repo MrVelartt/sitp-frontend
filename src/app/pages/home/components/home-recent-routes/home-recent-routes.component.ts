@@ -14,7 +14,6 @@ import {
   IonCol,
   IonGrid,
   IonRow,
-  IonButton,
 } from '@ionic/angular/standalone';
 import { CapitalizePipe } from '@shared/pipes';
 
@@ -23,16 +22,7 @@ import { CapitalizePipe } from '@shared/pipes';
   templateUrl: './home-recent-routes.component.html',
   styleUrls: ['./home-recent-routes.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    IonButton,
-    IonRow,
-    IonGrid,
-    IonCol,
-    IonText,
-    IonItem,
-    NgStyle,
-    CapitalizePipe,
-  ],
+  imports: [IonRow, IonGrid, IonCol, IonText, IonItem, NgStyle, CapitalizePipe],
 })
 export class HomeRecentRoutesComponent {
   private readonly router = inject(Router);

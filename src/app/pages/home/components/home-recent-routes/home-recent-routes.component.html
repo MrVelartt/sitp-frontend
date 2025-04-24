@@ -7,10 +7,10 @@
       <ion-text class="fs-6 text-primary fw-bold">Búsquedas recientes</ion-text>
     </ion-col>
 
-    <ion-col size="12" class="p-0">
+    <ion-col size="12" class="p-0 d-flex flex-column gap-2">
       @for (route of recentRoutes(); track route.id) {
         <ion-item
-          class="no-padding bg-transparent bg-octonary border-radius-primary me-2"
+          class="no-padding bg-transparent bg-octonary border-radius-primary"
           lines="none"
           (click)="navigateToDetailRoute(route.id)"
         >

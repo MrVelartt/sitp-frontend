@@ -18,6 +18,7 @@ import {
 } from '@ionic/angular/standalone';
 import { ItemSearchComponent } from '@shared/components';
 import {
+  HomeComingSoonComponent,
   HomeFavoritesComponent,
   HomeItemButtonComponent,
   HomeRecentRoutesComponent,
@@ -45,6 +46,7 @@ import { Route } from '@core/models';
     HomeItemButtonComponent,
     HomeFavoritesComponent,
     HomeRecentRoutesComponent,
+    HomeComingSoonComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -40,13 +40,15 @@
             [options]="advancedMarkerOptions"
             (mapClick)="openInfoWindow($event, marker)"
           />
-          } @for (marker of busesMarkers(); track marker.position) {
+          }
+          <!-- @for (marker of busesMarkers(); track marker.position) {
           <map-advanced-marker
             [position]="marker.position || { lat: 0, lng: 0 }"
             [content]="marker.content || null"
             [options]="advancedMarkerOptions"
           />
-          } @for (route of routes(); track route.id) {
+          } -->
+          @for (route of routes(); track route.id) {
           <map-polyline [path]="route.vertices" [options]="route.options" />
           }
 

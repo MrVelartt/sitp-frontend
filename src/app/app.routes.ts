@@ -62,8 +62,15 @@ export const routes: Routes = [
       import('./pages/favorites/favorites.page').then((m) => m.FavoritesPage),
   },
   {
+    path: 'coming-soon',
+    loadComponent: () =>
+      import('./pages/coming-soon/coming-soon.page').then(
+        (m) => m.ComingSoonPage,
+      ),
+  },
+  {
     path: '**',
-    redirectTo: 'map',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
 ];

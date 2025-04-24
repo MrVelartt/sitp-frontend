@@ -159,7 +159,7 @@ ion-toast.toast-success::part(container) {
 .bus-stop-marker {
   border-radius: 50%;
   padding: 8px;
-  background: $color-primary;
+  // background: $color-primary;
   position: relative;
   cursor: pointer;
 
@@ -196,4 +196,8 @@ ion-toast.toast-success::part(container) {
 
 .text-capitalize {
   text-transform: capitalize;
+}
+
+.w-max-content {
+  width: max-content;
 }

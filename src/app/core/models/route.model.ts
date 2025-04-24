@@ -5,15 +5,26 @@ export interface Route {
   description: string;
   color: string;
   frequency: string;
-  isFavorite?: boolean;
   keyNeighborhoods: string[];
-  image?: string;
-  travelTime?: string;
-  startTime?: string;
-  endTime?: string;
-  distance?: string;
-  countBuses?: number;
-  coordinatePoints?: Position[];
+  image: string;
+  travelTime: string;
+  startTime: string;
+  endTime: string;
+  distance: string;
+  countBuses: number;
+  busStops: BusStop[];
+  coordinates: Position[];
+  isFavorite?: boolean;
+}
+
+export interface BusStop {
+  id: number;
+  name: string;
+  position: Position;
+  order: number;
+  icon: string;
+  routes?: Route[];
+  color?: string;
 }
 
 export interface RouteFeature {
@@ -27,6 +38,7 @@ export interface BusMarker {
   id: number;
   position: Position;
   name: string;
+  color: string;
 }
 
 export interface Position {

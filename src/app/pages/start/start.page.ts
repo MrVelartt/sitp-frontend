@@ -60,9 +60,7 @@ export class StartPage {
   protected readonly isError = this.appService.isError;
 
   constructor() {
-    addIcons({
-      logo: String(this.infoStart()?.logo),
-    });
+    addIcons({ logo: String(this.infoStart()?.logo) });
 
     effect(() => {
       if (this.isLoading()) {

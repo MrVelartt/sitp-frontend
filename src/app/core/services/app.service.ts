@@ -17,6 +17,7 @@ export class AppService {
   readonly infoStart = signal<Start | null>(null);
   readonly isLoading = signal<boolean>(false);
   readonly isError = signal<string | null>(null);
+  private readonly MAX_RECENT_ROUTES = 4;
 
   private readonly state = signal({
     searchs: new Map<number, Route>(),
@@ -62,7 +63,6 @@ export class AppService {
         }),
       )
       .subscribe((result) => {
-        console.log('result getRoutes', result);
         result.forEach((route: Route) =>
           this.state().searchs.set(route.id, route),
         );
@@ -73,6 +73,10 @@ export class AppService {
   async addRecentRoute(route: Route): Promise<void> {
     this.state.update((state) => {
       state.searchs.set(route.id, { ...route });
+      if (state.searchs.size > this.MAX_RECENT_ROUTES) {
+        const firstKey = Array.from(state.searchs.keys())[0];
+        state.searchs.delete(firstKey);
+      }
       return { searchs: state.searchs };
     });
     await this.storageService.setPreferences(
