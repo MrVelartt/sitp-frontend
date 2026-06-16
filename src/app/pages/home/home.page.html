@@ -1,31 +1,29 @@
 <ion-header [translucent]="true" class="shadow-none">
-  <ion-toolbar class="bg-header pt-4 text-primary px-3 pb-2">
+  <ion-toolbar class="home-toolbar pt-4 px-3 pb-2">
     <ion-title class="p-0">
-      <h1 class="mb-0 fw-bold">{{ greetingMessage() }}</h1>
+      <h1 class="mb-0 fw-bold text-primary">{{ greetingMessage() }}</h1>
     </ion-title>
-    <ion-text class="text-secondary">¿A dónde se dirige hoy?</ion-text>
+    <ion-text class="text-tertiary">¿A dónde se dirige hoy?</ion-text>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="bg-quinary">
+<ion-content [fullscreen]="true" class="home-content">
   <ion-header collapse="condense">
-    <ion-toolbar class="bg-header text-primary px-3 pb-2">
+    <ion-toolbar class="home-toolbar px-3 pb-2">
       <ion-title class="p-0">
-        <h1 class="mb-0 fw-bold">{{ greetingMessage() }}</h1>
+        <h1 class="mb-0 fw-bold text-primary">{{ greetingMessage() }}</h1>
       </ion-title>
-      <ion-text class="text-secondary">¿A dónde se dirige hoy?</ion-text>
+      <ion-text class="text-tertiary">¿A dónde se dirige hoy?</ion-text>
     </ion-toolbar>
   </ion-header>
 
   <ion-grid class="mt-3">
     <ion-row class="mb-3">
       <ion-col size="12">
-        <div class="search">
-          <app-item-search
-            placeholder="Buscar rutas o paradas"
-            (clickChange)="navigateToPage('/routes')"
-          />
-        </div>
+        <app-item-search
+          placeholder="Buscar rutas o paradas"
+          (clickChange)="navigateToPage('/routes')"
+        />
       </ion-col>
     </ion-row>
 
@@ -35,34 +33,34 @@
           title="Ver todas las rutas"
           description="Mapa disponible"
           icon="routes"
-          backgroundColor="#263cd1"
+          backgroundColor="#1E3A5F"
           (clickChange)="navigateToMap()"
         />
       </ion-col>
       <ion-col size="6">
         <app-home-item-button
           title="Seguir mi autobús"
-          description="Seguimiento en tiempo real"
+          description="Tiempo real"
           icon="bus"
-          backgroundColor="#10B981"
+          backgroundColor="#0E7490"
           (clickChange)="navigateToPage('/map')"
         />
       </ion-col>
       <ion-col size="6">
         <app-home-item-button
           title="Favoritos"
-          description="Tus rutas guardadas"
+          description="Rutas guardadas"
           icon="star-round"
-          backgroundColor="#8B5CF6"
+          backgroundColor="#312E81"
           (clickChange)="navigateToPage('/favorites')"
         />
       </ion-col>
       <ion-col size="6">
         <app-home-item-button
           title="Paradas cercanas"
-          description="Buscar paradas más cercanas"
+          description="Buscar paradas"
           icon="location"
-          backgroundColor="#F97316"
+          backgroundColor="#0F4C81"
           (clickChange)="navigateToPage('/map')"
         />
       </ion-col>

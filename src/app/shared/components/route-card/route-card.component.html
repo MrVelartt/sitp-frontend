@@ -1,6 +1,6 @@
 @let routeLocal = route();
 <ion-card
-  class="m-0 border-radius-secondary bg-quinary"
+  class="m-0 border-radius-secondary"
   (click)="seeDetailRoute($event)"
 >
   <ion-card-header class="flex-row column-gap-2 align-items-center">
@@ -48,7 +48,8 @@
       class="fs-9 w-100 m-0 mt-3 fw-semibold border-radius-secondary text-none"
       [ngStyle]="{
         color: routeLocal.color,
-        '--background': convertHexToRgba(routeLocal.color, 0.2),
+        '--background': convertHexToRgba(routeLocal.color, 0.15),
+        '--border': '1px solid ' + convertHexToRgba(routeLocal.color, 0.3),
       }"
       (click)="seeRoute($event)"
     >

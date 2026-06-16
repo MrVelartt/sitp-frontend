@@ -1,8 +1,10 @@
 .select-style-1 {
-  min-height: 38px;
-  --placeholder-color: #{$color-text-secondary};
-  --border-color: #{$color-text-tertiary};
+  min-height: 44px;
+  --placeholder-color: #{$color-text-tertiary};
+  --border-color: var(--color-border);
   color: #{$color-text-secondary};
+  --background: #{$color-bg-surface};
+  border-radius: $border-radius-primary;
 }
 
 .select-wrapper-inner {
@@ -10,11 +12,12 @@
 }
 
 .action-sheet-group {
-  background: $color-quinary !important;
+  background: $color-bg-card !important;
   .action-sheet-button {
     color: $color-text-secondary;
+    background: $color-bg-card;
     &:hover {
-      color: $color-text-secondary !important;
+      color: $color-text-primary !important;
       font-weight: bold;
     }
   }

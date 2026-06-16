@@ -1,30 +1,24 @@
 <ion-header [translucent]="true">
-  <ion-toolbar class="bg-header pt-4">
+  <ion-toolbar class="pt-4">
     <ion-title class="title-center">
       <h1 class="text-primary fs-2 fw-semibold m-0">Configuración</h1>
     </ion-title>
 
     <ion-buttons slot="start">
-      <ion-back-button
-        class="text-primary"
-        defaultHref="/home"
-      ></ion-back-button>
+      <ion-back-button class="text-accent" defaultHref="/home"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="bg-octonary position-relative">
+<ion-content [fullscreen]="true" class="position-relative">
   <ion-header collapse="condense">
-    <ion-toolbar class="bg-header">
+    <ion-toolbar>
       <ion-title size="large" class="title-center">
         <h1 class="text-primary text-center fs-2 fw-bold">Configuración</h1>
       </ion-title>
 
       <ion-buttons slot="start">
-        <ion-back-button
-          class="text-primary"
-          defaultHref="/home"
-        ></ion-back-button>
+        <ion-back-button class="text-accent" defaultHref="/home"></ion-back-button>
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
@@ -32,7 +26,7 @@
   <ion-grid class="settings">
     <ion-row>
       <ion-col size="12">
-        <ion-list class="bg-octonary">
+        <ion-list>
           <div class="option-setting mb-3">
             <app-language-setting />
           </div>
@@ -46,16 +40,6 @@
               (clickChange)="navitagateToPage('/location-sharing')"
             />
           </div>
-
-          <!-- <div class="option-setting mb-3">
-            <app-favorite-setting
-              (clickChange)="navitagateToPage('/favorites')"
-            />
-          </div> -->
-
-          <!-- <div class="option-setting mb-3">
-            <app-coming-soon (clickChange)="navitagateToPage('/')" />
-          </div> -->
         </ion-list>
       </ion-col>
     </ion-row>

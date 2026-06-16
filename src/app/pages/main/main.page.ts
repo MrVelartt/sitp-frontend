@@ -6,7 +6,7 @@ import {
   IonIcon,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { map, settings, home } from 'ionicons/icons';
+import { map, settings, home, trophyOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-main',
@@ -21,6 +21,7 @@ export class MainPage {
       map,
       settings,
       home,
+      trophyOutline,
       routes: 'assets/icons/routes.svg',
       starRound: 'assets/icons/star.svg',
     });

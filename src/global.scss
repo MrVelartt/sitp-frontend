@@ -1,12 +1,6 @@
 /*
  * App Global CSS
  * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
  */
 
 /* Core CSS required for Ionic components to work properly */
@@ -34,25 +28,63 @@
 
 /**
  * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
  */
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
 
+// Base dark theme
+:root {
+  --ion-background-color: #{$color-bg-dark};
+  --ion-background-color-rgb: 15, 23, 42;
+  --ion-text-color: #{$color-text-primary};
+  --ion-text-color-rgb: 248, 250, 252;
+  --ion-toolbar-background: #{$color-bg-dark};
+  --ion-item-background: #{$color-bg-card};
+  --ion-card-background: #{$color-bg-card};
+  --ion-tab-bar-background: #{$color-bg-dark};
+  --ion-tab-bar-border-color: var(--color-border);
+}
+
 body {
   font-family: "Roboto", "Helvetica Neue", sans-serif !important;
+  background: $color-bg-dark;
+  color: $color-text-primary;
+}
+
+ion-content {
+  --background: #{$color-bg-dark};
+}
+
+ion-card {
+  --background: #{$color-bg-card};
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--color-border);
+}
+
+ion-toolbar {
+  --background: #{$color-bg-dark};
+  --border-color: var(--color-border);
+}
+
+ion-list {
+  --background: transparent;
+  background: transparent;
+}
+
+ion-item {
+  --background: #{$color-bg-card};
+  --color: #{$color-text-primary};
+  --border-color: var(--color-border);
 }
 
 .item-style-1 {
   display: grid;
   place-content: center;
-  --background: #{$color-secondary};
-  background: $color-secondary;
+  --background: #{$color-bg-surface};
+  background: $color-bg-surface;
   .icon {
-    color: $color-primary;
+    color: $color-accent;
   }
 }
 
@@ -71,7 +103,7 @@ body {
 }
 
 .border-top-quaternary {
-  border-top: 1px solid rgba($color-text-quaternary, 0.5);
+  border-top: 1px solid var(--color-border);
 }
 
 .text-lines-1 {
@@ -94,7 +126,7 @@ body {
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 3;
-  line-clamp: 2;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
 }
 
@@ -119,15 +151,16 @@ ion-item.no-padding {
 
 .tabs-style-1 {
   ion-tab-button {
-    --background: #{$color-quinary};
+    --background: #{$color-bg-dark};
     --color: #{$color-text-quaternary};
-    --color-selected: #{$color-primary};
+    --color-selected: #{$color-accent};
+    border-top: 1px solid var(--color-border);
   }
 }
 
 .toggle-style-1 {
   &:not(.toggle-checked)::part(track) {
-    background: $color-octonary;
+    background: $color-bg-surface;
   }
 }
 
@@ -139,13 +172,13 @@ ion-item.no-padding {
 
 .header-style-1 {
   box-shadow: none;
-  border-bottom: 2px solid #{$color-octonary};
+  border-bottom: 1px solid var(--color-border);
 }
 
 .loading-wrapper.ion-overlay-wrapper {
-  background: $color-quinary;
+  background: $color-bg-card;
   color: $color-text-primary;
-  --spinner-color: #{$color-primary};
+  --spinner-color: #{$color-accent};
 }
 
 ion-toast.toast-error::part(container) {
@@ -163,7 +196,6 @@ ion-toast.toast-success::part(container) {
 .bus-stop-marker {
   border-radius: 50%;
   padding: 8px;
-  // background: $color-primary;
   position: relative;
   cursor: pointer;
 
@@ -172,12 +204,12 @@ ion-toast.toast-success::part(container) {
     bottom: -20px;
     left: 50%;
     transform: translateX(-50%);
-    background: white;
-    color: black;
+    background: $color-bg-card;
+    color: $color-text-primary;
     padding: 2px 5px;
     border-radius: 3px;
     font-size: 12px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
   }
 }
 
@@ -204,4 +236,26 @@ ion-toast.toast-success::part(container) {
 
 .w-max-content {
   width: max-content;
+}
+
+// Premium glass card
+.glass-card {
+  background: rgba(30, 41, 59, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-border);
+  border-radius: $border-radius-secondary;
+}
+
+// Gradient text accent
+.text-gradient {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// Premium glow effect
+.glow-accent {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
 }

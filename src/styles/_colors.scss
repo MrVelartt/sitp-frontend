@@ -1,6 +1,6 @@
 .bg-start {
-  background: $color-secondary;
-  --background: #{$color-secondary};
+  background: var(--gradient-hero);
+  --background: var(--gradient-hero);
 }
 
 .bg-transparent {
@@ -14,27 +14,37 @@
 }
 
 .bg-octonary {
-  background: $color-octonary;
-  --background: #{$color-octonary};
+  background: $color-bg-dark;
+  --background: #{$color-bg-dark};
+}
+
+.bg-card {
+  background: $color-bg-card;
+  --background: #{$color-bg-card};
+}
+
+.bg-surface {
+  background: $color-bg-surface;
+  --background: #{$color-bg-surface};
 }
 
 .bg-light-septenary {
-  background: rgba(var(--ion-color-septenary-rgb), 0.1);
-  --background: rgba(var(--ion-color-septenary-rgb), 0.1);
+  background: rgba(239, 68, 68, 0.15);
+  --background: rgba(239, 68, 68, 0.15);
 }
 
 .bg-light-octonary {
-  background: rgba(var(--ion-color-octonary-rgb), 0.1);
-  --background: transparentize(var(--ion-color-octonary-rgb), 0.1);
+  background: rgba(34, 197, 94, 0.15);
+  --background: rgba(34, 197, 94, 0.15);
 }
 
 .bg-header {
-  background: $color-header;
-  --background: #{$color-header};
+  background: $color-bg-dark;
+  --background: #{$color-bg-dark};
 }
 
 .color-logo {
-  color: $color-primary;
+  color: $color-accent;
 }
 
 .text-primary {
@@ -62,7 +72,7 @@
 }
 
 .color-octonary {
-  color: $color-octonary;
+  color: $color-text-muted;
 }
 
 .color-favorite {
@@ -71,6 +81,10 @@
 
 .color-favorite-active {
   color: $color-nonary;
+}
+
+.text-accent {
+  color: $color-accent;
 }
 
 .ion-color-septenary {

@@ -1,18 +1,18 @@
 <ion-header [translucent]="true" class="header-style-1">
-  <ion-toolbar class="bg-header pt-4">
+  <ion-toolbar class="pt-4">
     <ion-title class="title-center">
       <h1 class="text-primary fs-2 fw-semibold m-0">Detalle de la ruta</h1>
     </ion-title>
 
     <ion-buttons slot="start">
-      <ion-back-button class="text-primary" defaultHref="/routes" />
+      <ion-back-button class="text-accent" defaultHref="/routes" />
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="bg-octonary">
+<ion-content [fullscreen]="true">
   <ion-header collapse="condense" class="header-style-1">
-    <ion-toolbar class="bg-header">
+    <ion-toolbar>
       <ion-title size="large">
         <h1 class="text-primary text-center fs-2 fw-bold">
           Detalle de la ruta
@@ -20,7 +20,7 @@
       </ion-title>
 
       <ion-buttons slot="start">
-        <ion-back-button class="text-primary" defaultHref="/routes" />
+        <ion-back-button class="text-accent" defaultHref="/routes" />
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
@@ -28,13 +28,13 @@
   @let routeLocal = route();
 
   <ion-grid class="p-0">
-    <ion-row class="bg-quinary p-2">
+    <ion-row class="p-2">
       <ion-col size="12">
-        <ion-img [src]="routeLocal?.image" />
+        <ion-img [src]="routeLocal?.image" class="route-hero-img" />
       </ion-col>
     </ion-row>
 
-    <ion-row class="p-2 bg-quinary mb-2">
+    <ion-row class="p-2 mb-2 bg-card">
       <ion-col size="12">
         <ion-title class="p-0">
           <h1 class="text-primary text-center fw-semibold fs-5 m-0">
@@ -49,26 +49,26 @@
       }
     </ion-row>
 
-    <ion-row class="p-2 bg-quinary">
+    <ion-row class="p-2 mb-2 bg-card">
       <ion-col size="12">
         <ion-text>
-          <h2 class="text-primary fs-4 m-0 mb-2 fw-semibold">
+          <h2 class="text-accent fs-4 m-0 mb-2 fw-semibold">
             Descripción de la ruta
           </h2>
         </ion-text>
 
         <ion-text>
-          <p class="text-primary fs-9">{{ routeLocal?.description }}</p>
+          <p class="text-secondary fs-9">{{ routeLocal?.description }}</p>
         </ion-text>
 
         <ion-text class="fs-9">
-          <strong class="text-primary">Barrios clave cubiertos: </strong>
-          <span class="text-primary">{{ keyNeighborhoods() }}</span>
+          <strong class="text-tertiary">Barrios clave cubiertos: </strong>
+          <span class="text-secondary">{{ keyNeighborhoods() }}</span>
         </ion-text>
       </ion-col>
     </ion-row>
 
-    <ion-row class="p-2 bg-quinary">
+    <ion-row class="p-2 bg-card">
       <ion-col size="12">
         <app-main-button
           label="Ver los buses de esta ruta"

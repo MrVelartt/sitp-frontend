@@ -1,19 +1,19 @@
 <ion-header [translucent]="true">
-  <ion-toolbar class="bg-header pt-4">
+  <ion-toolbar class="pt-4">
     <ion-title>
       <h1 class="text-primary text-center fs-2 fw-semibold my-0 mb-3">
         Lista de rutas
       </h1>
     </ion-title>
-    <div class="search px-3 pb-3">
+    <div class="px-3 pb-3">
       <app-item-search (searchChange)="searchRoute($event)" />
     </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="position-relative bg-octonary">
+<ion-content [fullscreen]="true" class="position-relative">
   <ion-header collapse="condense">
-    <ion-toolbar class="bg-header">
+    <ion-toolbar>
       <ion-title>
         <h1 class="text-primary text-center fs-2 fw-bold">Lista de rutas</h1>
       </ion-title>
@@ -26,7 +26,7 @@
   <ion-grid style="padding-bottom: 65px">
     <ion-row>
       <ion-col size="12">
-        <ion-list class="p-0 bg-octonary">
+        <ion-list class="p-0">
           @for (route of filteredRoutes(); track route.id) { @defer(on viewport)
           {
           <div class="content-card mb-3">
@@ -38,15 +38,13 @@
             />
           </div>
           } @placeholder {
-          <p>...Cargando</p>
+          <p class="text-tertiary px-3">...Cargando</p>
           } }
         </ion-list>
       </ion-col>
     </ion-row>
 
-    <ion-row
-      class="position-fixed start-0 bottom-0 w-100 px-1 py-2 bg-octonary"
-    >
+    <ion-row class="position-fixed start-0 bottom-0 w-100 px-1 py-2">
       <ion-col>
         <app-main-button
           label="Ver todas las rutas en el mapa"

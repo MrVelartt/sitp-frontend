@@ -27,8 +27,11 @@ export const routes: Routes = [
           import('./pages/route-list/route-list.page').then(
             (m) => m.RouteListPage,
           ),
-        // loadChildren: () =>
-        //   import('./pages/routes/routes.routes').then((m) => m.routesRoutes),
+      },
+      {
+        path: 'trivia',
+        loadComponent: () =>
+          import('./pages/trivia/trivia.page').then((m) => m.TriviaPage),
       },
     ],
   },

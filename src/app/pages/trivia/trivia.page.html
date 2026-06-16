@@ -1,0 +1,175 @@
+<ion-content [fullscreen]="true" class="trivia-content">
+
+  <!-- ══════════════════════════════════════════
+       ESTADO: START
+  ══════════════════════════════════════════ -->
+  @if (trivia.state().gameState === 'start') {
+    <div class="start-screen">
+      <div class="hero-bg"></div>
+      <div class="start-content">
+        <div class="trophy-icon">
+          <ion-icon name="trophy-outline"></ion-icon>
+        </div>
+        <h1 class="start-title">Cultura Llanera</h1>
+        <p class="start-subtitle">
+          Demuestra tu conocimiento sobre los Llanos Orientales,
+          sus héroes, tradiciones y la magia de Villavicencio.
+        </p>
+
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number">25</span>
+            <span class="stat-label">Preguntas</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">4</span>
+            <span class="stat-label">Categorías</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">∞</span>
+            <span class="stat-label">Intentos</span>
+          </div>
+        </div>
+
+        <div class="categories-preview">
+          <span class="cat-tag cat-historia">Historia</span>
+          <span class="cat-tag cat-personajes">Personajes</span>
+          <span class="cat-tag cat-tradiciones">Tradiciones</span>
+          <span class="cat-tag cat-ciudad">Ciudad</span>
+        </div>
+
+        <ion-button
+          class="btn-start text-none"
+          expand="block"
+          (click)="trivia.startGame()"
+        >
+          <ion-icon slot="start" name="trophy-outline"></ion-icon>
+          ¡Empezar el Quiz!
+        </ion-button>
+      </div>
+    </div>
+  }
+
+  <!-- ══════════════════════════════════════════
+       ESTADO: PLAYING
+  ══════════════════════════════════════════ -->
+  @if (trivia.state().gameState === 'playing') {
+    @let st = trivia.state();
+    @let question = trivia.currentQuestion();
+    <div class="playing-screen">
+
+      <!-- Header -->
+      <div class="play-header">
+        <div class="progress-info">
+          <span class="q-counter">{{ st.currentIndex + 1 }} / {{ trivia.questions().length }}</span>
+          <div class="streak-badge" [class.streak-active]="st.streak >= 2">
+            <ion-icon name="flame-outline"></ion-icon>
+            <span>{{ st.streak }}</span>
+          </div>
+        </div>
+        <ion-progress-bar
+          [value]="trivia.progress() / 100"
+          class="play-progress"
+        ></ion-progress-bar>
+        <div class="score-row">
+          <span class="score-text">Puntos: <strong>{{ st.score }}</strong></span>
+          <span class="cat-tag cat-{{ question?.category }}">{{ categoryLabels[question?.category ?? ''] }}</span>
+        </div>
+      </div>
+
+      <!-- Pregunta -->
+      <div class="question-card">
+        <p class="question-text">{{ question?.question }}</p>
+      </div>
+
+      <!-- Opciones -->
+      <div class="options-list">
+        @for (option of question?.options; track $index) {
+          <button
+            class="option-btn option-{{ getOptionState($index) }}"
+            [disabled]="st.answered"
+            (click)="trivia.selectAnswer($index)"
+          >
+            <span class="option-letter">{{ optionLetters[$index] }}</span>
+            <span class="option-text">{{ option }}</span>
+            @if (st.answered && $index === question?.correctIndex) {
+              <ion-icon name="checkmark-circle" class="option-icon correct-icon"></ion-icon>
+            }
+            @if (st.answered && $index === st.selectedIndex && $index !== question?.correctIndex) {
+              <ion-icon name="close-circle" class="option-icon wrong-icon"></ion-icon>
+            }
+          </button>
+        }
+      </div>
+
+      <!-- Explicación -->
+      @if (st.answered) {
+        <div class="explanation-card" [class.explanation-correct]="st.selectedIndex === question?.correctIndex">
+          <p class="explanation-text">{{ question?.explanation }}</p>
+        </div>
+
+        <div class="next-btn-wrap">
+          <ion-button
+            class="btn-next text-none"
+            expand="block"
+            (click)="trivia.nextQuestion()"
+          >
+            @if (st.currentIndex + 1 < trivia.questions().length) {
+              Siguiente pregunta
+              <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+            } @else {
+              Ver resultados
+              <ion-icon slot="end" name="trophy-outline"></ion-icon>
+            }
+          </ion-button>
+        </div>
+      }
+    </div>
+  }
+
+  <!-- ══════════════════════════════════════════
+       ESTADO: RESULT
+  ══════════════════════════════════════════ -->
+  @if (trivia.state().gameState === 'result') {
+    @let st = trivia.state();
+    <div class="result-screen">
+      <div class="hero-bg"></div>
+      <div class="result-content">
+        <div class="result-trophy">
+          <ion-icon name="trophy-outline"></ion-icon>
+        </div>
+
+        <h2 class="rank-title">{{ trivia.rank() }}</h2>
+        <p class="rank-sub">Tu resultado en Cultura Llanera</p>
+
+        <div class="result-score-circle">
+          <span class="result-score-num">{{ st.score }}</span>
+          <span class="result-score-total">/ {{ trivia.questions().length }}</span>
+        </div>
+
+        <div class="result-stats">
+          <div class="result-stat">
+            <ion-icon name="flame-outline"></ion-icon>
+            <span class="rs-val">{{ st.bestStreak }}</span>
+            <span class="rs-label">Mejor racha</span>
+          </div>
+          <div class="result-stat">
+            <ion-icon name="ribbon-outline"></ion-icon>
+            <span class="rs-val">{{ ((st.score / trivia.questions().length) * 100) | number:'1.0-0' }}%</span>
+            <span class="rs-label">Precisión</span>
+          </div>
+        </div>
+
+        <ion-button
+          class="btn-start text-none"
+          expand="block"
+          (click)="trivia.resetGame()"
+        >
+          <ion-icon slot="start" name="refresh-outline"></ion-icon>
+          Jugar de nuevo
+        </ion-button>
+      </div>
+    </div>
+  }
+
+</ion-content>

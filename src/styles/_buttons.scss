@@ -1,6 +1,10 @@
 .button-style-1 {
   --border-radius: #{$border-radius-primary};
+  --background: var(--gradient-accent);
+  --background-activated: #{$color-accent};
   border-radius: $border-radius-primary;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 .button-style-2 {
@@ -18,24 +22,27 @@
 }
 
 .button-style-4 {
-  --background: #{$color-quinary};
+  --background: #{$color-bg-card};
+  --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   width: 50px;
   height: 50px;
   margin: 0;
   --border-radius: 50%;
-  color: $color-primary;
+  color: $color-accent;
+  border: 1px solid var(--color-border);
   .icon {
     font-size: 1.5rem;
   }
 }
 
 .button-style-5 {
-  --background: #{$color-primary};
+  --background: #{$color-accent};
+  --box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
   width: 50px;
   height: 50px;
   margin: 0;
   --border-radius: 50%;
-  color: $color-quinary;
+  color: #fff;
   .icon {
     font-size: 1.2rem;
   }
