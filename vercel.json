@@ -2,10 +2,10 @@
   "rewrites": [
     {
       "source": "/bus/api/:path*",
-      "destination": "http://18.117.138.108:8000/bus/api/:path*"
+      "destination": "http://api.sitp-villavo.site:8000/bus/api/:path*"
     },
     {
-      "source": "/(.*)",
+      "source": "/:path*",
       "destination": "/index.html"
     }
   ]
