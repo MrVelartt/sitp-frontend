@@ -1,25 +1,25 @@
 .coming-soon-banner {
-  // Fondo base + skyline SVG posicionado en el fondo + textura dots
+  // Fondo base obsidiana → petróleo + silueta de la Cordillera Oriental
   background-color: #15171A;
   background-image:
-    url("data:image/svg+xml,%3Csvg width='360' height='80' viewBox='0 0 360 80' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='32' width='38' height='48' fill='%23C9A227' fill-opacity='.55'/%3E%3Crect x='8' y='12' width='14' height='20' fill='%23C9A227' fill-opacity='.55'/%3E%3Crect x='46' y='22' width='52' height='58' fill='%233FA593' fill-opacity='.5'/%3E%3Crect x='58' y='6' width='20' height='16' fill='%233FA593' fill-opacity='.5'/%3E%3Crect x='52' y='34' width='6' height='5' fill='%23ECE6D8' fill-opacity='.2'/%3E%3Crect x='62' y='34' width='6' height='5' fill='%23ECE6D8' fill-opacity='.2'/%3E%3Crect x='72' y='34' width='6' height='5' fill='%23ECE6D8' fill-opacity='.2'/%3E%3Crect x='82' y='34' width='6' height='5' fill='%23ECE6D8' fill-opacity='.2'/%3E%3Crect x='106' y='42' width='28' height='38' fill='%236FA3C2' fill-opacity='.5'/%3E%3Crect x='142' y='18' width='58' height='62' fill='%23C2425B' fill-opacity='.45'/%3E%3Crect x='158' y='2' width='26' height='16' fill='%23C2425B' fill-opacity='.45'/%3E%3Crect x='148' y='30' width='6' height='5' fill='%23ECE6D8' fill-opacity='.18'/%3E%3Crect x='158' y='30' width='6' height='5' fill='%23ECE6D8' fill-opacity='.18'/%3E%3Crect x='168' y='30' width='6' height='5' fill='%23ECE6D8' fill-opacity='.18'/%3E%3Crect x='208' y='36' width='34' height='44' fill='%23C9A227' fill-opacity='.4'/%3E%3Crect x='218' y='20' width='14' height='16' fill='%23C9A227' fill-opacity='.4'/%3E%3Crect x='250' y='25' width='58' height='55' fill='%231B3A4B' fill-opacity='.9'/%3E%3Crect x='265' y='8' width='28' height='17' fill='%236FA3C2' fill-opacity='.5'/%3E%3Crect x='254' y='35' width='6' height='5' fill='%236FA3C2' fill-opacity='.35'/%3E%3Crect x='264' y='35' width='6' height='5' fill='%236FA3C2' fill-opacity='.35'/%3E%3Crect x='274' y='35' width='6' height='5' fill='%236FA3C2' fill-opacity='.35'/%3E%3Crect x='284' y='35' width='6' height='5' fill='%236FA3C2' fill-opacity='.35'/%3E%3Crect x='314' y='30' width='46' height='50' fill='%233FA593' fill-opacity='.4'/%3E%3Crect x='326' y='14' width='22' height='16' fill='%233FA593' fill-opacity='.4'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='360' height='95' viewBox='0 0 360 95' xmlns='http://www.w3.org/2000/svg'%3E%3C!-- Sol dorado --%3E%3Ccircle cx='298' cy='26' r='20' fill='%23C9A227' fill-opacity='.68'/%3E%3Ccircle cx='298' cy='26' r='25' fill='none' stroke='%23C9A227' stroke-opacity='.25' stroke-width='1.5'/%3E%3C!-- Montanas lejanas (petroleo) --%3E%3Cpolygon points='0,95 80,20 160,95' fill='%231B3A4B' fill-opacity='.65'/%3E%3Cpolygon points='80,95 180,5 280,95' fill='%231B3A4B' fill-opacity='.55'/%3E%3Cpolygon points='190,95 290,18 360,95' fill='%231B3A4B' fill-opacity='.6'/%3E%3C!-- Montanas cercanas (esmeralda) --%3E%3Cpolygon points='0,95 60,38 120,95' fill='%230F4C44' fill-opacity='.8'/%3E%3Cpolygon points='60,95 155,22 250,95' fill='%230F4C44' fill-opacity='.75'/%3E%3Cpolygon points='180,95 255,30 330,95' fill='%233FA593' fill-opacity='.55'/%3E%3Cpolygon points='290,95 330,45 360,95' fill='%230F4C44' fill-opacity='.7'/%3E%3C/svg%3E"),
     var(--texture-dots);
   background-position: bottom center, center;
   background-repeat: no-repeat, repeat;
   background-size: 100% auto, auto;
-  height: 160px;
+  height: 195px;
   border-radius: 1rem;
   overflow: hidden;
   position: relative;
   cursor: pointer;
-  border: 1px solid rgba(201, 162, 39, 0.25);
+  border: 1px solid rgba(201, 162, 39, 0.28);
 
-  // Gradiente oscuro para legibilidad del texto
+  // Gradiente oscuro suave para legibilidad del texto
   &::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(21,23,26,0.25) 0%, rgba(21,23,26,0.65) 100%);
+    background: linear-gradient(180deg, rgba(21,23,26,0.2) 0%, rgba(21,23,26,0.6) 100%);
     z-index: 1;
   }
 
@@ -27,13 +27,15 @@
 }
 
 .cs-label {
-  padding: 0.5rem 0.75rem;
-  background: rgba(21, 23, 26, 0.75);
+  padding: 0.5rem 0.85rem;
+  background: rgba(21, 23, 26, 0.72);
   border-radius: 0.5rem;
-  font-size: 0.8rem;
-  font-weight: 600;
+  font-size: 0.88rem;
+  font-weight: 700;
   color: #ECE6D8;
-  margin-top: 0.75rem;
+  margin-top: 0.85rem;
+  text-align: center;
+  line-height: 1.35;
 }
 
 .cs-btn {
@@ -42,12 +44,12 @@
   gap: 0.3rem;
   border: none;
   border-radius: 2rem;
-  padding: 0.45rem 1rem;
+  padding: 0.48rem 1.1rem;
   background: linear-gradient(135deg, #C9A227, #E2C15A);
   color: #15171A;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 700;
   cursor: pointer;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.85rem;
   ion-icon { font-size: 0.85rem; }
 }

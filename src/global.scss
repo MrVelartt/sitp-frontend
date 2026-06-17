@@ -48,6 +48,11 @@
   50%       { box-shadow: 0 0 20px rgba(201,162,39,0.5); }
 }
 
+@keyframes livePulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.35; transform: scale(1.5); }
+}
+
 // ─── Base dark obsidian ────────────────────────────────────────────────
 body {
   font-family: "Roboto", "Helvetica Neue", sans-serif !important;
@@ -90,6 +95,14 @@ ion-item {
     --color-selected: #{$color-gold};
     border-top: 1px solid var(--color-border-gold);
   }
+}
+
+// Pill detrás del ícono activo
+.tabs-style-1 ion-tab-button.tab-selected::part(native) {
+  background: rgba(201, 162, 39, 0.1);
+  border-radius: 999px;
+  margin: 5px 10px;
+  height: calc(100% - 10px);
 }
 
 // ─── Utilidades de layout ─────────────────────────────────────────────

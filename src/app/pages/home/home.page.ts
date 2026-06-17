@@ -3,7 +3,6 @@ import {
   Component,
   computed,
   inject,
-  signal,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import {
@@ -20,11 +19,10 @@ import {
   HomeComingSoonComponent,
   HomeFavoritesComponent,
   HomeItemButtonComponent,
-  HomeRecentRoutesComponent,
 } from './components';
 import { addIcons } from 'ionicons';
 import { bus, location } from 'ionicons/icons';
-import { AppService, FavoriteService } from '@core/services';
+import { FavoriteService } from '@core/services';
 import { Route } from '@core/models';
 
 @Component({
@@ -43,7 +41,6 @@ import { Route } from '@core/models';
     ItemSearchComponent,
     HomeItemButtonComponent,
     HomeFavoritesComponent,
-    HomeRecentRoutesComponent,
     HomeComingSoonComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -51,18 +48,9 @@ import { Route } from '@core/models';
 export class HomePage {
   private readonly router = inject(Router);
   private readonly favoriteService = inject(FavoriteService);
-  private readonly appService = inject(AppService);
 
   protected readonly favorites = computed<Route[]>(() =>
     this.favoriteService.getFormattedRoutes(),
-  );
-  protected readonly recentRoutes = computed<Route[]>(() => {
-    console.log('recentRoutes', this.appService.getFormattedSearchs());
-    return this.appService.getFormattedSearchs();
-  });
-
-  protected readonly greetingMessage = signal<string>(
-    this.getGreetingMessage(),
   );
 
   constructor() {
@@ -72,21 +60,6 @@ export class HomePage {
       starRound: 'assets/icons/star.svg',
       location,
     });
-
-    this.appService.getRecentRoutes();
-    this.getGreetingMessage();
-  }
-
-  private getGreetingMessage(): string {
-    const currentHour = new Date().getHours();
-    console.log({ currentHour });
-    if (currentHour < 12) {
-      return 'Buenos días';
-    } else if (currentHour < 18) {
-      return 'Buenas tardes';
-    } else {
-      return 'Buenas noches';
-    }
   }
 
   navigateToPage(url: string): void {

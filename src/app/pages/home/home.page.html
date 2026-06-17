@@ -1,13 +1,11 @@
 <ion-header [translucent]="true" class="shadow-none">
-  <ion-toolbar class="home-toolbar pt-4 px-3 pb-2">
+  <ion-toolbar class="home-toolbar px-3 pb-3 pt-3">
     <ion-title class="p-0">
-      <h1 class="mb-0 fw-bold text-primary">{{ greetingMessage() }}</h1>
-      <p class="toolbar-subtitle mb-0">¿A dónde te diriges hoy?</p>
+      <div class="vivo-header">
+        <span class="vivo-logo text-gradient-gold">VIVO</span>
+        <span class="vivo-tagline">Villavo Inteligente · Vías y Orígenes</span>
+      </div>
     </ion-title>
-    <div slot="end" class="vivo-brand pe-1">
-      <span class="vivo-logo text-gradient-gold">VIVO</span>
-      <span class="vivo-tagline">Villavo Inteligente · Vías y Orígenes</span>
-    </div>
   </ion-toolbar>
 </ion-header>
 
@@ -34,7 +32,7 @@
           (clickChange)="navigateToMap()"
         />
       </ion-col>
-      <ion-col size="6" class="anim-fade-up anim-delay-2">
+      <ion-col size="6" class="anim-fade-up anim-delay-2" style="position: relative">
         <app-home-item-button
           title="Seguir mi autobús"
           description="Tiempo real"
@@ -42,6 +40,7 @@
           backgroundColor="#0F4C44"
           (clickChange)="navigateToPage('/map')"
         />
+        <span class="live-dot"></span>
       </ion-col>
       <ion-col size="6" class="anim-fade-up anim-delay-3">
         <app-home-item-button
@@ -67,14 +66,6 @@
       <ion-row>
         <ion-col size="12">
           <app-home-favorites [favorites]="favorites()" />
-        </ion-col>
-      </ion-row>
-    }
-
-    @if(recentRoutes().length) {
-      <ion-row class="my-2">
-        <ion-col size="12">
-          <app-home-recent-routes [recentRoutes]="recentRoutes()" />
         </ion-col>
       </ion-row>
     }
