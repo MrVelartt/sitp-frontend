@@ -1,5 +1,5 @@
 .home-toolbar {
-  --background: #15171A; // fallback sólido para WebViews sin backdrop-filter
+  --background: #15171A;
   background-image: var(--texture-dots);
   background-repeat: repeat;
   @supports (backdrop-filter: blur(1px)) {
@@ -11,4 +11,36 @@
 
 .home-content {
   --background: #15171A;
+}
+
+// ─── VIVO brand ───────────────────────────────────────────────────────
+.toolbar-subtitle {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: 0.1rem;
+  line-height: 1;
+}
+
+.vivo-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.1rem;
+  padding-right: 0.25rem;
+}
+
+.vivo-logo {
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.vivo-tagline {
+  font-size: 0.58rem;
+  color: var(--color-text-dim);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1;
 }

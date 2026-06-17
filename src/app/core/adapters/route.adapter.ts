@@ -21,7 +21,9 @@ const routeFormat = (route: any): Route => ({
   travelTime: convertNumberMinutesToHMString(route.time_travel),
   startTime: convertTimeTo12HourFormat(route.start_time_route),
   endTime: convertTimeTo12HourFormat(route.end_time_route),
-  distance: `${route.distance_route || 0} km`,
+  distance: String(route.distance_route ?? 0).includes('km')
+    ? route.distance_route
+    : `${route.distance_route || 0} km`,
   busStops: busStopAdapter(route.paradas),
   countBuses: route.quantity_bus || 0,
   coordinates: coordenateAdapter(route.coordenadas),

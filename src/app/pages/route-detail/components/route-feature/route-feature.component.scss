@@ -1,0 +1,18 @@
+// Estilos para tarjetas de feature sobre fondo claro (#F4EFE4)
+.feature-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--color-text-dark-muted, #8a7458);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0 0 0.1rem;
+  line-height: 1.2;
+}
+
+.feature-value {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-text-dark, #1F1B14);
+  margin: 0;
+  line-height: 1.3;
+}

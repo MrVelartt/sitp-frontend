@@ -11,20 +11,6 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense" class="header-style-1">
-    <ion-toolbar>
-      <ion-title size="large">
-        <h1 class="text-primary text-center fs-2 fw-bold">
-          Detalle de la ruta
-        </h1>
-      </ion-title>
-
-      <ion-buttons slot="start">
-        <ion-back-button class="text-accent" defaultHref="/routes" />
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
-
   @let routeLocal = route();
 
   <ion-grid class="p-0">
@@ -51,15 +37,8 @@
 
     <ion-row class="p-2 mb-2 bg-card">
       <ion-col size="12">
-        <ion-text>
-          <h2 class="text-accent fs-4 m-0 mb-2 fw-semibold">
-            Descripción de la ruta
-          </h2>
-        </ion-text>
-
-        <ion-text>
-          <p class="text-secondary fs-9">{{ routeLocal?.description }}</p>
-        </ion-text>
+        <p class="desc-label">DESCRIPCIÓN DE LA RUTA</p>
+        <p class="desc-text">{{ routeLocal?.description }}</p>
 
         <ion-text class="fs-9">
           <strong class="text-tertiary">Barrios clave cubiertos: </strong>

@@ -1,12 +1,15 @@
 <ion-item
   lines="none"
   class="item-btn no-padding border-radius-secondary pressable"
-  [ngStyle]="{ '--background': backgroundColor(), '--btn-text': textColor() }"
+  [ngStyle]="{ '--background': backgroundColor(), '--btn-text': textColor(), '--icon-circle-bg': iconCircleBg() }"
   (click)="onClick()"
 >
   <div class="btn-inner">
-    <ion-icon [name]="icon()" class="btn-icon"></ion-icon>
+    <div class="icon-circle">
+      <ion-icon [name]="icon()" class="btn-icon"></ion-icon>
+    </div>
     <p class="btn-title">{{ title() }}</p>
     <p class="btn-desc">{{ description() }}</p>
+    <ion-icon name="chevron-forward-outline" class="btn-chevron"></ion-icon>
   </div>
 </ion-item>

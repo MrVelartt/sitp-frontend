@@ -1,9 +1,7 @@
-import { NgStyle } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   inject,
-  signal,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import {
@@ -21,13 +19,11 @@ import { chevronForwardOutline } from 'ionicons/icons';
   selector: 'app-home-coming-soon',
   templateUrl: './home-coming-soon.component.html',
   styleUrls: ['./home-coming-soon.component.scss'],
-  imports: [IonIcon, IonButton, IonText, IonCol, IonGrid, IonRow, NgStyle],
+  imports: [IonIcon, IonButton, IonText, IonCol, IonGrid, IonRow],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComingSoonComponent {
   private readonly router = inject(Router);
-
-  protected readonly image = signal<string>('assets/images/map.png');
 
   constructor() {
     addIcons({ chevronForwardOutline });
