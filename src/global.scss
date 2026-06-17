@@ -1,18 +1,8 @@
-/*
- * App Global CSS
- * ----------------------------------------------------------------------------
- */
-
-/* Core CSS required for Ionic components to work properly */
 @import "@ionic/angular/css/core.css";
-
-/* Basic CSS for apps built with Ionic */
 @import "@ionic/angular/css/normalize.css";
 @import "@ionic/angular/css/structure.css";
 @import "@ionic/angular/css/typography.css";
 @import "@ionic/angular/css/display.css";
-
-/* Optional CSS utils that can be commented out */
 @import "@ionic/angular/css/padding.css";
 @import "@ionic/angular/css/float-elements.css";
 @import "@ionic/angular/css/text-alignment.css";
@@ -26,45 +16,59 @@
 @import "colors";
 @import "selects";
 
-/**
- * Ionic Dark Mode
- */
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
 
-// Base dark theme
-:root {
-  --ion-background-color: #{$color-bg-dark};
-  --ion-background-color-rgb: 15, 23, 42;
-  --ion-text-color: #{$color-text-primary};
-  --ion-text-color-rgb: 248, 250, 252;
-  --ion-toolbar-background: #{$color-bg-dark};
-  --ion-item-background: #{$color-bg-card};
-  --ion-card-background: #{$color-bg-card};
-  --ion-tab-bar-background: #{$color-bg-dark};
-  --ion-tab-bar-border-color: var(--color-border);
+// ─── Keyframes globales ───────────────────────────────────────────────
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+@keyframes flamePulse {
+  0%, 100% { transform: scale(1); filter: none; }
+  50%       { transform: scale(1.35); filter: drop-shadow(0 0 5px #{$color-gold}); }
+}
+
+@keyframes pressScale {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(0.97); }
+  100% { transform: scale(1); }
+}
+
+@keyframes goldGlow {
+  0%, 100% { box-shadow: 0 0 8px  rgba(201,162,39,0.2); }
+  50%       { box-shadow: 0 0 20px rgba(201,162,39,0.5); }
+}
+
+// ─── Base dark obsidian ────────────────────────────────────────────────
 body {
   font-family: "Roboto", "Helvetica Neue", sans-serif !important;
-  background: $color-bg-dark;
-  color: $color-text-primary;
+  background: $color-bg-base;
+  color: $color-text-cream;
 }
 
 ion-content {
-  --background: #{$color-bg-dark};
+  --background: #{$color-bg-base};
 }
 
 ion-card {
   --background: #{$color-bg-card};
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
   border: 1px solid var(--color-border);
 }
 
 ion-toolbar {
-  --background: #{$color-bg-dark};
+  --background: #{$color-bg-base};
   --border-color: var(--color-border);
+  --color: #{$color-text-cream};
 }
 
 ion-list {
@@ -74,188 +78,119 @@ ion-list {
 
 ion-item {
   --background: #{$color-bg-card};
-  --color: #{$color-text-primary};
+  --color: #{$color-text-cream};
   --border-color: var(--color-border);
 }
 
+// ─── Tabs premium ─────────────────────────────────────────────────────
+.tabs-style-1 {
+  ion-tab-button {
+    --background: #{$color-bg-base};
+    --color: #{$color-text-muted};
+    --color-selected: #{$color-gold};
+    border-top: 1px solid var(--color-border-gold);
+  }
+}
+
+// ─── Utilidades de layout ─────────────────────────────────────────────
 .item-style-1 {
   display: grid;
   place-content: center;
   --background: #{$color-bg-surface};
   background: $color-bg-surface;
-  .icon {
-    color: $color-accent;
-  }
+  .icon { color: $color-gold; }
 }
 
-.border-radius-primary {
-  border-radius: $border-radius-primary;
-  --border-radius: #{$border-radius-primary};
-}
+.border-radius-primary   { border-radius: $border-radius-primary;   --border-radius: #{$border-radius-primary}; }
+.border-radius-secondary { border-radius: $border-radius-secondary; --border-radius: #{$border-radius-secondary}; }
+.--border-none           { --border-radius: 0; }
 
-.border-radius-secondary {
-  border-radius: $border-radius-secondary;
-  --border-radius: #{$border-radius-secondary};
-}
+.border-top-quaternary { border-top: 1px solid var(--color-border); }
 
-.--border-none {
-  --border-radius: 0;
-}
+.text-lines-1 { overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; line-clamp: 1; -webkit-box-orient: vertical; }
+.text-lines-2 { overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; }
+.text-lines-3 { overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; }
 
-.border-top-quaternary {
-  border-top: 1px solid var(--color-border);
-}
-
-.text-lines-1 {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  line-clamp: 1;
-  -webkit-box-orient: vertical;
-}
-
-.text-lines-2 {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-
-.text-lines-3 {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
-  -webkit-box-orient: vertical;
-}
-
-.text-none {
-  text-transform: none;
-}
+.text-none           { text-transform: none; }
+.text-transform-none { text-transform: none; }
+.text-capitalize     { text-transform: capitalize; }
+.w-max-content       { width: max-content; }
 
 .title-center {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  top: 50%;
-  transform: translateY(-50%);
+  position: absolute; left: 0; width: 100%;
+  text-align: center; top: 50%; transform: translateY(-50%);
 }
 
 ion-item.no-padding {
-  --padding-start: 0px;
-  --padding-end: 0px;
-  --inner-padding-end: 0px;
+  --padding-start: 0px; --padding-end: 0px; --inner-padding-end: 0px;
 }
 
-.tabs-style-1 {
-  ion-tab-button {
-    --background: #{$color-bg-dark};
-    --color: #{$color-text-quaternary};
-    --color-selected: #{$color-accent};
-    border-top: 1px solid var(--color-border);
-  }
-}
-
-.toggle-style-1 {
-  &:not(.toggle-checked)::part(track) {
-    background: $color-bg-surface;
-  }
-}
-
-.toggle-style-2 {
-  &:not(.toggle-checked)::part(track) {
-    background: $color-denary;
-  }
-}
+.toggle-style-1 { &:not(.toggle-checked)::part(track) { background: $color-bg-surface; } }
+.toggle-style-2 { &:not(.toggle-checked)::part(track) { background: $color-denary; } }
 
 .header-style-1 {
   box-shadow: none;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border-gold);
 }
 
 .loading-wrapper.ion-overlay-wrapper {
   background: $color-bg-card;
-  color: $color-text-primary;
-  --spinner-color: #{$color-accent};
+  color: $color-text-cream;
+  --spinner-color: #{$color-gold};
 }
 
-ion-toast.toast-error::part(container) {
-  background-color: $color-danger;
-  text-align: center;
-  color: white;
-}
-
-ion-toast.toast-success::part(container) {
-  background-color: $color-success;
-  text-align: center;
-  color: white;
-}
+ion-toast.toast-error::part(container)   { background-color: $color-danger;  text-align: center; color: white; }
+ion-toast.toast-success::part(container) { background-color: $color-success; text-align: center; color: white; }
 
 .bus-stop-marker {
-  border-radius: 50%;
-  padding: 8px;
-  position: relative;
-  cursor: pointer;
-
+  border-radius: 50%; padding: 8px; position: relative; cursor: pointer;
   div {
-    position: absolute;
-    bottom: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: $color-bg-card;
-    color: $color-text-primary;
-    padding: 2px 5px;
-    border-radius: 3px;
-    font-size: 12px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+    position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%);
+    background: $color-bg-card; color: $color-text-cream;
+    padding: 2px 5px; border-radius: 3px; font-size: 12px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.5);
   }
 }
 
-.bus-marker {
-  border-radius: 50%;
-  padding: 8px;
-  background: $color-septenary;
-  position: relative;
-  cursor: pointer;
+.bus-marker { border-radius: 50%; padding: 8px; background: $color-danger; position: relative; cursor: pointer; }
+
+.error { font-size: $font-size-9; color: $color-danger; }
+
+// ─── Animación de entrada ─────────────────────────────────────────────
+.anim-fade-up {
+  animation: fadeSlideUp 0.35s ease both;
 }
 
-.error {
-  font-size: $font-size-9;
-  color: $color-danger;
+// Clases de delay escalonado para listas
+@for $i from 1 through 12 {
+  .anim-delay-#{$i} { animation-delay: #{$i * 50}ms; }
 }
 
-.text-transform-none {
-  text-transform: none;
+// ─── Textura llanera ──────────────────────────────────────────────────
+.texture-dots {
+  background-image: var(--texture-dots);
+  background-repeat: repeat;
 }
 
-.text-capitalize {
-  text-transform: capitalize;
+// ─── Press micro-interacción ──────────────────────────────────────────
+.pressable {
+  transition: transform 0.12s ease;
+  &:active { transform: scale(0.97); }
 }
 
-.w-max-content {
-  width: max-content;
-}
-
-// Premium glass card
+// ─── Glass card ───────────────────────────────────────────────────────
 .glass-card {
-  background: rgba(30, 41, 59, 0.8);
+  background: rgba(30, 33, 36, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--color-border);
   border-radius: $border-radius-secondary;
 }
 
-// Gradient text accent
-.text-gradient {
-  background: var(--gradient-accent);
+// ─── Gradient text dorado ─────────────────────────────────────────────
+.text-gradient-gold {
+  background: var(--gradient-gold);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-}
-
-// Premium glow effect
-.glow-accent {
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
 }

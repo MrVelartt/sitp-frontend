@@ -1,64 +1,43 @@
 @let routeLocal = route();
-<ion-card
-  class="m-0 border-radius-secondary"
+@let ac = accent;
+
+<div
+  class="route-card pressable anim-fade-up"
+  [style.border-top-color]="ac.border"
   (click)="seeDetailRoute($event)"
 >
-  <ion-card-header class="flex-row column-gap-2 align-items-center">
+  <!-- Header -->
+  <div class="rc-header">
     <span
-      class="icon-route d-flex justify-content-center align-items-center border-radius-secondary fw-semibold rounded-circle"
-      [ngStyle]="{
-        color: routeLocal.color,
-        background: convertHexToRgba(routeLocal.color, 0.2),
-      }"
+      class="rc-badge"
+      [ngStyle]="{ background: ac.border, color: '#15171A' }"
     >
       {{ routeLocal.shortName }}
     </span>
-    <div class="title-route">
-      <ion-card-title class="name fw-semibold fs-9 text-primary">
-        {{ routeLocal.name }}
-      </ion-card-title>
-      <ion-card-subtitle class="freq fs-9 text-tertiary">
-        Cada {{ routeLocal.frequency }} minutos
-      </ion-card-subtitle>
+
+    <div class="rc-title-wrap">
+      <p class="rc-name">{{ routeLocal.name }}</p>
+      <p class="rc-freq">Cada {{ routeLocal.frequency }} min</p>
     </div>
-    <ion-button
-      class="btn-favorite button-style-2 ms-auto align-self-start"
-      (click)="favorite($event)"
-    >
+
+    <button class="rc-fav-btn" (click)="favorite($event)">
       <ion-icon
-        slot="icon-only"
         [name]="routeLocal.isFavorite ? 'star-round' : 'star-round-outline'"
-        size="small"
-        aria-hidden="true"
-        [class]="
-          routeLocal.isFavorite ? 'color-favorite-active' : 'color-favorite'
-        "
+        [class]="routeLocal.isFavorite ? 'color-favorite-active' : 'color-favorite'"
       ></ion-icon>
-    </ion-button>
-  </ion-card-header>
+    </button>
+  </div>
 
-  <ion-card-content>
-    <ion-text>
-      <p class="mb-0 text-secondary fs-9 text-lines-3">
-        {{ routeLocal.description }}
-      </p>
-    </ion-text>
+  <!-- Descripción -->
+  <p class="rc-desc text-lines-3">{{ routeLocal.description }}</p>
 
-    <ion-button
-      class="fs-9 w-100 m-0 mt-3 fw-semibold border-radius-secondary text-none"
-      [ngStyle]="{
-        color: routeLocal.color,
-        '--background': convertHexToRgba(routeLocal.color, 0.15),
-        '--border': '1px solid ' + convertHexToRgba(routeLocal.color, 0.3),
-      }"
-      (click)="seeRoute($event)"
-    >
-      Ver ruta
-      <ion-icon
-        slot="end"
-        name="arrow-forward-outline"
-        aria-hidden="true"
-      ></ion-icon>
-    </ion-button>
-  </ion-card-content>
-</ion-card>
+  <!-- Botón -->
+  <button
+    class="rc-cta pressable"
+    [ngStyle]="{ background: ac.border, color: '#15171A' }"
+    (click)="seeRoute($event)"
+  >
+    Ver ruta
+    <ion-icon name="arrow-forward-outline"></ion-icon>
+  </button>
+</div>

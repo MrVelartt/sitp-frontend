@@ -1,106 +1,41 @@
-.bg-start {
-  background: var(--gradient-hero);
-  --background: var(--gradient-hero);
-}
+.bg-start    { background: var(--gradient-hero); --background: var(--gradient-hero); }
+.bg-transparent { background: transparent; --background: transparent; }
+.bg-quinary  { background: $color-card-bg-light; --background: #{$color-card-bg-light}; }
+.bg-octonary { background: $color-bg-base;  --background: #{$color-bg-base}; }
+.bg-card     { background: $color-bg-card;  --background: #{$color-bg-card}; }
+.bg-surface  { background: $color-bg-surface; --background: #{$color-bg-surface}; }
+.bg-header   { background: $color-bg-base;  --background: #{$color-bg-base}; }
 
-.bg-transparent {
-  background: transparent;
-  --background: transparent;
-}
+.bg-light-septenary { background: rgba(194, 66,  91, 0.15); --background: rgba(194, 66, 91, 0.15); }
+.bg-light-octonary  { background: rgba(63,  165, 147, 0.15); --background: rgba(63, 165, 147, 0.15); }
 
-.bg-quinary {
-  background: $color-quinary;
-  --background: #{$color-quinary};
-}
-
-.bg-octonary {
-  background: $color-bg-dark;
-  --background: #{$color-bg-dark};
-}
-
-.bg-card {
-  background: $color-bg-card;
-  --background: #{$color-bg-card};
-}
-
-.bg-surface {
-  background: $color-bg-surface;
-  --background: #{$color-bg-surface};
-}
-
-.bg-light-septenary {
-  background: rgba(239, 68, 68, 0.15);
-  --background: rgba(239, 68, 68, 0.15);
-}
-
-.bg-light-octonary {
-  background: rgba(34, 197, 94, 0.15);
-  --background: rgba(34, 197, 94, 0.15);
-}
-
-.bg-header {
-  background: $color-bg-dark;
-  --background: #{$color-bg-dark};
-}
-
-.color-logo {
-  color: $color-accent;
-}
-
-.text-primary {
-  color: $color-text-primary !important;
-}
-
-.text-secondary {
-  color: $color-text-secondary;
-}
-
-.text-tertiary {
-  color: $color-text-tertiary;
-}
-
-.text-quinary {
-  color: $color-quinary;
-}
-
-.text-septenary {
-  color: $color-septenary;
-}
-
-.text-octonary {
-  color: $color-text-octonary;
-}
-
-.color-octonary {
-  color: $color-text-muted;
-}
-
-.color-favorite {
-  color: $color-denary;
-}
-
-.color-favorite-active {
-  color: $color-nonary;
-}
-
-.text-accent {
-  color: $color-accent;
-}
+.color-logo          { color: $color-gold; }
+.text-primary        { color: $color-text-cream !important; }
+.text-secondary      { color: $color-text-secondary; }
+.text-tertiary       { color: $color-text-muted; }
+.text-quinary        { color: $color-card-bg-light; }
+.text-septenary      { color: $color-wine-text; }
+.text-octonary       { color: $color-emerald-text; }
+.text-accent         { color: $color-gold; }
+.text-gold           { color: $color-gold; }
+.color-octonary      { color: $color-text-muted; }
+.color-favorite      { color: $color-denary; }
+.color-favorite-active { color: $color-gold; }
 
 .ion-color-septenary {
-  --ion-color-base: var(--ion-color-septenary);
-  --ion-color-base-rgb: var(--ion-color-septenary-rgb);
-  --ion-color-contrast: var(--ion-color-septenary-contrast);
-  --ion-color-contrast-rgb: var(--ion-color-septenary-contrast-rgb);
-  --ion-color-shade: var(--ion-color-septenary-shade);
-  --ion-color-tint: var(--ion-color-septenary-tint);
+  --ion-color-base: #{$color-wine-text};
+  --ion-color-base-rgb: 194, 66, 91;
+  --ion-color-contrast: #fff;
+  --ion-color-contrast-rgb: 255, 255, 255;
+  --ion-color-shade: #{$color-wine-text};
+  --ion-color-tint: #{$color-wine-text};
 }
 
 .ion-color-octonary {
-  --ion-color-base: var(--ion-color-octonary);
-  --ion-color-base-rgb: var(--ion-color-octonary-rgb);
-  --ion-color-contrast: var(--ion-color-octonary-contrast);
-  --ion-color-contrast-rgb: var(--ion-color-octonary-contrast-rgb);
-  --ion-color-shade: var(--ion-color-octonary-shade);
-  --ion-color-tint: var(--ion-color-octonary-tint);
+  --ion-color-base: #{$color-emerald-text};
+  --ion-color-base-rgb: 63, 165, 147;
+  --ion-color-contrast: #fff;
+  --ion-color-contrast-rgb: 255, 255, 255;
+  --ion-color-shade: #{$color-emerald-text};
+  --ion-color-tint: #{$color-emerald-text};
 }

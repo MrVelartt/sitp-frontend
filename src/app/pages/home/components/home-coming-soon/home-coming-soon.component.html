@@ -4,39 +4,23 @@
       size="12"
       class="p-0 d-flex align-items-center justify-content-between mb-2"
     >
-      <ion-text class="fs-6 text-primary fw-bold">Proximamente</ion-text>
+      <ion-text class="fs-6 text-primary fw-bold">Próximamente</ion-text>
     </ion-col>
 
     <ion-col
       size="12"
-      class="bg rounded-2 d-flex flex-column justify-content-between align-items-center"
-      [ngStyle]="{
-        'background-image': 'url(' + image() + ')',
-      }"
+      class="coming-soon-banner rounded-2 d-flex flex-column justify-content-between align-items-center"
+      [ngStyle]="{ 'background-image': 'url(' + image() + ')' }"
       (click)="navigateToComingSoon()"
     >
-      <ion-text
-        class="fs-6 text-primary bg-octonary px-2 rounded-2 w-max-content"
-      >
+      <ion-text class="cs-label">
         Rutas unificadas como transmilenio
       </ion-text>
 
-      <ion-button
-        class="button-style-1 w-max-content text-transform-none"
-        (click)="navigateToComingSoon()"
-      >
+      <button class="cs-btn pressable" (click)="navigateToComingSoon()">
         Conoce más
-        <ion-icon name="chevron-forward-outline" class="ms-1 text-quinary" />
-      </ion-button>
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </button>
     </ion-col>
-    <!-- <ion-col size="12" class="p-0">
-      <ion-button
-        class="style-4 text-decoration-underline text-link"
-        (click)="navigateToComingSoon()"
-      >
-        Conoce más
-        <ion-icon name="chevron-forward-outline" class="ms-1" />
-      </ion-button>
-    </ion-col> -->
   </ion-row>
 </ion-grid>

@@ -1,17 +1,88 @@
-.icon-route {
-  width: 42px;
-  height: 42px;
-  font-size: 0.75rem;
-  font-weight: 700;
+.route-card {
+  background: #F4EFE4;
+  border-radius: 0.875rem;
+  border-top: 3px solid #C9A227; // default, sobreescrito por ngStyle
+  padding: 1rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+
+// Header row
+.rc-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.rc-badge {
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 800;
   flex-shrink: 0;
+  letter-spacing: -0.03em;
 }
 
-.name,
-.freq {
-  width: fit-content;
+.rc-title-wrap {
+  flex: 1;
+  overflow: hidden;
 }
 
-.btn-favorite {
-  min-width: 20px;
-  min-height: 20px;
+.rc-name {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #1F1B14;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.rc-freq {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #6b6456;
+}
+
+.rc-fav-btn {
+  background: transparent;
+  border: none;
+  padding: 0.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  ion-icon { font-size: 1.1rem; }
+}
+
+// Description
+.rc-desc {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #4a4438;
+  line-height: 1.5;
+}
+
+// CTA button
+.rc-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.825rem;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  letter-spacing: 0.02em;
+  ion-icon { font-size: 0.9rem; }
 }

@@ -28,56 +28,58 @@
     </ion-row>
 
     <ion-row class="mb-3">
-      <ion-col size="6">
+      <ion-col size="6" class="anim-fade-up anim-delay-1">
         <app-home-item-button
           title="Ver todas las rutas"
           description="Mapa disponible"
           icon="routes"
-          backgroundColor="#1E3A5F"
+          backgroundColor="#1B3A4B"
           (clickChange)="navigateToMap()"
         />
       </ion-col>
-      <ion-col size="6">
+      <ion-col size="6" class="anim-fade-up anim-delay-2">
         <app-home-item-button
           title="Seguir mi autobús"
           description="Tiempo real"
           icon="bus"
-          backgroundColor="#0E7490"
+          backgroundColor="#0F4C44"
           (clickChange)="navigateToPage('/map')"
         />
       </ion-col>
-      <ion-col size="6">
+      <ion-col size="6" class="anim-fade-up anim-delay-3">
         <app-home-item-button
           title="Favoritos"
           description="Rutas guardadas"
           icon="star-round"
-          backgroundColor="#312E81"
+          backgroundColor="#6E1423"
           (clickChange)="navigateToPage('/favorites')"
         />
       </ion-col>
-      <ion-col size="6">
+      <ion-col size="6" class="anim-fade-up anim-delay-4">
         <app-home-item-button
           title="Paradas cercanas"
           description="Buscar paradas"
           icon="location"
-          backgroundColor="#0F4C81"
+          backgroundColor="#1B3A4B"
           (clickChange)="navigateToPage('/map')"
         />
       </ion-col>
     </ion-row>
 
     @if(favorites().length) {
-    <ion-row>
-      <ion-col size="12">
-        <app-home-favorites [favorites]="favorites()" />
-      </ion-col>
-    </ion-row>
-    } @if(recentRoutes().length) {
-    <ion-row class="my-2">
-      <ion-col size="12">
-        <app-home-recent-routes [recentRoutes]="recentRoutes()" />
-      </ion-col>
-    </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <app-home-favorites [favorites]="favorites()" />
+        </ion-col>
+      </ion-row>
+    }
+
+    @if(recentRoutes().length) {
+      <ion-row class="my-2">
+        <ion-col size="12">
+          <app-home-recent-routes [recentRoutes]="recentRoutes()" />
+        </ion-col>
+      </ion-row>
     }
 
     <ion-row>

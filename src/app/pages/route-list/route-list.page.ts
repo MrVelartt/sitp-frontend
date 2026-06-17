@@ -16,6 +16,7 @@ import {
   IonRow,
   IonCol,
   IonList,
+  IonIcon,
 } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import {
@@ -46,6 +47,7 @@ import { lastValueFrom } from 'rxjs';
     IonHeader,
     IonTitle,
     IonToolbar,
+    IonIcon,
     ItemSearchComponent,
     RouteCardComponent,
     MainButtonComponent,

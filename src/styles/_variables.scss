@@ -1,102 +1,109 @@
-// For information on how to create your own theme, please see:
-// http://ionicframework.com/docs/theming/
+// ─── PALETA OBSIDIANA PREMIUM ─────────────────────────────────────────
 :root {
-  --ion-color-primary: #1E3A5F;
-  --ion-color-primary-rgb: 30, 58, 95;
-  --ion-color-primary-contrast: #ffffff;
-  --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #1a3254;
-  --ion-color-primary-tint: #354e6f;
+  // Fondos
+  --color-bg-base:      #15171A;
+  --color-bg-card:      #1E2124;
+  --color-bg-surface:   #252830;
+  --color-bg-elevated:  #2D3039;
 
-  --ion-color-secondary: #1E293B;
-  --ion-color-secondary-rgb: 30, 41, 59;
-  --ion-color-secondary-contrast: #ffffff;
-  --ion-color-secondary-contrast-rgb: 255, 255, 255;
-  --ion-color-secondary-shade: #1a2434;
-  --ion-color-secondary-tint: #35404f;
+  // Acento 1 — Oro envejecido (logo, CTAs, bordes énfasis)
+  --color-gold:         #C9A227;
+  --color-gold-light:   #E2C15A;
+  --color-gold-dim:     rgba(201, 162, 39, 0.12);
 
-  --ion-color-tertiary: #3B82F6;
-  --ion-color-tertiary-rgb: 59, 130, 246;
-  --ion-color-tertiary-contrast: #ffffff;
-  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
-  --ion-color-tertiary-shade: #3472d8;
-  --ion-color-tertiary-tint: #4f8ff7;
+  // Acento 2 — Esmeralda (rutas, tiempo real)
+  --color-emerald:      #0F4C44;
+  --color-emerald-text: #3FA593;
+  --color-emerald-dim:  rgba(63, 165, 147, 0.12);
 
-  --ion-color-quaternary: #263244;
-  --ion-color-quaternary-rgb: 38, 50, 68;
-  --ion-color-quaternary-contrast: #ffffff;
-  --ion-color-quaternary-contrast-rgb: 255, 255, 255;
-  --ion-color-quaternary-shade: #212c3c;
-  --ion-color-quaternary-tint: #3c4757;
+  // Acento 3 — Vinotinto (favoritos)
+  --color-wine:         #6E1423;
+  --color-wine-text:    #C2425B;
+  --color-wine-dim:     rgba(194, 66, 91, 0.12);
 
-  --ion-color-quinary: #F8FAFC;
-  --ion-color-quinary-rgb: 248, 250, 252;
-  --ion-color-quinary-contrast: #0F172A;
-  --ion-color-quinary-contrast-rgb: 15, 23, 42;
-  --ion-color-quinary-shade: #dadcde;
-  --ion-color-quinary-tint: #f9fbfc;
+  // Acento 4 — Azul petróleo (paradas cercanas)
+  --color-petrol:       #1B3A4B;
+  --color-petrol-text:  #6FA3C2;
+  --color-petrol-dim:   rgba(111, 163, 194, 0.12);
 
-  --ion-color-senary: #0F172A;
-  --ion-color-senary-rgb: 15, 23, 42;
-  --ion-color-senary-contrast: #ffffff;
-  --ion-color-senary-contrast-rgb: 255, 255, 255;
-  --ion-color-senary-shade: #0d1425;
-  --ion-color-senary-tint: #272e3f;
+  // Textos
+  --color-text-cream:   #ECE6D8;
+  --color-text-muted:   #a39c87;
+  --color-text-dim:     #6b6456;
+  --color-text-dark:    #1F1B14;
 
-  --ion-color-septenary: #ef4444;
-  --ion-color-septenary-rgb: 239, 68, 68;
-  --ion-color-septenary-contrast: #ffffff;
-  --ion-color-septenary-contrast-rgb: 255, 255, 255;
-  --ion-color-septenary-shade: #d23c3c;
-  --ion-color-septenary-tint: #f15757;
+  // Utilidades
+  --color-border:       rgba(201, 162, 39, 0.12);
+  --color-border-gold:  rgba(201, 162, 39, 0.35);
+  --color-danger:       #C2425B;
+  --color-success:      #3FA593;
 
-  --ion-color-octonary: #22c55e;
-  --ion-color-octonary-rgb: 34, 197, 94;
-  --ion-color-octonary-contrast: #000000;
-  --ion-color-octonary-contrast-rgb: 0, 0, 0;
-  --ion-color-octonary-shade: #1eae53;
-  --ion-color-octonary-tint: #38cb6e;
+  // Gradientes
+  --gradient-gold:      linear-gradient(135deg, #C9A227 0%, #E2C15A 100%);
+  --gradient-hero:      linear-gradient(160deg, #15171A 0%, #1B2535 60%, #1B3A4B 100%);
+  --gradient-card:      linear-gradient(180deg, #1E2124 0%, #15171A 100%);
 
-  // Custom tokens premium navy
-  --color-bg-dark:     #0F172A;
-  --color-bg-card:     #1E293B;
-  --color-bg-surface:  #263244;
-  --color-accent:      #3B82F6;
-  --color-accent-cyan: #0EA5E9;
-  --color-text-light:  #F8FAFC;
-  --color-text-muted:  #94A3B8;
-  --color-border:      rgba(255, 255, 255, 0.08);
-  --gradient-hero:     linear-gradient(135deg, #0F172A 0%, #1E3A5F 60%, #3B82F6 100%);
-  --gradient-accent:   linear-gradient(135deg, #2563EB 0%, #0EA5E9 100%);
-  --gradient-card:     linear-gradient(180deg, #1E293B 0%, #0F172A 100%);
+  // Textura llanera (puntos dorados)
+  --texture-dots: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1.2' fill='%23C9A227' fill-opacity='0.13'/%3E%3C/svg%3E");
+
+  // Ionic overrides
+  --ion-color-primary:          #C9A227;
+  --ion-color-primary-rgb:      201, 162, 39;
+  --ion-color-primary-contrast: #15171A;
+  --ion-color-primary-shade:    #b18f22;
+  --ion-color-primary-tint:     #cfab3d;
+
+  --ion-background-color:       #15171A;
+  --ion-text-color:             #ECE6D8;
+  --ion-toolbar-background:     #15171A;
+  --ion-item-background:        #1E2124;
+  --ion-card-background:        #1E2124;
+  --ion-tab-bar-background:     #15171A;
+  --ion-tab-bar-border-color:   rgba(201, 162, 39, 0.15);
 }
 
-$color-primary: #1E3A5F;
-$color-accent:  #3B82F6;
-$color-bg-dark: #0F172A;
-$color-bg-card: #1E293B;
-$color-bg-surface: #263244;
+// ─── SCSS variables (alias de los tokens CSS) ─────────────────────────
+$color-bg-base:      #15171A;
+$color-bg-card:      #1E2124;
+$color-bg-surface:   #252830;
+$color-bg-elevated:  #2D3039;
 
-$color-secondary: var(--ion-color-secondary);
-$color-tertiary:  var(--ion-color-tertiary);
-$color-quaternary: var(--ion-color-quaternary);
-$color-quinary:   #F8FAFC;
-$color-senary:    var(--ion-color-senary);
-$color-septenary: var(--ion-color-septenary);
-$color-octonary:  $color-bg-surface;
-$color-nonary:    #FBBF24;
-$color-denary:    #64748B;
+$color-gold:         #C9A227;
+$color-gold-light:   #E2C15A;
+$color-emerald-text: #3FA593;
+$color-wine-text:    #C2425B;
+$color-petrol-text:  #6FA3C2;
 
-$color-text-primary:    #F8FAFC;
-$color-text-secondary:  #CBD5E1;
-$color-text-tertiary:   #94A3B8;
-$color-text-muted:      #94A3B8;
-$color-text-quaternary: #64748B;
-$color-text-octonary:   var(--ion-color-octonary);
-$color-header:          $color-bg-dark;
+$color-text-cream:   #ECE6D8;
+$color-text-muted:   #a39c87;
+$color-text-dim:     #6b6456;
+$color-text-dark:    #1F1B14;
+$color-card-bg-light:#F4EFE4;
 
-$color-danger:  #ef4444;
-$color-success: #22c55e;
+// Aliases para compatibilidad con código existente
+$color-primary:         $color-gold;
+$color-accent:          $color-gold;
+$color-bg-dark:         $color-bg-base;
+$color-bg-card-var:     $color-bg-card;
+$color-secondary:       var(--color-emerald-dim);
+$color-tertiary:        var(--color-gold-dim);
+$color-quaternary:      $color-bg-surface;
+$color-quinary:         $color-card-bg-light;
+$color-senary:          $color-bg-base;
+$color-septenary:       $color-wine-text;
+$color-octonary:        $color-bg-surface;
+$color-nonary:          $color-gold;
+$color-denary:          #64748B;
+
+$color-text-primary:    $color-text-cream;
+$color-text-secondary:  #D4CDB8;
+$color-text-tertiary:   $color-text-muted;
+$color-text-quaternary: $color-text-dim;
+$color-text-octonary:   $color-emerald-text;
+$color-header:          $color-bg-base;
+
+$color-danger:   $color-wine-text;
+$color-success:  $color-emerald-text;
 
 $border-radius-primary:   0.75rem;
 $border-radius-secondary: 1rem;
@@ -107,3 +114,11 @@ $font-size-8:  0.85rem;
 $font-size-9:  0.8rem;
 $font-size-10: 0.75rem;
 $font-size-11: 0.7rem;
+
+// Accent rotation array (para route-card)
+$accents: (
+  ('border': #C9A227, 'text': #C9A227, 'bg': rgba(201, 162, 39, 0.12)),
+  ('border': #3FA593, 'text': #3FA593, 'bg': rgba(63, 165, 147, 0.12)),
+  ('border': #C2425B, 'text': #C2425B, 'bg': rgba(194, 66, 91, 0.12)),
+  ('border': #6FA3C2, 'text': #6FA3C2, 'bg': rgba(111, 163, 194, 0.12))
+);

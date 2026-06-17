@@ -1,19 +1,12 @@
 <ion-item
   lines="none"
-  class="bg-quinary no-padding border-radius-secondary"
+  class="item-btn no-padding border-radius-secondary pressable"
   [ngStyle]="{ '--background': backgroundColor() }"
   (click)="onClick()"
 >
-  <div
-    class="w-100 d-flex flex-column align-items-center justify-content-center text-center p-3"
-    style="height: 130px"
-  >
-    <ion-icon [name]="icon()" class="text-quinary icon fs-3 mb-2"></ion-icon>
-    <ion-text>
-      <p class="mb-0 fs-8 text-center text-quinary fw-bold">
-        {{ title() }}
-      </p>
-      <p class="mb-0 fs-9 text-center color-octonary">{{ description() }}</p>
-    </ion-text>
+  <div class="btn-inner">
+    <ion-icon [name]="icon()" class="btn-icon"></ion-icon>
+    <p class="btn-title">{{ title() }}</p>
+    <p class="btn-desc">{{ description() }}</p>
   </div>
 </ion-item>

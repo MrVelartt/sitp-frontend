@@ -11,46 +11,37 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="position-relative">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title>
-        <h1 class="text-primary text-center fs-2 fw-bold">Lista de rutas</h1>
-      </ion-title>
-      <div class="search">
-        <app-item-search (searchChange)="searchRoute($event)" />
-      </div>
-    </ion-toolbar>
-  </ion-header>
-
-  <ion-grid style="padding-bottom: 65px">
+<ion-content [fullscreen]="true">
+  <ion-grid>
     <ion-row>
       <ion-col size="12">
         <ion-list class="p-0">
-          @for (route of filteredRoutes(); track route.id) { @defer(on viewport)
-          {
-          <div class="content-card mb-3">
-            <app-route-card
-              [route]="route"
-              (seeRouteChange)="navigateToMapWithRoute($event)"
-              (seeDetailRouteChange)="navigateToRouteDetail($event)"
-              (favoriteChange)="favorite($event)"
-            />
-          </div>
-          } @placeholder {
-          <p class="text-tertiary px-3">...Cargando</p>
-          } }
+          @for (route of filteredRoutes(); track route.id; let i = $index) {
+            @defer(on viewport) {
+              <div class="content-card mb-3 anim-fade-up anim-delay-{{ (i % 12) + 1 }}">
+                <app-route-card
+                  [route]="route"
+                  [cardIndex]="i"
+                  (seeRouteChange)="navigateToMapWithRoute($event)"
+                  (seeDetailRouteChange)="navigateToRouteDetail($event)"
+                  (favoriteChange)="favorite($event)"
+                />
+              </div>
+            } @placeholder {
+              <div class="card-placeholder mb-3"></div>
+            }
+          }
         </ion-list>
       </ion-col>
     </ion-row>
 
-    <ion-row class="position-fixed start-0 bottom-0 w-100 px-1 py-2">
-      <ion-col>
-        <app-main-button
-          label="Ver todas las rutas en el mapa"
-          iconName="map"
-          (clickChange)="navigateToMap()"
-        />
+    <!-- Botón en flujo, no posicionado encima del contenido -->
+    <ion-row class="px-2 pb-4 pt-2">
+      <ion-col size="12">
+        <button class="btn-map-pill pressable" (click)="navigateToMap()">
+          <ion-icon name="map"></ion-icon>
+          Ver todas las rutas en el mapa
+        </button>
       </ion-col>
     </ion-row>
   </ion-grid>

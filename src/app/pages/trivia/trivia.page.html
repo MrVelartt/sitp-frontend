@@ -1,21 +1,18 @@
 <ion-content [fullscreen]="true" class="trivia-content">
 
-  <!-- ══════════════════════════════════════════
-       ESTADO: START
-  ══════════════════════════════════════════ -->
+  <!-- ══════════════════════ START ══════════════════════ -->
   @if (trivia.state().gameState === 'start') {
     <div class="start-screen">
-      <div class="hero-bg"></div>
-      <div class="start-content">
+      <div class="hero-bg texture-dots"></div>
+      <div class="start-content anim-fade-up">
         <div class="trophy-icon">
           <ion-icon name="trophy-outline"></ion-icon>
         </div>
-        <h1 class="start-title">Cultura Llanera</h1>
+        <h1 class="start-title text-gradient-gold">Cultura Llanera</h1>
         <p class="start-subtitle">
           Demuestra tu conocimiento sobre los Llanos Orientales,
           sus héroes, tradiciones y la magia de Villavicencio.
         </p>
-
         <div class="stats-grid">
           <div class="stat-item">
             <span class="stat-number">25</span>
@@ -30,116 +27,138 @@
             <span class="stat-label">Intentos</span>
           </div>
         </div>
-
         <div class="categories-preview">
           <span class="cat-tag cat-historia">Historia</span>
           <span class="cat-tag cat-personajes">Personajes</span>
           <span class="cat-tag cat-tradiciones">Tradiciones</span>
           <span class="cat-tag cat-ciudad">Ciudad</span>
         </div>
-
-        <ion-button
-          class="btn-start text-none"
-          expand="block"
-          (click)="trivia.startGame()"
-        >
-          <ion-icon slot="start" name="trophy-outline"></ion-icon>
+        <button class="btn-gold pressable" (click)="trivia.startGame()">
+          <ion-icon name="trophy-outline"></ion-icon>
           ¡Empezar el Quiz!
-        </ion-button>
+        </button>
       </div>
     </div>
   }
 
-  <!-- ══════════════════════════════════════════
-       ESTADO: PLAYING
-  ══════════════════════════════════════════ -->
+  <!-- ══════════════════════ PLAYING ══════════════════════ -->
   @if (trivia.state().gameState === 'playing') {
     @let st = trivia.state();
     @let question = trivia.currentQuestion();
-    <div class="playing-screen">
 
-      <!-- Header -->
-      <div class="play-header">
+    <div
+      class="trivia-layout"
+      (touchstart)="onTouchStart($event)"
+      (touchend)="onTouchEnd($event)"
+    >
+      <!-- ZONA 1: header fijo -->
+      <div class="trivia-header">
         <div class="progress-info">
           <span class="q-counter">{{ st.currentIndex + 1 }} / {{ trivia.questions().length }}</span>
-          <div class="streak-badge" [class.streak-active]="st.streak >= 2">
-            <ion-icon name="flame-outline"></ion-icon>
-            <span>{{ st.streak }}</span>
+
+          <div class="streak-wrap">
+            <ion-icon
+              name="flame-outline"
+              class="flame-icon"
+              [class.flame-active]="st.streak >= 2"
+            ></ion-icon>
+            <span class="streak-num" [class.streak-active]="st.streak >= 2">{{ st.streak }}</span>
           </div>
+
+          <span class="score-chip">{{ st.score }} pts</span>
         </div>
-        <ion-progress-bar
-          [value]="trivia.progress() / 100"
-          class="play-progress"
-        ></ion-progress-bar>
-        <div class="score-row">
-          <span class="score-text">Puntos: <strong>{{ st.score }}</strong></span>
-          <span class="cat-tag cat-{{ question?.category }}">{{ categoryLabels[question?.category ?? ''] }}</span>
+
+        <!-- Progress bar con shimmer -->
+        <div class="progress-bar-wrap">
+          <div
+            class="progress-bar-fill"
+            [style.width.%]="trivia.progress()"
+          ></div>
+        </div>
+
+        <div class="cat-row">
+          <span class="cat-tag cat-{{ question?.category }}">
+            {{ categoryLabels[question?.category ?? ''] }}
+          </span>
         </div>
       </div>
 
-      <!-- Pregunta -->
-      <div class="question-card">
-        <p class="question-text">{{ question?.question }}</p>
-      </div>
+      <!-- ZONA 2: contenido scrollable -->
+      <div class="trivia-body">
+        <div class="question-card">
+          <p class="question-text">{{ question?.question }}</p>
+        </div>
 
-      <!-- Opciones -->
-      <div class="options-list">
-        @for (option of question?.options; track $index) {
-          <button
-            class="option-btn option-{{ getOptionState($index) }}"
-            [disabled]="st.answered"
-            (click)="trivia.selectAnswer($index)"
+        <div class="options-list">
+          @for (option of question?.options; track $index) {
+            <button
+              class="option-btn option-{{ getOptionState($index) }} pressable"
+              [disabled]="st.answered"
+              (click)="trivia.selectAnswer($index)"
+            >
+              <span class="option-letter">{{ optionLetters[$index] }}</span>
+              <span class="option-text">{{ option }}</span>
+              @if (st.answered && $index === question?.correctIndex) {
+                <ion-icon name="checkmark-circle" class="option-icon correct-icon"></ion-icon>
+              }
+              @if (st.answered && $index === st.selectedIndex && $index !== question?.correctIndex) {
+                <ion-icon name="close-circle" class="option-icon wrong-icon"></ion-icon>
+              }
+            </button>
+          }
+        </div>
+
+        @if (st.answered) {
+          <div
+            class="explanation-card"
+            [class.explanation-correct]="st.selectedIndex === question?.correctIndex"
+            [class.explanation-wrong]="st.selectedIndex !== question?.correctIndex"
           >
-            <span class="option-letter">{{ optionLetters[$index] }}</span>
-            <span class="option-text">{{ option }}</span>
-            @if (st.answered && $index === question?.correctIndex) {
-              <ion-icon name="checkmark-circle" class="option-icon correct-icon"></ion-icon>
-            }
-            @if (st.answered && $index === st.selectedIndex && $index !== question?.correctIndex) {
-              <ion-icon name="close-circle" class="option-icon wrong-icon"></ion-icon>
-            }
-          </button>
+            <p class="explanation-text">{{ question?.explanation }}</p>
+          </div>
         }
       </div>
 
-      <!-- Explicación -->
-      @if (st.answered) {
-        <div class="explanation-card" [class.explanation-correct]="st.selectedIndex === question?.correctIndex">
-          <p class="explanation-text">{{ question?.explanation }}</p>
-        </div>
-
-        <div class="next-btn-wrap">
-          <ion-button
-            class="btn-next text-none"
-            expand="block"
-            (click)="trivia.nextQuestion()"
-          >
+      <!-- ZONA 3: footer fijo con botón siguiente -->
+      <div class="trivia-footer">
+        @if (st.answered) {
+          <button class="btn-gold pressable w-100" (click)="trivia.nextQuestion()">
             @if (st.currentIndex + 1 < trivia.questions().length) {
-              Siguiente pregunta
-              <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+              Siguiente
+              <ion-icon name="arrow-forward-outline"></ion-icon>
             } @else {
               Ver resultados
-              <ion-icon slot="end" name="trophy-outline"></ion-icon>
+              <ion-icon name="trophy-outline"></ion-icon>
             }
-          </ion-button>
+          </button>
+        } @else {
+          <div class="footer-hint">Selecciona una respuesta para continuar</div>
+        }
+
+        <!-- Puntos de paginación -->
+        <div class="pagination-dots">
+          @for (q of trivia.questions(); track $index) {
+            <span
+              class="dot"
+              [class.dot-current]="$index === st.currentIndex"
+              [class.dot-correct]="$index < st.currentIndex"
+            ></span>
+          }
         </div>
-      }
+      </div>
     </div>
   }
 
-  <!-- ══════════════════════════════════════════
-       ESTADO: RESULT
-  ══════════════════════════════════════════ -->
+  <!-- ══════════════════════ RESULT ══════════════════════ -->
   @if (trivia.state().gameState === 'result') {
     @let st = trivia.state();
     <div class="result-screen">
-      <div class="hero-bg"></div>
-      <div class="result-content">
+      <div class="hero-bg texture-dots"></div>
+      <div class="result-content anim-fade-up">
         <div class="result-trophy">
           <ion-icon name="trophy-outline"></ion-icon>
         </div>
-
-        <h2 class="rank-title">{{ trivia.rank() }}</h2>
+        <h2 class="rank-title text-gradient-gold">{{ trivia.rank() }}</h2>
         <p class="rank-sub">Tu resultado en Cultura Llanera</p>
 
         <div class="result-score-circle">
@@ -160,14 +179,10 @@
           </div>
         </div>
 
-        <ion-button
-          class="btn-start text-none"
-          expand="block"
-          (click)="trivia.resetGame()"
-        >
-          <ion-icon slot="start" name="refresh-outline"></ion-icon>
+        <button class="btn-gold pressable w-100" (click)="trivia.resetGame()">
+          <ion-icon name="refresh-outline"></ion-icon>
           Jugar de nuevo
-        </ion-button>
+        </button>
       </div>
     </div>
   }
