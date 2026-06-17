@@ -1,8 +1,8 @@
-export const BASE_URL = '/';
+export const BASE_URL = 'http://18.117.138.108:8000/';
 export const API_URL = `${BASE_URL}bus/api/`;
 
 export const environment = {
   production: false,
   mapId: '923f2dfb6a019928',
-  mapKey: 'TU_MAP_KEY',
+  mapKey: 'AIzaSyCb7TG2DKpvRjGVu8drGm5JILskaFelB3Y',
 };
