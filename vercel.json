@@ -1,0 +1,20 @@
+{
+  "rewrites": [
+    {
+      "source": "/bus/api/:path*",
+      "destination": "http://18.117.138.108:8000/bus/api/:path*"
+    },
+    {
+      "source": "/admin/:path*",
+      "destination": "http://18.117.138.108:8000/admin/:path*"
+    },
+    {
+      "source": "/static/:path*",
+      "destination": "http://18.117.138.108:8000/static/:path*"
+    },
+    {
+      "source": "/((?!bus/api|admin|static).*)",
+      "destination": "/index.html"
+    }
+  ]
+}
