@@ -5,15 +5,7 @@
       "destination": "http://18.117.138.108:8000/bus/api/:path*"
     },
     {
-      "source": "/admin/:path*",
-      "destination": "http://18.117.138.108:8000/admin/:path*"
-    },
-    {
-      "source": "/static/:path*",
-      "destination": "http://18.117.138.108:8000/static/:path*"
-    },
-    {
-      "source": "/:path*",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ]
