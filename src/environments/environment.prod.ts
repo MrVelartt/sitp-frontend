@@ -1,4 +1,4 @@
-export const BASE_URL = '/';
+export const BASE_URL = 'https://api.sitp-villavo.site/';
 export const API_URL = `${BASE_URL}bus/api/`;
 
 export const environment = {
