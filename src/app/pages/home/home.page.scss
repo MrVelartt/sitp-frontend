@@ -1,9 +1,12 @@
 .home-toolbar {
-  --background: rgba(21, 23, 26, 0.92);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  --background: #15171A; // fallback sólido para WebViews sin backdrop-filter
   background-image: var(--texture-dots);
   background-repeat: repeat;
+  @supports (backdrop-filter: blur(1px)) {
+    --background: rgba(21, 23, 26, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
 }
 
 .home-content {

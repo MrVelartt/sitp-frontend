@@ -19,6 +19,7 @@ export class HomeItemButtonComponent {
   readonly description = input.required<string>();
   readonly icon = input.required<string>();
   readonly backgroundColor = input<string>('#263cd1');
+  readonly textColor = input<string>('#ECE6D8');
   readonly clickChange = output<void>();
 
   constructor() {}

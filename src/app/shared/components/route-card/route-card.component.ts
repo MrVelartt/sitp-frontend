@@ -20,6 +20,13 @@ import {
 import { addIcons } from 'ionicons';
 import { arrowForwardOutline } from 'ionicons/icons';
 
+const ACCENT_COLORS = [
+  { border: '#C9A227', text: '#C9A227', bg: 'rgba(201,162,39,0.13)' },
+  { border: '#3FA593', text: '#3FA593', bg: 'rgba(63,165,147,0.13)' },
+  { border: '#C2425B', text: '#C2425B', bg: 'rgba(194,66,91,0.13)'  },
+  { border: '#6FA3C2', text: '#6FA3C2', bg: 'rgba(111,163,194,0.13)'},
+];
+
 @Component({
   selector: 'app-route-card',
   templateUrl: './route-card.component.html',
@@ -38,13 +45,6 @@ import { arrowForwardOutline } from 'ionicons/icons';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-const ACCENT_COLORS = [
-  { border: '#C9A227', text: '#C9A227', bg: 'rgba(201,162,39,0.13)' },
-  { border: '#3FA593', text: '#3FA593', bg: 'rgba(63,165,147,0.13)' },
-  { border: '#C2425B', text: '#C2425B', bg: 'rgba(194,66,91,0.13)'  },
-  { border: '#6FA3C2', text: '#6FA3C2', bg: 'rgba(111,163,194,0.13)'},
-];
-
 export class RouteCardComponent {
   readonly route = input.required<Route>();
   readonly cardIndex = input<number>(0);

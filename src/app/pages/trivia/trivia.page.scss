@@ -41,6 +41,11 @@ ion-content.trivia-content {
   &.w-100 { width: 100%; }
 }
 
+// Pulso dorado sutil solo en la pantalla de inicio del quiz
+.start-screen .btn-gold {
+  animation: goldGlow 3s ease-in-out infinite;
+}
+
 // ─── Category tags ──────────────────────────────────────────────────
 .cat-tag {
   font-size: 0.68rem; font-weight: 700;

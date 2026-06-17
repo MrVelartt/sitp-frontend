@@ -180,15 +180,19 @@ ion-toast.toast-success::part(container) { background-color: $color-success; tex
 
 // ─── Glass card ───────────────────────────────────────────────────────
 .glass-card {
-  background: rgba(30, 33, 36, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: #1E2124; // fallback sólido para WebViews sin backdrop-filter
   border: 1px solid var(--color-border);
   border-radius: $border-radius-secondary;
+  @supports (backdrop-filter: blur(1px)) {
+    background: rgba(30, 33, 36, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
 }
 
 // ─── Gradient text dorado ─────────────────────────────────────────────
 .text-gradient-gold {
+  color: #C9A227; // fallback para navegadores sin background-clip: text
   background: var(--gradient-gold);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
